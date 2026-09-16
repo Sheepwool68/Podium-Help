@@ -79,7 +79,8 @@ apart rather than guessing.
 
 **There is no link to fix.** Those boxes reach the timing server on their own and nothing here
 dials them, so none of the steps above apply. A quiet one is out of signal, out of battery or
-switched off. See [limits.md](limits.md).
+switched off. To start, stop or command one, use the website — see
+[command-a-box.md](command-a-box.md).
 
 ## Nothing above works
 

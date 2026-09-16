@@ -51,6 +51,8 @@ This is the only place that does entries, prices, online entry, categories and p
 
 ## Boxes that report over 4G are different
 
-**Those reach the timing server themselves.** No machine at the event holds them, so nothing at the
-event can start them, stop them or rewind them. Their reads simply arrive. See
-[limits.md](limits.md).
+**Those reach the timing server themselves.** No machine at the event holds them, so Podium PC and
+Podium Mobile cannot start them, stop them or rewind them. Their reads simply arrive.
+
+**The website can.** Start, stop and resend for a 4G box are on `RFID Boxes`, on the box's card —
+see [command-a-box.md](command-a-box.md) and [limits.md](limits.md).

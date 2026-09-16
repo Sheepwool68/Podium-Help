@@ -7,14 +7,19 @@ them and answer your questions from them.
 
 ## Using them with your own AI
 
-Give your assistant this address and ask it your question:
+Copy this into your assistant, put your question on the end, and send it:
 
 ```
-https://sheepwool68.github.io/Podium-Help/
+Open https://sheepwool68.github.io/Podium-Help/ directly and read the whole page before answering - do not search the web. Answer only from what that page says. My question:
 ```
 
 That one page is the complete help. Works with Claude, ChatGPT, Gemini, Grok and others. Nothing to
 install, nothing to sign up for.
+
+**The wording matters.** Just giving an assistant the address, or asking it to "read" it, often
+makes it search the web instead, and it answers from scraps of older copies — including telling you
+the help does not cover something that is on the page. Asking it to open the page directly, and not
+to search, is what gets it to read the real thing.
 
 ### If your assistant says it cannot read that
 

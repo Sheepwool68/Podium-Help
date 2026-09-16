@@ -159,6 +159,12 @@ catch up to the website when there is signal. But the field — races, entrants,
 from the timing server, so fetch it before you lose signal. See
 the section on results-not-reaching-the-server.
 
+**Can I start and stop a 4G box from the website?**
+Yes — and only from the website. `RFID Boxes`, click the box's card, `Start reading` or
+`Stop reading`. Podium PC and Podium Mobile cannot, because they hold no link to it. The box acts
+when it next reports, so check the command list to see it confirmed. See
+the section on command-a-box.
+
 **How many devices can connect to one box?**
 Three at once over the network, and one over Bluetooth. See the section on limits.
 
@@ -313,9 +319,11 @@ This is the only place that does entries, prices, online entry, categories and p
 
 ## Boxes that report over 4G are different
 
-**Those reach the timing server themselves.** No machine at the event holds them, so nothing at the
-event can start them, stop them or rewind them. Their reads simply arrive. See
-the section on limits.
+**Those reach the timing server themselves.** No machine at the event holds them, so Podium PC and
+Podium Mobile cannot start them, stop them or rewind them. Their reads simply arrive.
+
+**The website can.** Start, stop and resend for a 4G box are on `RFID Boxes`, on the box's card —
+see the section on command-a-box and the section on limits.
 
 
 ---
@@ -1109,8 +1117,12 @@ fault. If you need it running for a race, it has to be started for the race.
 
 ## Boxes over 4G
 
-Those reads arrive when the server has them. There is no start, no stop and no rewind from anywhere.
-See the section on limits.
+**These are exactly the boxes this page is for.** A box reporting over 4G can be started, stopped
+and asked to resend from here, on the website — and from nowhere else. Podium PC and Podium Mobile
+hold no link to it, so they cannot. See the section on limits.
+
+The command still waits for the box's next report, so a box out of signal acts on it when the signal
+comes back, not before.
 
 
 ---
@@ -2301,7 +2313,8 @@ apart rather than guessing.
 
 **There is no link to fix.** Those boxes reach the timing server on their own and nothing here
 dials them, so none of the steps above apply. A quiet one is out of signal, out of battery or
-switched off. See the section on limits.
+switched off. To start, stop or command one, use the website — see
+the section on command-a-box.
 
 ## Nothing above works
 

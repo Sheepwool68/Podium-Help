@@ -67,6 +67,12 @@ catch up to the website when there is signal. But the field — races, entrants,
 from the timing server, so fetch it before you lose signal. See
 [results-not-reaching-the-server.md](results-not-reaching-the-server.md).
 
+**Can I start and stop a 4G box from the website?**
+Yes — and only from the website. `RFID Boxes`, click the box's card, `Start reading` or
+`Stop reading`. Podium PC and Podium Mobile cannot, because they hold no link to it. The box acts
+when it next reports, so check the command list to see it confirmed. See
+[command-a-box.md](command-a-box.md).
+
 **How many devices can connect to one box?**
 Three at once over the network, and one over Bluetooth. See [limits.md](limits.md).
 

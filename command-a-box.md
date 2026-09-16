@@ -33,5 +33,9 @@ fault. If you need it running for a race, it has to be started for the race.
 
 ## Boxes over 4G
 
-Those reads arrive when the server has them. There is no start, no stop and no rewind from anywhere.
-See [limits.md](limits.md).
+**These are exactly the boxes this page is for.** A box reporting over 4G can be started, stopped
+and asked to resend from here, on the website — and from nowhere else. Podium PC and Podium Mobile
+hold no link to it, so they cannot. See [limits.md](limits.md).
+
+The command still waits for the box's next report, so a box out of signal acts on it when the signal
+comes back, not before.
