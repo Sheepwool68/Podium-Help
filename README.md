@@ -10,7 +10,7 @@ them and answer your questions from them.
 Give your assistant this address and ask it your question:
 
 ```
-https://sheepwool68.github.io/Podium-Help/everything.md
+https://sheepwool68.github.io/Podium-Help/
 ```
 
 That one page is the complete help. Works with Claude, ChatGPT, Gemini, Grok and others. Nothing to
@@ -18,9 +18,10 @@ install, nothing to sign up for.
 
 ### If your assistant says it cannot read that
 
-Try either of these. They are the same content at a different address:
+Try any of these. They are the same content at a different address:
 
 ```
+https://sheepwool68.github.io/Podium-Help/everything.md
 https://github.com/Sheepwool68/Podium-Help/blob/main/everything.md
 https://raw.githubusercontent.com/Sheepwool68/Podium-Help/main/everything.md
 ```
