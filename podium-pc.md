@@ -5,6 +5,10 @@ Bluetooth, or over the venue network.
 
 Three tabs: `Readers`, `Scoring`, `Settings`.
 
+**No `Scoring` tab?** Tick `Advanced settings` on the `Settings` tab. It is hidden until then, so a
+club that only connects readers is not shown controls it does not use. Unticking it only tidies the
+window — the race, the gun and anything typed at the desk are all kept.
+
 ## Readers
 
 The grid at the top is one row per box. The columns say what each one is doing: `Link`, `Device`,

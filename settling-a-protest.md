@@ -27,6 +27,11 @@ these:
 - **A gap longer than the point's gate begins a fresh crossing.** A time that looks *fast* is often
   another point that is also named as the finish.
 
+**If the protest is "I crossed the line before them and I'm placed behind"**, check what the race is
+ranked on before anything else. A standard race is ranked on chip time by default — each person from
+their own start crossing — so crossing first does not mean placing first. That is usually the whole
+answer. See [publish-results.md](publish-results.md).
+
 **4. Then decide which of the three things is actually wrong**: the reads, the setup, or the person's
 account of it.
 

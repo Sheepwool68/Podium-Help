@@ -44,6 +44,27 @@ lets a lap mat tell one lap from the next.
 **Be careful lengthening the gate on a start.** A long gate on a start point merges a genuine second
 visit into the first one.
 
+### What to set it to
+
+**It starts at 120 seconds — two minutes — and that is right for most points.** It is the box beside
+`Add point` on the `Timing points` card.
+
+Two limits decide it, and it must sit between them:
+
+- **Longer than anybody stands on or near the mat.** People wait on a start mat for the gun and stand
+  behind a finish getting their breath back. A gate shorter than that splits one visit into two.
+  Thirty seconds is too short for a start, which is why the default is not thirty.
+- **Shorter than the quickest genuine return.** The fastest lap on a lap mat, or the fastest
+  transition on a mat people come back over.
+
+**The case that catches people is a triathlon or duathlon transition.** Somebody through transition
+in under a minute comes back over the same mat before two minutes are up, so the default merges
+their transition into the crossing before it — the finish never appears and every athlete scores as
+a DNF. Set a mat like that to around thirty seconds.
+
+In Podium PC the same idea is called the **lap gap**, and it also defaults to two minutes. See
+[lap-count-is-wrong.md](lap-count-is-wrong.md).
+
 ## One box doing two jobs
 
 A swim finish that is also the bike finish is one box and two points. **The order of the points in

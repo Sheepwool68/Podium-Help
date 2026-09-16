@@ -9,8 +9,10 @@ out which one somebody is on before you answer anything.
 over the venue network, and it is the only one of the three with a dongle.
 
 Three tabs: `Readers`, `Scoring`, `Settings`. The reader grid on `Readers` is where boxes are
-connected and given their timing point. `Scoring` is where the gun and the finish are set, and it
-appears once there is a race to score.
+connected and given their timing point. `Scoring` is where the gun and the finish are set.
+
+**`Scoring` only shows when `Advanced settings` is ticked** on the `Settings` tab. A club that only
+connects readers never sees it; anybody scoring at the venue needs it ticked.
 
 It is also the only one that can pull a box's own log back — `Rewind` — and the only one that can
 serve the race out to phones and tablets on the venue network to watch.

@@ -4,7 +4,7 @@
 set -e
 out=everything.md
 
-order="what-the-words-mean.md the-three-apps.md set-up-an-event.md timing-points.md wave-starts.md \
+order="quick-answers.md what-the-words-mean.md the-three-apps.md set-up-an-event.md timing-points.md wave-starts.md \
 categories.md entrants-and-numbers.md where-chip-codes-come-from.md \
 online-entry.md prices-and-payment.md \
 publish-results.md raw-data.md claim-a-box.md command-a-box.md podium-pc.md \

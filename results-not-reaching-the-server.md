@@ -13,8 +13,9 @@ is signal.
 
 ## It says it is sending and the site is still empty
 
-1. **Is the race published?** Results are hidden until the organiser publishes them.
-2. **Are you looking at the right meeting?** Check the name, not the bookmark.
+1. **Has somebody unticked `public`?** A race is public from the start, so a hidden one was hidden on
+   purpose. On the `Results` tab, tick `public` and press `Save`.
+2. **Are you looking at the right event?** Check the name, not the bookmark.
 3. **Has anybody finished?** A race with no finishers is not listed.
 
 ## The site is behind what is here

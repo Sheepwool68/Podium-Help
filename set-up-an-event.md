@@ -1,7 +1,7 @@
 # Setting an event up
 
-All of this is on the website, under `Events`. An event is the meeting; its races go inside it, and
-entries go into those.
+All of this is on the website, under `Events`. An event is the occasion as a whole; its races go
+inside it, and entries go into those.
 
 **Do it in this order.** Each step needs the one above it to exist.
 
@@ -77,5 +77,6 @@ they start.
 ## "I made an event and cannot find it on the public site"
 
 Look at the state beside it in the event list. `no races` means there is nothing in it. `not public`
-means it has races but none of them are published — an event with no published race is deliberately
-absent from the public results rather than listed and empty.
+means it has races but every one has had `public` unticked — races are public from the start, so
+that was done on purpose. An event with no public race is deliberately absent from the public
+results rather than listed and empty. See [publish-results.md](publish-results.md).

@@ -64,10 +64,95 @@ thought they saw somebody. A typed time fills a gap and does nothing else.
 only one of them may be wrong. Move a box to another mat and its clock is still wrong by the same
 amount.
 
+## Start here: quick answers
+
+**[quick-answers.md](quick-answers.md) answers the commonest questions in a sentence or two** — do I
+need a start mat, why is somebody who crossed first placed behind, how do I record the gun, what
+should the gate be. Check it before anything else; most questions end there.
+
 
 ---
 
 # The help pages
+
+
+---
+
+# Quick answers
+
+The questions people actually ask, in the words they ask them, with the short answer first. Each one
+names the page with the rest.
+
+**Do I need a start mat?**
+No. A wave start needs a gun, not a mat — everybody in the wave is timed from the gun. A start mat
+only buys you chip time, each person timed from when they crossed, which matters in a big field and
+not in a small one. See the section on running-a-start.
+
+**Somebody crossed the line first but is placed behind someone. Why?**
+A standard race is ranked on chip time by default — each person from their own start crossing, not
+from the gun. Somebody who started further back can finish behind you on the road and still beat
+your time. To rank by who crossed first, set the race's `Ranked on` to `Order across the line`, or
+to `Gun time` to time everyone from the gun. See the section on publish-results.
+
+**How do I publish results / make them public?**
+You do not need to — a race is public from the start. To hide one, untick `public` on the event's
+`Results` tab and press `Save`. An event with every race hidden does not appear on the public site
+at all. See the section on publish-results.
+
+**How do I tell Podium which box is the finish?**
+Two steps. Give the box a timing point name where it stands, then say which point is the finish.
+In Podium PC: name it in the reader grid on `Readers`, then choose it as `Finish` on the `Scoring`
+tab and press `Save`. On the website: `Race setup`, the `Timing points` card. See
+the section on timing-points.
+
+**Podium PC has no Scoring tab.**
+Tick `Advanced settings` on the `Settings` tab. The `Scoring` tab only shows with it ticked. See
+the section on podium-pc.
+
+**What should the gate be set to?**
+Leave it at the two-minute default unless you have a reason. It must be longer than anybody stands
+on or near the mat, and shorter than the fastest lap. A triathlon transition mat that people come
+back over within a minute needs it lower, around thirty seconds. See
+the section on timing-points.
+
+**How do I record the gun on the day?**
+Podium PC: the `Scoring` tab, `Gun`, then `Now` as the field goes. Podium Mobile: the `By hand`
+screen, `Wave start`. Or set it on the website beforehand under `Race setup`, `Wave starts`. See
+the section on wave-starts.
+
+**Half the field has no finish time.**
+That is the mat, not the runners. Every box keeps its own log, so pull the reads back before typing
+anything in — typed times are for the handful still missing after that. See
+the section on recover-missed-reads.
+
+**Can I import my entry list from Excel?**
+Yes — save it from Excel as CSV first (`File`, `Save As`, choose CSV), then import that. See
+the section on entrants-and-numbers.
+
+**How do I enter handicaps?**
+Per person: click their name in the `Entrants` card and fill the `handicap` box beside the race.
+Or for everybody at once, a `handicap` column in the file you import. Then tick `handicap` on the
+race's results. Written as `h:mm:ss`, `m:ss` or seconds. See
+the section on publish-results.
+
+**One rider has an extra lap.**
+Look at that rider's reads and which points they are on. A second mat that should only watch, or a
+lap mat covering the start line, is fixed in the setup and the laps recalculate. If they really went
+over the mat an extra time, reads are never deleted — mark them `Query` while it is decided. See
+the section on lap-count-is-wrong.
+
+**Does Podium work with no internet at the venue?**
+Timing does. Boxes keep their own logs and the apps store every read on the device, and results
+catch up to the website when there is signal. But the field — races, entrants, guns — comes down
+from the timing server, so fetch it before you lose signal. See
+the section on results-not-reaching-the-server.
+
+**How many devices can connect to one box?**
+Three at once over the network, and one over Bluetooth. See the section on limits.
+
+**What are gun time and chip time?**
+Gun time runs from the wave start. Chip time runs from that person's own start crossing. See
+the section on what-the-words-mean.
 
 
 ---
@@ -122,7 +207,8 @@ packing up.
 
 ## How a race is described
 
-**Event** — the meeting. Everything else lives inside one.
+**Event** — everything run at one venue on one occasion, over one day or several. Everything else
+lives inside one.
 
 **Race** — one race within the event. It has a window, which is the span it can be timed in.
 
@@ -173,8 +259,10 @@ out which one somebody is on before you answer anything.
 over the venue network, and it is the only one of the three with a dongle.
 
 Three tabs: `Readers`, `Scoring`, `Settings`. The reader grid on `Readers` is where boxes are
-connected and given their timing point. `Scoring` is where the gun and the finish are set, and it
-appears once there is a race to score.
+connected and given their timing point. `Scoring` is where the gun and the finish are set.
+
+**`Scoring` only shows when `Advanced settings` is ticked** on the `Settings` tab. A club that only
+connects readers never sees it; anybody scoring at the venue needs it ticked.
 
 It is also the only one that can pull a box's own log back — `Rewind` — and the only one that can
 serve the race out to phones and tablets on the venue network to watch.
@@ -222,8 +310,8 @@ the section on limits.
 
 # Setting an event up
 
-All of this is on the website, under `Events`. An event is the meeting; its races go inside it, and
-entries go into those.
+All of this is on the website, under `Events`. An event is the occasion as a whole; its races go
+inside it, and entries go into those.
 
 **Do it in this order.** Each step needs the one above it to exist.
 
@@ -299,8 +387,9 @@ they start.
 ## "I made an event and cannot find it on the public site"
 
 Look at the state beside it in the event list. `no races` means there is nothing in it. `not public`
-means it has races but none of them are published — an event with no published race is deliberately
-absent from the public results rather than listed and empty.
+means it has races but every one has had `public` unticked — races are public from the start, so
+that was done on purpose. An event with no public race is deliberately absent from the public
+results rather than listed and empty. See the section on publish-results.
 
 
 ---
@@ -351,6 +440,27 @@ lets a lap mat tell one lap from the next.
 **Be careful lengthening the gate on a start.** A long gate on a start point merges a genuine second
 visit into the first one.
 
+### What to set it to
+
+**It starts at 120 seconds — two minutes — and that is right for most points.** It is the box beside
+`Add point` on the `Timing points` card.
+
+Two limits decide it, and it must sit between them:
+
+- **Longer than anybody stands on or near the mat.** People wait on a start mat for the gun and stand
+  behind a finish getting their breath back. A gate shorter than that splits one visit into two.
+  Thirty seconds is too short for a start, which is why the default is not thirty.
+- **Shorter than the quickest genuine return.** The fastest lap on a lap mat, or the fastest
+  transition on a mat people come back over.
+
+**The case that catches people is a triathlon or duathlon transition.** Somebody through transition
+in under a minute comes back over the same mat before two minutes are up, so the default merges
+their transition into the crossing before it — the finish never appears and every athlete scores as
+a DNF. Set a mat like that to around thirty seconds.
+
+In Podium PC the same idea is called the **lap gap**, and it also defaults to two minutes. See
+the section on lap-count-is-wrong.
+
 ## One box doing two jobs
 
 A swim finish that is also the bike finish is one box and two points. **The order of the points in
@@ -399,6 +509,13 @@ why the count of people in no wave is shown rather than left for you to notice.
 
 At the event, Podium PC and Podium Mobile can stamp the gun as it happens rather than typing it in
 beforehand. A gun recorded that way goes onto the wave it belongs to.
+
+- **Podium PC:** the `Scoring` tab, `Gun`, then press `Now` as the field goes. Then `Save`. No
+  `Scoring` tab? Tick `Advanced settings` on `Settings`.
+- **Podium Mobile:** the `By hand` screen has a `Wave start` key. Press it as the gun goes. It sits
+  apart from the number keys on purpose, so a thumb aiming for a digit cannot hit it.
+
+**Whoever presses it should be watching the gun, not the screen.** The press is the time.
 
 ## Nothing is timed without one
 
@@ -482,6 +599,13 @@ hand.
 Open `Import a list, hand out numbers, place by age`, choose the file and press `Import CSV`. When a
 file is chosen, Podium shows you which column it thinks is which so you can correct it before
 anything is written.
+
+**From Excel, save it as CSV first.** The import reads CSV, not an Excel workbook. In Excel: `File`,
+`Save As`, and choose `CSV` as the type. Import that file.
+
+**Check the chip column survived Excel.** Excel quietly turns `015` into `15`, which is a different
+chip code. Format that column as text before you type or paste codes into it. See
+the section on where-chip-codes-come-from.
 
 Headings are matched the way clubs actually write them — `first name`, `firstname` and `given` are
 all the same column.
@@ -762,10 +886,36 @@ the placings — a criterium is scored as a normal race, and this is how you see
 The layout you are looking at is not automatically the one the public sees. Press **`Use for the
 public page`** to set it.
 
-## Publishing
+## Publishing — making results public
 
-The `public` tick decides whether the race appears on the public results at all. **An event with no
-published race is deliberately absent from the public site** rather than listed and empty.
+**A race's results are public from the start.** On the `Results` tab, pick the race: the `public`
+tick is already on. There is nothing to press to publish.
+
+**To hide a race**, untick `public` and press `Save`. Tick it and `Save` again to put it back. The
+tick does nothing until `Save` is pressed.
+
+**An event with no public race is deliberately absent from the public site** rather than listed and
+empty. So an event that "is not showing" has had every race unticked, or has no races, or nobody has
+finished yet.
+
+## The order of the placings — chip time, gun time, or across the line
+
+**A standard race is ranked on chip time unless you say otherwise** — each person timed from their
+own start crossing. So somebody who crossed the finish first can be placed behind somebody who
+started further back and ran faster. That is correct, and it is the commonest "the result is wrong"
+complaint there is.
+
+Click the race on `Race setup` to open it, and set `Ranked on`:
+
+- `Chip time` — their own start to their finish. The default for a standard race.
+- `Gun time` — the wave start to their finish, whoever crossed the start mat when.
+- `Order across the line` — first over the line wins. What a handicap race with staggered starts
+  wants.
+- `Adjusted time` — their time less their handicap.
+- `Laps, then the last one completed` — the default for a lap race.
+- `Points`.
+
+`Default for the format` chooses for you, and gets every ordinary race right.
 
 `Print` produces a sheet for the fence.
 
@@ -786,7 +936,24 @@ again with nothing lost. Setting one leaves every crossing alone.
 
 ## Handicaps
 
-Tick `handicap` to rank the race on each rider's time less their handicap.
+**First decide which kind of handicap race it is**, because getting it the wrong way round turns the
+result upside down.
+
+- **Everybody goes together, handicap comes off afterwards.** Tick `handicap` on the `Results` tab.
+  The race is ranked on each rider's time less their handicap.
+- **Riders go off at staggered times.** The start *was* the handicap, so nothing comes off
+  afterwards and the first over the line wins. Set the race's `Ranked on` to `Order across the
+  line`, and do not tick `handicap` as well. If each rider's own time should be right too, give each
+  group that goes off together its own wave start.
+
+### Entering the handicaps
+
+- **One person:** click their name in the `Entrants` card and fill the `handicap` box beside the race.
+- **Everybody at once:** a column in the file you import, headed `handicap`, `handicap time`,
+  `handicap mark`, `hcap` or `h/cap`.
+
+Written as `h:mm:ss`, `m:ss` or plain seconds — `1:05:00`, `5:30` or `330`. A handicap the import
+cannot read is reported by line number, and that person is entered without one.
 
 ## Points for a series
 
@@ -942,6 +1109,10 @@ The Windows machine at the event. **It is the one that holds the boxes** — ove
 Bluetooth, or over the venue network.
 
 Three tabs: `Readers`, `Scoring`, `Settings`.
+
+**No `Scoring` tab?** Tick `Advanced settings` on the `Settings` tab. It is hidden until then, so a
+club that only connects readers is not shown controls it does not use. Unticking it only tidies the
+window — the race, the gun and anything typed at the desk are all kept.
 
 ## Readers
 
@@ -1731,6 +1902,11 @@ these:
 - **A gap longer than the point's gate begins a fresh crossing.** A time that looks *fast* is often
   another point that is also named as the finish.
 
+**If the protest is "I crossed the line before them and I'm placed behind"**, check what the race is
+ranked on before anything else. A standard race is ranked on chip time by default — each person from
+their own start crossing — so crossing first does not mean placing first. That is usually the whole
+answer. See the section on publish-results.
+
 **4. Then decide which of the three things is actually wrong**: the reads, the setup, or the person's
 account of it.
 
@@ -1796,7 +1972,7 @@ one that applies.
 measure from.
 
 - **Podium PC:** the scoring box, then `Save`.
-- **Podium Mobile:** the gun comes down with the field from the timing server. If the meeting has a
+- **Podium Mobile:** the gun comes down with the field from the timing server. If the event has a
   wave start it is already there.
 
 ## "No finish has been named, so nothing can be scored."
@@ -1836,7 +2012,7 @@ their name with `no chip` or `no finish` beside it, read the section on runner-s
 
 Add them, then score again.
 
-- **Podium Mobile:** entries come from the timing server. Fetch the meeting again under `Settings`,
+- **Podium Mobile:** entries come from the timing server. Fetch the event again under `Settings`,
   then `Choose race`.
 - **Podium PC:** use `Add at the desk` in the scoring box. A number, a name and the chip they
   were handed is enough to score somebody.
@@ -1868,10 +2044,18 @@ the section on add-a-time-by-hand.
 **They were seen somewhere and never at the finish.** They started. The finish mat did not read
 them, or they did not finish.
 
+**If several people are missing, stop and read this before typing anything.** Several at once is
+the mat or its link, not the runners — and the box has probably still recorded them. Every box keeps
+its own log, so pull the reads back first
+(the section on recover-missed-reads), then check the mat
+(the section on box-connected-but-no-reads). Typing a dozen times from a video
+and then recovering the real reads leaves you a dozen times to check.
+
+For one or two people:
+
 1. Ask whether they finished. Half of these are genuine.
-2. If they did, the finish mat missed them. Type the time in: the section on add-a-time-by-hand.
-3. If several people are missing from the same mat, the mat is the problem, not the runners. Read
-   the section on box-connected-but-no-reads.
+2. If they did, the finish mat missed them. Type the time in:
+   the section on add-a-time-by-hand.
 
 ## They finished but their time is before the gun
 
@@ -1988,7 +2172,8 @@ That box's clock is wrong, not the runner. Read the section on every-time-is-out
 **Laps are counted as visits, not as reads.** A mat reads a chip six times a lap. Podium collapses
 anything arriving close together into one visit, so six reads a second apart are one lap.
 
-The setting that decides "close together" is the lap gap. It defaults to two minutes.
+The setting that decides "close together" is the lap gap. It defaults to two minutes. On the website
+the same thing is the timing point's **gate** — see the section on timing-points.
 
 ## Everybody has far too many laps
 
@@ -2005,8 +2190,20 @@ when they came back round.
 
 ## One rider has an extra lap
 
-Two mats close enough that both caught them, or a lap mat that also covers the start line. Look at
-the reads for that number and see which points they are on.
+**Look at the reads for that number first**, and which points they are on
+(the section on raw-data). It is nearly always one of three things, and they have different fixes:
+
+1. **Two mats close enough that both caught them.** If the second box is only there to watch, set it
+   on the timing point as `Watching it — never a crossing`. Its reads stop counting and the laps
+   recalculate. See the section on timing-points.
+2. **A lap mat that also covers the start line.** The start is being counted as a lap. Name the
+   start and the lap as separate points, in the order the race meets them.
+3. **They really did go over the mat an extra time** — rode back round, or crossed to warm down. The
+   reads are right about what happened.
+
+**A read is never deleted or edited**, deliberately, so the third case cannot be removed from the
+count. Mark the rider `Query` while it is decided — that keeps the result off the public page — and
+contact RFID Timing if it needs settling. See the section on publish-results.
 
 
 ---
@@ -2182,8 +2379,9 @@ is signal.
 
 ## It says it is sending and the site is still empty
 
-1. **Is the race published?** Results are hidden until the organiser publishes them.
-2. **Are you looking at the right meeting?** Check the name, not the bookmark.
+1. **Has somebody unticked `public`?** A race is public from the start, so a hidden one was hidden on
+   purpose. On the `Results` tab, tick `public` and press `Save`.
+2. **Are you looking at the right event?** Check the name, not the bookmark.
 3. **Has anybody finished?** A race with no finishers is not listed.
 
 ## The site is behind what is here
@@ -2248,7 +2446,7 @@ and the time.
 
 ## What it needs
 
-- **A race chosen first.** A number is only unique inside one race. A meeting hands 101 to somebody
+- **A race chosen first.** A number is only unique inside one race. An event hands 101 to somebody
   in every race it runs.
 - **The point name spelled as it is on the box card.** A name that does not match scores nobody.
 - **A time after the gun.** Anything before it is ignored.

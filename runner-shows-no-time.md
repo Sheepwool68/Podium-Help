@@ -15,10 +15,18 @@ Either assign them the chip they actually wore, or type their time in. See
 **They were seen somewhere and never at the finish.** They started. The finish mat did not read
 them, or they did not finish.
 
+**If several people are missing, stop and read this before typing anything.** Several at once is
+the mat or its link, not the runners — and the box has probably still recorded them. Every box keeps
+its own log, so pull the reads back first
+([recover-missed-reads.md](recover-missed-reads.md)), then check the mat
+([box-connected-but-no-reads.md](box-connected-but-no-reads.md)). Typing a dozen times from a video
+and then recovering the real reads leaves you a dozen times to check.
+
+For one or two people:
+
 1. Ask whether they finished. Half of these are genuine.
-2. If they did, the finish mat missed them. Type the time in: [add-a-time-by-hand.md](add-a-time-by-hand.md).
-3. If several people are missing from the same mat, the mat is the problem, not the runners. Read
-   [box-connected-but-no-reads.md](box-connected-but-no-reads.md).
+2. If they did, the finish mat missed them. Type the time in:
+   [add-a-time-by-hand.md](add-a-time-by-hand.md).
 
 ## They finished but their time is before the gun
 

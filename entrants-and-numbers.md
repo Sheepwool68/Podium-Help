@@ -16,6 +16,13 @@ Open `Import a list, hand out numbers, place by age`, choose the file and press 
 file is chosen, Podium shows you which column it thinks is which so you can correct it before
 anything is written.
 
+**From Excel, save it as CSV first.** The import reads CSV, not an Excel workbook. In Excel: `File`,
+`Save As`, and choose `CSV` as the type. Import that file.
+
+**Check the chip column survived Excel.** Excel quietly turns `015` into `15`, which is a different
+chip code. Format that column as text before you type or paste codes into it. See
+[where-chip-codes-come-from.md](where-chip-codes-come-from.md).
+
 Headings are matched the way clubs actually write them — `first name`, `firstname` and `given` are
 all the same column.
 

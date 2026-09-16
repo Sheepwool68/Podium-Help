@@ -25,6 +25,13 @@ why the count of people in no wave is shown rather than left for you to notice.
 At the event, Podium PC and Podium Mobile can stamp the gun as it happens rather than typing it in
 beforehand. A gun recorded that way goes onto the wave it belongs to.
 
+- **Podium PC:** the `Scoring` tab, `Gun`, then press `Now` as the field goes. Then `Save`. No
+  `Scoring` tab? Tick `Advanced settings` on `Settings`.
+- **Podium Mobile:** the `By hand` screen has a `Wave start` key. Press it as the gun goes. It sits
+  apart from the number keys on purpose, so a thumb aiming for a digit cannot hit it.
+
+**Whoever presses it should be watching the gun, not the screen.** The press is the time.
+
 ## Nothing is timed without one
 
 If Podium says **"No gun has been set for this race, so nothing can be timed"**, this is what is

@@ -15,7 +15,7 @@ their name with `no chip` or `no finish` beside it, read [runner-shows-no-time.m
 
 Add them, then score again.
 
-- **Podium Mobile:** entries come from the timing server. Fetch the meeting again under `Settings`,
+- **Podium Mobile:** entries come from the timing server. Fetch the event again under `Settings`,
   then `Choose race`.
 - **Podium PC:** use `Add at the desk` in the scoring box. A number, a name and the chip they
   were handed is enough to score somebody.

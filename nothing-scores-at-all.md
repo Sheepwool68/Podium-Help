@@ -9,7 +9,7 @@ one that applies.
 measure from.
 
 - **Podium PC:** the scoring box, then `Save`.
-- **Podium Mobile:** the gun comes down with the field from the timing server. If the meeting has a
+- **Podium Mobile:** the gun comes down with the field from the timing server. If the event has a
   wave start it is already there.
 
 ## "No finish has been named, so nothing can be scored."

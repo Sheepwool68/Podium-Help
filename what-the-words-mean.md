@@ -48,7 +48,8 @@ packing up.
 
 ## How a race is described
 
-**Event** — the meeting. Everything else lives inside one.
+**Event** — everything run at one venue on one occasion, over one day or several. Everything else
+lives inside one.
 
 **Race** — one race within the event. It has a window, which is the span it can be timed in.
 

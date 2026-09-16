@@ -43,7 +43,7 @@ and the time.
 
 ## What it needs
 
-- **A race chosen first.** A number is only unique inside one race. A meeting hands 101 to somebody
+- **A race chosen first.** A number is only unique inside one race. An event hands 101 to somebody
   in every race it runs.
 - **The point name spelled as it is on the box card.** A name that does not match scores nobody.
 - **A time after the gun.** Anything before it is ignored.

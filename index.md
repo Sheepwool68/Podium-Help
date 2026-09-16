@@ -76,6 +76,12 @@ thought they saw somebody. A typed time fills a gap and does nothing else.
 only one of them may be wrong. Move a box to another mat and its clock is still wrong by the same
 amount.
 
+## Start here: quick answers
+
+**[quick-answers.md](quick-answers.md) answers the commonest questions in a sentence or two** — do I
+need a start mat, why is somebody who crossed first placed behind, how do I record the gun, what
+should the gate be. Check it before anything else; most questions end there.
+
 ## Something is wrong, with a race running
 
 | They say | Read |
