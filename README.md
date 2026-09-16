@@ -10,26 +10,29 @@ them and answer your questions from them.
 Give your assistant this address and ask it your question:
 
 ```
-https://raw.githubusercontent.com/Sheepwool68/Podium-Help/main/everything.md
-```
-
-That one file is the complete help. Works with Claude, ChatGPT, Gemini, Grok and others. Nothing to
-install, nothing to sign up for.
-
-**If your assistant says it cannot read the address**, paste this one instead — it is the same
-content as an ordinary web page:
-
-```
 https://github.com/Sheepwool68/Podium-Help/blob/main/everything.md
 ```
 
-### The faster way, for assistants that follow links
+That one page is the complete help. Works with Claude, ChatGPT, Gemini, Grok and others. Nothing to
+install, nothing to sign up for.
 
-Some assistants will read an index and then fetch only the page they need, which is quicker and
-cheaper than reading everything:
+**If your assistant prefers a plain text file**, this is the same content without the web page
+around it. It is much smaller, so use it where it works:
 
 ```
-https://raw.githubusercontent.com/Sheepwool68/Podium-Help/main/index.md
+https://raw.githubusercontent.com/Sheepwool68/Podium-Help/main/everything.md
+```
+
+Some assistants — Google's among them — will not open that second kind of address. If yours says it
+cannot read it, use the first one.
+
+### The faster way, for assistants that follow links
+
+Some assistants will read an index and then fetch only the page they need, which is quicker than
+reading everything:
+
+```
+https://github.com/Sheepwool68/Podium-Help/blob/main/index.md
 ```
 
 If your assistant reads that and then says it cannot open the page it needs, it does not follow
