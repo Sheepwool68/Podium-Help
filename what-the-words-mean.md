@@ -17,6 +17,9 @@ matches against an entrant to turn a read into somebody's time. Think of it as t
 number: the competitor has a race number, and the chip has a chip code, and part of setting an event
 up is saying which belongs to whom.
 
+**An active tag from RFID Timing is three letters and three numbers** — `RFI015`. The zeros are part
+of the code. See [where-chip-codes-come-from.md](where-chip-codes-come-from.md).
+
 Chip codes can be shown in decimal or in **HEX**, which is the same code written a different way.
 There is a setting for it in Podium PC and Podium Mobile. It changes the display, not the chip.
 

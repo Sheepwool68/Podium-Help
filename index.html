@@ -103,6 +103,9 @@ matches against an entrant to turn a read into somebody's time. Think of it as t
 number: the competitor has a race number, and the chip has a chip code, and part of setting an event
 up is saying which belongs to whom.
 
+**An active tag from RFID Timing is three letters and three numbers** — `RFI015`. The zeros are part
+of the code. See the section on where-chip-codes-come-from.
+
 Chip codes can be shown in decimal or in **HEX**, which is the same code written a different way.
 There is a setting for it in Podium PC and Podium Mobile. It changes the display, not the chip.
 
@@ -495,6 +498,11 @@ anything is written.
 Headings are matched the way clubs actually write them — `first name`, `firstname` and `given` are
 all the same column.
 
+**The file can carry the chips too.** A column headed `chip`, `chip code`, `chipcode`, `tag` or
+`transponder` is read as the chip that person already holds, which saves allocating them at all. A
+code it cannot read is reported by line number and that person is entered without a chip rather than
+with a wrong one. See the section on where-chip-codes-come-from.
+
 **Races and categories are matched by name against what you have already set up, and are never
 invented from a typo.** So build the races and the categories first. A line that cannot be read is
 reported rather than dropped.
@@ -521,8 +529,9 @@ It only touches people who are in no race at all.
 A chip has to be against the person before they start. Allocating one afterwards is allowed and is
 warned about, because it is usually a mistake rather than a swap.
 
-Three ways: one at a time on the entrant, in a sequence from the race numbers, or carried over from
-another event.
+Four ways: in the entry list you import, one at a time on the entrant, in a sequence from the race
+numbers, or carried over from another event. Where the codes themselves come from, and what a code
+looks like on the tag, is the section on where-chip-codes-come-from.
 
 ## A sequence of chip codes, from the race numbers
 
@@ -535,7 +544,9 @@ age`, then `Chips from the numbers`.
 1. **Choose the kind** — `Active tags` or `UHF tags`. They are described differently because they
    are numbered differently.
 2. **For active tags**, give the **prefix** — the letters in front of the number — and **how many
-   digits** follow it. The race number fills those digits, right-aligned.
+   digits** follow it. The race number fills those digits, right-aligned. RFID Timing's active tags
+   are three letters and three numbers, so for those the prefix is the three letters off the tag and
+   the digits are `3`.
 3. **For UHF tags**, give the **offset**. It is added to the race number, so with an offset of 5000
    race number 1 is code 5001.
 4. **Tick `replace chips already out`** only if you mean it. Left unticked, anybody who already has
@@ -568,6 +579,78 @@ It lists the two ways somebody silently gets no result: **no chip, and no number
 
 `print registrations` at the top of the `Entrants` card. By surname for the desk, by number for the
 line.
+
+
+---
+
+# Where chip codes come from
+
+**A chip code is not something you invent — it is already on the chip.** Everything below is about
+Podium learning which code is on which person, which is the one job that has to be done before
+anybody starts.
+
+## Reading a code off a tag
+
+**An active tag from RFID Timing is always three letters followed by three numbers** — `RFI015`.
+Six characters, every time, and that is the code.
+
+**The zeros are part of it.** `RFI15` is not the same code and will not be recognised, so do not let
+anybody drop them when they write one down or type one into a spreadsheet. A spreadsheet that has
+helpfully turned `015` into `15` is a common way to arrive with three hundred codes that do not
+work.
+
+Tags are normally encoded in race-number order, so number 15 wears `RFI015` and number 150 wears
+`RFI150`. That is the whole reason a rule works: **one tag tells you how the entire batch is
+numbered.**
+
+Three digits carries race numbers up to 999, so a field bigger than that runs across more than one
+prefix, and the prefix is what tells the batches apart.
+
+**UHF tags come out of a batch in sequence**, and the sequence is what tells you the codes. The
+usual relationship is a fixed amount added to the race number — an offset of 5000 makes race
+number 1 into code 5001.
+
+If you do not know how your own tags are numbered, take one and compare it with the race number it
+belongs to. If there is no pattern, ask RFID Timing rather than guessing at one.
+
+## The four ways a code reaches an entrant
+
+**1. In the entry list you import.** The file can carry the chips as a column, and that is the
+quickest route when whoever sent the list already knows who has what. The heading can be `chip`,
+`chip code`, `chipcode`, `tag` or `transponder`. See
+the section on entrants-and-numbers.
+
+**2. In a sequence from the race numbers.** State the rule once and Podium works out the rest. This
+is the normal way for a club that hands out tags in number order, and it is described step by step
+in the section on entrants-and-numbers.
+
+**3. Carried over from another event.** For a club whose racers keep their own tag, everybody who
+was at the earlier event under the same name and date of birth gets the chip they had there.
+
+**4. One at a time, on the entrant.** For the late entry, the swap and the exception. It is also
+what you fall back to when the tags follow no pattern at all.
+
+Most events use two of these together: a rule for the batch, then one at a time for the handful it
+could not place.
+
+## A code Podium will not accept
+
+**Podium refuses a code whose format it cannot recognise rather than reading it the wrong way.** A
+code read wrongly does not fail — it quietly becomes somebody else's, and that is found at a
+protest rather than at the finish line.
+
+On an import, every line it could not read is reported back to you by line number, and that person
+is entered **without** a chip rather than with a wrong one. They will show as `no chip` until you
+fix it, which is the visible failure you want rather than the silent one.
+
+## Before the gun
+
+**Check the "Not ready" list.** It is the list of people who will silently get no result, and no
+chip is one of the two ways onto it. See the section on entrants-and-numbers.
+
+A chip has to be against the person **before** they start. Assigning one afterwards is allowed, and
+is warned about, because nine times out of ten it means a chip is on the wrong person rather than a
+genuine late swap.
 
 
 ---
@@ -1058,6 +1141,658 @@ the section on results-not-reaching-the-server.
 Where the server is, `Test server`, fetching an event, and whether chip codes are shown in HEX.
 
 `Send log` and `Share DB` are for sending diagnostics to RFID Timing when asked.
+
+
+---
+
+# Before the event
+
+**Almost everything that ruins a race day was decided before it.** This is the list, in the order
+the mistakes actually happen.
+
+## Weeks out: the event itself
+
+**Check the time zone on the event.** Every time in Podium is the local wall clock the readers are
+on, never UTC, and an event judged in the wrong zone is wrong by hours with nothing on the page to
+show it. It is the cheapest thing to get right now and among the most annoying later.
+
+**Pick the age basis** — age on race day, or age at 31 December. It belongs to the event and it
+decides how every age category is worked out.
+
+**Build in order: event, races, waves, categories, timing points, entrants.** Each needs the one
+above it to exist, and the commonest import failure is a list arriving before the races and
+categories it refers to. See the section on set-up-an-event.
+
+**Leave the race window generous.** It is the span the race can be timed in, not the gun, and a
+finisher arriving after it closes is discarded as though the box never reported.
+
+## The week before: entries and chips
+
+- **Import the list and look at the column mapping** before anything is written. Nothing commits
+  until you say so, and an import can be undone.
+- **Get the chips against people.** A chip has to be against the person before they start. See
+  the section on where-chip-codes-come-from.
+- **Clear the "Not ready" list.** It is the two ways somebody silently gets no result — no chip and
+  no number. A number can be given later; a chip really cannot.
+- **Print the registration list twice** — by surname for the desk, by number for the line.
+
+## The night before: charge everything
+
+**Everything with a battery, including the ones nobody thinks of.**
+
+- The boxes.
+- The phone or laptop that will run all day. A phone holding radio links to boxes for six hours is
+  working hard.
+- Active tags are battery powered. If yours have been in a box since last season, test them, do not
+  assume them.
+
+Pack spares of the things that end a day when they fail: the dongle, a cable, a handful of tags,
+and paper.
+
+## On site: prove the line before the field arrives
+
+**Walk a chip across every line and watch the reads come up.** It is the only test that proves the
+whole chain at once — tag, antenna, box, clock, link and app.
+
+- Do it at the **edges** of the line, not up the middle. The middle always works.
+- Do it with a tag of **each kind** you are using. A box set for one kind does not read the other.
+- Do it **again** after anything moves — a barrier, a vehicle, a gantry.
+
+See the section on where-to-put-the-mat.
+
+**A reader stops itself after two and a half minutes.** So a mat you tested at nine o'clock is not
+still reading at ten. Start it when the race is about to go, not when you set it up.
+
+## The last ten minutes
+
+Four things, and a race that has all four cannot silently score nothing:
+
+1. **The gun is set** for the wave that is about to go.
+2. **The finish is named**, and named *exactly* as the point on the box is named. No fuzzy matching.
+3. **The "Not ready" list is clear.**
+4. **The box clocks are right**, or their corrections are entered. Read the box's clock against a
+   clock you trust — see the section on correct-a-box-clock.
+
+## And know your link's limits
+
+Three connections at once over the network, one over Bluetooth. If somebody else is already on a
+box, you are not getting on it. Decide before the day which device is timing.
+
+
+---
+
+# Where to put the mat
+
+**The read zone is the timing line, not the paint.** Whatever the antenna covers is where a time is
+taken, so the first job on the ground is to make those two the same thing.
+
+Everything here is about the physical setup. What the box then has to be *told* is
+the section on timing-points.
+
+## Pick the spot before you pick the kit
+
+**Somewhere everybody must pass and nobody can stop.** Those are two separate requirements and both
+matter.
+
+- **Must pass** — a point people can run round is a point that misses them. Fence, tape or funnel it
+  so there is one way through.
+- **Cannot stop** — a finish where people stand and get their breath back keeps reading them. That
+  is handled (the section on one-time-looks-wrong), but it is handled by throwing
+  work at the problem, and it is better not to create it. Give them somewhere to walk to.
+
+**Flat, and wide enough for the field at its worst moment.** Size the line for the bunch that
+arrives together, not the average. A finish two abreast when four arrive shoulder to shoulder is
+where reads get lost.
+
+## What costs you reads
+
+**A UHF tag has no battery — the reader has to power it, and then hear it whisper back.** Anything
+between the antenna and the tag takes a bite out of both halves of that. An active tag announces
+itself, so it is far less fussy, but nothing is immune.
+
+- **Water and bodies.** A wet shirt over a tag, a tag pinned against the back, a competitor
+  screened by the runner beside them. This is the commonest cause of a missed read and it is why a
+  tag wants to be on the outside of a person. See
+  the section on where-the-chip-goes.
+- **Metal.** Scaffolding, steel plate, barriers, parked vehicles, a steel-framed gantry. It reflects
+  and it detunes, and the effect is not gradual: a line that read perfectly in testing can go
+  patchy because a truck parked beside it.
+- **The ground itself.** Wet ground, steel reinforcement in concrete, a metal bridge deck.
+
+**Test in the conditions you will run in.** A dry morning test does not prove a wet afternoon, and
+an empty course does not prove a bunch.
+
+## Cable, box and power
+
+- **Keep the box out of the weather and out of the way.** It is the thing that must survive the day.
+- **Run cables where nobody treads.** Tape them down, or bring them in from behind the crowd line.
+  A kicked connector is a dead antenna, and a dead antenna reports no fault — it simply stops
+  reading (the section on box-connected-but-no-reads).
+- **Know where the power is coming from and how long it lasts.** Check it before the field is on
+  course rather than after.
+
+## Prove it before the race, not during
+
+**Walk a chip across the line and watch the reads come up.** That is the only test that proves the
+whole chain — tag, antenna, box, clock, link and app — and it takes a minute.
+
+Do it:
+
+1. When you have set the line up.
+2. Again after anything moves, including a barrier or a vehicle.
+3. Again with a spare tag of **each kind** you are using, if you are using both. A box set for one
+   kind does not read the other.
+
+**Walk it at the edges of the line, not just up the middle.** The middle always works. The question
+is whether the outside lane does.
+
+## The line you cannot fix later
+
+A missed read at a split is an annoyance. A missed read at the finish is somebody's result. If you
+have one good spot and one compromised one, **the finish gets the good spot**, and the compromised
+one gets a backup beside it (the section on back-everything-up).
+
+
+---
+
+# Where the chip goes on a competitor
+
+**A chip that cannot be seen by the antenna cannot be read, however good the mat is.** More lost
+times come from where the tag was worn than from anything wrong with the equipment.
+
+## The rule behind all of it
+
+**The tag wants to be on the outside of the person, clear of water and metal, and facing the way it
+will pass the antenna.**
+
+A UHF tag has no battery. The reader powers it and then listens for a very quiet answer, so a body,
+a soaked shirt or a bike frame in the way costs you both halves of that exchange. An active tag
+carries its own battery and announces itself, so it forgives far more — but a tag buried under three
+layers and a race cape is asking for trouble either way.
+
+## Common placements, and what each one costs
+
+- **Ankle** — reliable, because it is low, clear of the body and close to a mat on the ground. It
+  wants to be on the outside of the ankle, snug enough not to spin round and not so tight it marks.
+- **On the bib** — convenient, because the number and the chip arrive together and nobody has to
+  hand anything back. It depends on the bib staying on the **front** and staying flat. A bib folded
+  up under a jacket, or turned to the back, is a tag that has gone quiet.
+- **On the bike** — fork, frame or number plate, depending on the tag. Keep it off the frame's metal
+  where you can and make sure it is not shrouded by a bottle, a bag or the rider's leg.
+- **Swim** — wrist or ankle under the wetsuit sleeve is normal, but water is the hardest thing UHF
+  has to fight. Talk to RFID Timing about the right tag before running a swim on tags you have not
+  used in water.
+
+## Tell the competitors, in one sentence
+
+Most lost times are self-inflicted at registration. A line on the entry confirmation and a sign at
+the desk does more good than anything you can do at the mat:
+
+&gt; Wear the tag on the outside, on the front, and do not fold, cut or cover it.
+
+**Do not let anybody run with the tag in a pocket, under a bag strap, or pinned to the back**, and
+do not let them cut a bib down to fit — the tag is usually part of what gets cut off.
+
+## Handing them out
+
+**A chip has to be against a person in Podium before they start**, not just in their hand. The
+handing out and the recording are two jobs and it is the second one that produces results. See
+the section on where-chip-codes-come-from.
+
+- **Hand out in number order** where the tags are encoded in number order. Then the rule does the
+  recording for you and there is nothing to type.
+- **Every swap gets recorded at the moment it happens.** A tag swapped at the line and written on a
+  hand is a tag that scores the wrong person. Do it there and then, one at a time on the entrant.
+- **Check the "Not ready" list before the gun.** It is the list of people who will get no result,
+  and no chip is the main way onto it.
+
+## Getting them back
+
+**Decide before the event whether you are collecting tags, and tell people at the finish.** A
+collection funnel has to be part of the finish layout, not an afterthought once the winner is
+through — see the section on running-a-finish.
+
+Tags that walk home are next season's missing tags. If your club reissues the same tag to the same
+racer each time, the carry-over route depends on getting them back
+(the section on entrants-and-numbers).
+
+
+---
+
+# Running a start
+
+**Everything is measured from the gun, so the gun is the one thing that has to be right.** A mat
+that misses somebody costs one result. A gun that is wrong costs every result in the wave.
+
+How to set it, and how to fix a wrong one, is the section on wave-starts. This page is about
+the start itself.
+
+## A start is the last read, and that is deliberate
+
+**People roll onto the start mat and stand there waiting.** The first read is them arriving,
+sometimes minutes early. The last read is them leaving. So Podium takes the **last** read of the
+visit as the start.
+
+Two things follow from that, and both bite people:
+
+- **Reads taken before the gun are thrown away.** A finish mat parked near the start line will read
+  the whole field standing around, and none of it counts.
+- **Do not lengthen the gate on a start point.** A long gate merges a genuine second visit into the
+  first one, so somebody who steps off and comes back gets the wrong start. See
+  the section on timing-points.
+
+## Keep the field off the mat until it is their wave
+
+**With waves going off one after another, a competitor standing on the start mat during somebody
+else's gun is a problem waiting to happen.** Hold each wave behind the line and let them on when it
+is theirs.
+
+This matters more than it sounds at a small event where everybody is milling about near the line.
+
+## Do you even need a start mat?
+
+**No.** A wave start needs a gun, not a mat — everybody in the wave is timed from that moment
+whether or not anything read them.
+
+A start mat buys you **chip time**: each person's time from when *they* crossed rather than from
+the gun. That is worth having when the field is big enough that the back of it takes a while to
+reach the line, and it is worth nothing at all in a small wave that starts together.
+
+If you are not giving chip times, the start mat is one less thing to fail. Put the box on the finish
+instead.
+
+## Late starters
+
+Somebody who misses the gun and sets off two minutes later gets a gun time measured from the gun,
+because that is what a gun time is. If they should be timed from when they actually went, they need
+a start read, which means a start mat — or a typed time to fill the gap
+(the section on add-a-time-by-hand).
+
+**Decide the club's rule on this before the day**, not while somebody is standing in front of you
+asking about it.
+
+## Before the gun, the three-item check
+
+1. **Is the gun set for this wave?** Nothing scores without one, and Podium says so plainly
+   (the section on nothing-scores-at-all).
+2. **Is the finish named?** Same again — it will not guess which mat is the finish.
+3. **Is the "Not ready" list clear?** That is the list of people who will get no result: no chip, or
+   no number (the section on entrants-and-numbers).
+
+All three are two minutes of work before the race and an unfixable afternoon afterwards.
+
+
+---
+
+# Running a finish
+
+**The finish is the one line you cannot redo.** A split can be reconstructed from a finish and a
+pace. A missing finish is somebody's whole race.
+
+## A finish is the first read, and that is deliberate
+
+A mat reads a chip several times as somebody runs across it, and then keeps reading them while they
+stand behind the line getting their breath back. **The moment they crossed is the first of those
+reads**, so that is the one Podium takes.
+
+The gate is what stops the standing-about reads becoming a second finish. See
+the section on timing-points.
+
+## Give them somewhere to go
+
+**The single most useful thing at a finish is a funnel that keeps moving.** It is not about tidiness:
+
+- People who stop on the mat sit in the read zone, which is work the system has to undo.
+- People who wander back across the line can collect a read that looks like a second crossing.
+- A bunch that bunches gets screened — bodies between tag and antenna is the main way a read is
+  lost (the section on where-to-put-the-mat).
+
+Walk them through, out the far side, and only then collect tags, hand out water, or take names.
+
+## Bunch and sprint finishes
+
+**Two people crossing together is not a problem for the mat — it is a problem for the read.** The
+timing is fine to the millisecond; what fails is one tag being screened by the other body.
+
+Three things help, in order of how much they help:
+
+1. **A wide enough line** that shoulder-to-shoulder arrivals are not stacked front to back.
+2. **Tags worn on the outside and on the front**
+   (the section on where-the-chip-goes).
+3. **Somebody writing the order down**, which is the only thing that saves you when the first two
+   were not enough (the section on back-everything-up).
+
+**Do not settle a close finish from the chip times alone if a placing is in dispute.** Go back to
+the reads themselves — the section on raw-data.
+
+## Watch the results as they come, not at the end
+
+**A mat that has stopped reading looks exactly like a course with nobody on it.** The difference is
+that you can still fix the first one while the race is running.
+
+So keep the results screen in front of somebody, and treat a gap as a fault until proven otherwise:
+
+- **Nobody at all for a while** — check the mat is still delivering
+  (the section on box-connected-but-no-reads).
+- **Several people from the same wave missing** — the mat, not the runners
+  (the section on runner-shows-no-time).
+- **One person missing** — usually the tag, and usually how it was worn.
+
+## Collecting tags
+
+If you are taking tags back, **the collection point goes after the funnel, not on the line.** People
+stopping to unfasten an ankle strap in the read zone is the thing you were trying to avoid.
+
+## Before you take the line down
+
+1. **Is everybody accounted for?** Anybody still out on course, and anybody marked as not finished
+   who actually did.
+2. **Has the backlog reached zero?** That is the count of reads still to reach the server. Packing
+   up mid-count is how a race arrives incomplete.
+3. **Only then** unplug anything.
+
+
+---
+
+# Lap and multi-lap racing
+
+**One lap mat has to tell one lap from the next, and the only thing it has to go on is time.** Get
+that one setting right and lap racing is easy. Get it wrong and every rider is wrong.
+
+If the count is already wrong, go straight to
+the section on lap-count-is-wrong.
+
+## Choose the format first
+
+On the race, three formats matter here:
+
+- **Laps to a count** — first to complete a set number of laps.
+- **Laps in a time** — most laps inside a set period. A twelve hour event is `12:00`.
+- **Standard** — first over the finish line.
+
+**A criterium is Standard.** Laps are still counted, so you can see who was lapped, but the placings
+are finish times and not lap counts. Setting a crit up as "laps to a count" is the classic mistake:
+the moment the leaders lap the field, a lap-counted race has the wrong winner.
+
+## The one setting that matters
+
+**Laps are counted as visits, not reads.** A mat reads a chip half a dozen times as somebody crosses
+it, and Podium collapses reads arriving close together into one visit. The lap gap is what decides
+"close together". It defaults to two minutes.
+
+**It must stay shorter than your fastest lap.** That is the whole rule.
+
+- **Gap too short** — one pass counts several times and everybody has far too many laps.
+- **Gap too long** — two laps get swallowed into one and everybody is short. Worse, a gap long
+  enough to swallow a lap will also drag the first lap into the start, which moves that rider's
+  start time to when they came back round.
+
+Set it off the **fastest** lap anybody will ride, not the average. The leaders are the ones it
+breaks on.
+
+## Lapping, and being lapped
+
+**A lapped rider is not a scoring problem, it is a display one.** The mat reads everybody the same
+way regardless of who is on what lap.
+
+What it does mean:
+
+- **In a crit, the placings are finish times**, so lapped riders come out where they crossed.
+- **In a lap-counted race, count and time both matter.** Whoever completes the set laps first wins,
+  and a rider lapped out has fewer.
+- **Watch the leaders for a lap count that stops climbing.** A leader stuck on the same count while
+  everybody else advances is nearly always a read being missed on one particular pass, not a rider
+  who has stopped.
+
+## Where extra laps come from
+
+Two causes, both common, and the reads tell you which:
+
+1. **Two mats close enough that both caught them.** The lap mat and something else are seeing the
+   same pass.
+2. **A lap mat that also covers the start line.** The start counts as a lap.
+
+Filter the raw reads for that number and look at which points they appear on — see
+the section on raw-data. One number's reads will show it in seconds.
+
+## Long events
+
+For a twelve or twenty-four hour race, two things change:
+
+- **Battery and weather stop being background concerns.** See
+  the section on weather-and-batteries.
+- **Watch the results through the event, not at the end.** A mat that dies at hour three costs you
+  everything after hour three unless somebody notices. Its own log will still have the reads, so it
+  is recoverable — but only if you notice before you pack the box up. See
+  the section on back-everything-up.
+
+
+---
+
+# Weather and batteries
+
+**The two things that end a race day are a flat battery and water in the wrong place.** Neither
+announces itself, and both are entirely preventable the night before.
+
+## Water is the enemy of a read
+
+A UHF tag has no battery. The reader has to power it and then hear a very quiet answer back, and
+**water absorbs exactly the signal doing both jobs.**
+
+So rain does not break the equipment. It quietly costs you reads:
+
+- **A soaked shirt over a bib tag** is a tag with water between it and the antenna.
+- **Standing water on the line**, or saturated ground, changes what the antenna is working against.
+- **A wet body** screens a tag better than a dry one, so a bunch finish in the rain is harder than
+  the same finish in the dry.
+
+**Test in the conditions you will run in.** A dry-morning test proves the dry morning. If the
+forecast is wet, the useful test is a wet one — and if you cannot get one, plan the backup instead
+(the section on back-everything-up).
+
+An active tag carries its own battery and announces itself, so it forgives weather far better. If
+you have a choice of tag for a wet event, that is the consideration.
+
+## Keeping the kit alive
+
+- **The box goes out of the weather.** It is the thing that must survive the day. Under cover, off
+  the ground, out of standing water.
+- **Cables are where water gets in**, and a connector sitting in a puddle is the one that fails at
+  hour four. Bring them in from above where you can, and tape them down where people walk
+  (the section on where-to-put-the-mat).
+- **Condensation is real.** Kit brought from a cold vehicle into a warm marquee, or the reverse,
+  gets wet on the inside. Give it time.
+
+## Batteries
+
+**Cold flattens a battery faster than the same day would warm.** A winter cross-country or a long
+night section takes more out of everything than the number on the spec sheet suggests.
+
+Charge everything the night before, including the ones nobody thinks of:
+
+- **The boxes.**
+- **The phone or laptop doing the timing.** Holding radio links to boxes all day is hard work for a
+  phone, and it is the device you cannot do without.
+- **The active tags.** They are battery powered. Tags that have been in a crate since last season
+  get tested, not assumed.
+
+**Watch the battery column rather than remembering to think about it.** Both apps show each box's
+battery, and a box that is going flat tells you so long before it goes quiet. A box that has already
+gone quiet looks identical to a box out of range or switched off
+(the section on box-will-not-connect).
+
+## Long events
+
+For a twelve or twenty-four hour race, treat power as part of the plan rather than a check:
+
+1. **Know the runtime**, and know it for the conditions — a cold night is not a mild afternoon.
+2. **Have the changeover worked out before you need it**, including who does it and what happens to
+   the reads while it happens. The box keeps its own log, so a box that is off the link is not
+   losing anything (the section on recover-missed-reads).
+3. **Check in through the event**, not at the end. See the section on lap-racing.
+
+## If a box goes quiet anyway
+
+**The reads are not lost.** Every box keeps its own log, so a box that timed a whole race flat on
+its link still has everything on it. Deal with the link, then pull the reads off
+(the section on reads-stopped-during-a-race).
+
+What you cannot recover is a read the box never took. That is why the backup matters and why the
+tag placement matters — a flat box is fixable, a tag nobody could read is not.
+
+
+---
+
+# Back everything up
+
+**Every time should be recorded two ways.** Not because the equipment is unreliable, but because the
+one thing you cannot do after the event is watch the race again.
+
+A missed read is recoverable if something else saw the same person. It is gone if nothing did.
+
+## The backups you already have, free
+
+**Every box keeps its own log.** A box that times an entire race with nothing connected to it has
+still recorded the lot, and it can be pulled off afterwards. A dropped link is an inconvenience, not
+a loss — see the section on recover-missed-reads.
+
+That means **a box failing to connect is never a reason to stop the race.** Let it read. Sort the
+link out afterwards.
+
+## A second box on the same line
+
+Two boxes can cover one point. Add the second one and say which it is:
+
+- **Its reads are crossings** — a genuine second mat, for a wide line or a busy one. Both count.
+- **Watching it, never a crossing** — it records but never gives anybody a time.
+
+Put a backup on the finish before you put one anywhere else. See
+the section on timing-points.
+
+## A spotter box
+
+**A spotter never gives anybody a time**, which is exactly what makes it safe to put anywhere. Its
+job is to see people. Put one before another point in the running order and it will back that point
+up, and it is what feeds a commentator without any risk of contributing a wrong result.
+
+## The human backup
+
+**Somebody writing down the finish order, on paper, is worth more than it sounds.** It is the thing
+that rescues a race when a mat fails outright, and it costs one volunteer and a clipboard.
+
+Two rules make it useful rather than decorative:
+
+1. **Record the order, and record times if you can.** Order alone rebuilds a result. Order plus a
+   handful of times rebuilds it accurately.
+2. **A typed time only ever fills a gap.** It never overrules a chip read, deliberately — the box
+   stamped the chip to the millisecond, and a person wrote down when they thought they saw
+   somebody. See the section on add-a-time-by-hand.
+
+A phone video of the finish, running continuously, is the same idea with less work. Start it before
+the leader arrives and leave it running.
+
+## Before you pack up
+
+**Wait for the backlog to reach zero.** That is the count of reads still waiting to reach the
+server, and packing up while it is counting down is how a race arrives at the office incomplete.
+
+Then, and only then, take the line apart.
+
+## What this actually protects you from
+
+The three that happen:
+
+- **A mat that quietly stopped reading.** Nothing alarms, because a reader with a dead antenna
+  reports no fault (the section on box-connected-but-no-reads).
+- **A person whose tag was never going to be read** — worn wrong, covered, or never issued
+  (the section on where-the-chip-goes).
+- **A bunch finish** where several people crossed in the same second and one of them was screened by
+  the others.
+
+None of the three is fixable at the time. All three are survivable if something else was watching.
+
+
+---
+
+# Settling a protest
+
+**Go to the reads. They are what the box actually recorded and nothing in Podium ever changes
+them.** Corrections, typed times and statuses are all applied when results are worked out, so the
+stored reads are still there to be looked at afterwards. That is the point of them.
+
+Where to find them is the section on raw-data. This page is how to use them.
+
+## Work in this order
+
+**1. Mark it `Query` first.** It keeps that result off the public page while you look, which is
+better than leaving a wrong result up or pulling a right one down. See
+the section on publish-results.
+
+**2. Filter to the one person** — their chip or their number — and look at **every point they were
+seen at**, not just the finish. Where the reads actually are answers most protests in seconds.
+
+**3. Read the reads against the four rules.** Nearly every "my time is wrong" resolves to one of
+these:
+
+- **A finish is the first read of that crossing.** A time that looks *late* is usually a second
+  crossing being counted — they came back over the mat.
+- **A start is the last read of that visit.** A start that looks late usually means they came back
+  past the start mat on a lap.
+- **Reads before the gun are thrown away.** So a mat near the start line contributes nothing from
+  the milling about beforehand.
+- **A gap longer than the point's gate begins a fresh crossing.** A time that looks *fast* is often
+  another point that is also named as the finish.
+
+**4. Then decide which of the three things is actually wrong**: the reads, the setup, or the person's
+account of it.
+
+## The three outcomes
+
+**The reads are right and the result is right.** The commonest outcome by a distance. Show them the
+reads — the times and the points are hard to argue with, and that is why the raw data exists.
+
+**The reads are right and the setup was wrong.** A box clock out, two points both named as the
+finish, a gate too long. Fix the setup and score again; every result recalculates from the same
+untouched reads.
+
+- A clock correction **belongs to the box, not the timing point.** Two boxes can cover one line and
+  only one of them may be wrong. See the section on correct-a-box-clock.
+- Fixing it fixes everybody it affected, not just the person who complained. Look for the others
+  before you publish.
+
+**The read was never taken.** The mat missed them, or the tag was worn somewhere it could not be
+read. Now you need the backup: the clipboard, the video, another point on the course that did see
+them (the section on back-everything-up).
+
+Only then type a time in — and know what it is:
+
+## What a typed time is, and is not
+
+**A typed time fills a gap. It never overrules a chip read.** There is no setting for this and it is
+deliberate: the box stamped the chip to the millisecond as it went past, and a typed time is a
+person's best account of when they thought they saw somebody.
+
+So if a chip was read and somebody disputes that time, **the answer is not to type a different one**
+— it will not take. The answer is to find out why the read says what it says, which is what the
+steps above are for.
+
+A typed time shows as `by hand` on the result, which is honest and stays visible. See
+the section on add-a-time-by-hand.
+
+## Before you republish
+
+**Pull in any reads still sitting on a box first.** Reads recovered after you publish will change
+positions, and a placing that moves twice is a second protest
+(the section on recover-missed-reads).
+
+Then score again, check the people either side of the disputed placing as well as the one who
+complained, and publish.
+
+## What you can always say
+
+**Nothing in Podium deletes a read, and no correction rewrites one.** Whatever was decided, the
+original reads are still there to be shown. A protest settled from the stored reads can be settled
+the same way again in a month when somebody asks about it.
 
 
 ---

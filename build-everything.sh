@@ -5,9 +5,13 @@ set -e
 out=everything.md
 
 order="what-the-words-mean.md the-three-apps.md set-up-an-event.md timing-points.md wave-starts.md \
-categories.md entrants-and-numbers.md online-entry.md prices-and-payment.md \
+categories.md entrants-and-numbers.md where-chip-codes-come-from.md \
+online-entry.md prices-and-payment.md \
 publish-results.md raw-data.md claim-a-box.md command-a-box.md podium-pc.md \
-podium-mobile.md nothing-scores-at-all.md runner-missing-from-results.md \
+podium-mobile.md before-the-event.md where-to-put-the-mat.md where-the-chip-goes.md \
+running-a-start.md running-a-finish.md lap-racing.md weather-and-batteries.md \
+back-everything-up.md settling-a-protest.md \
+nothing-scores-at-all.md runner-missing-from-results.md \
 runner-shows-no-time.md one-time-looks-wrong.md every-time-is-out-by-the-same.md \
 a-split-is-missing.md lap-count-is-wrong.md box-will-not-connect.md \
 box-connected-but-no-reads.md reads-stopped-during-a-race.md \

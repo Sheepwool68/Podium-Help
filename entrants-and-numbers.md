@@ -19,6 +19,11 @@ anything is written.
 Headings are matched the way clubs actually write them — `first name`, `firstname` and `given` are
 all the same column.
 
+**The file can carry the chips too.** A column headed `chip`, `chip code`, `chipcode`, `tag` or
+`transponder` is read as the chip that person already holds, which saves allocating them at all. A
+code it cannot read is reported by line number and that person is entered without a chip rather than
+with a wrong one. See [where-chip-codes-come-from.md](where-chip-codes-come-from.md).
+
 **Races and categories are matched by name against what you have already set up, and are never
 invented from a typo.** So build the races and the categories first. A line that cannot be read is
 reported rather than dropped.
@@ -45,8 +50,9 @@ It only touches people who are in no race at all.
 A chip has to be against the person before they start. Allocating one afterwards is allowed and is
 warned about, because it is usually a mistake rather than a swap.
 
-Three ways: one at a time on the entrant, in a sequence from the race numbers, or carried over from
-another event.
+Four ways: in the entry list you import, one at a time on the entrant, in a sequence from the race
+numbers, or carried over from another event. Where the codes themselves come from, and what a code
+looks like on the tag, is [where-chip-codes-come-from.md](where-chip-codes-come-from.md).
 
 ## A sequence of chip codes, from the race numbers
 
@@ -59,7 +65,9 @@ age`, then `Chips from the numbers`.
 1. **Choose the kind** — `Active tags` or `UHF tags`. They are described differently because they
    are numbered differently.
 2. **For active tags**, give the **prefix** — the letters in front of the number — and **how many
-   digits** follow it. The race number fills those digits, right-aligned.
+   digits** follow it. The race number fills those digits, right-aligned. RFID Timing's active tags
+   are three letters and three numbers, so for those the prefix is the three letters off the tag and
+   the digits are `3`.
 3. **For UHF tags**, give the **offset**. It is added to the race number, so with an offset of 5000
    race number 1 is code 5001.
 4. **Tick `replace chips already out`** only if you mean it. Left unticked, anybody who already has

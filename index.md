@@ -112,12 +112,30 @@ list of things Podium deliberately will not do, and most "can it..." questions a
 | Set the gun, or fix a wrong one | [wave-starts.md](wave-starts.md) |
 | Set up age bands, grades or divisions | [categories.md](categories.md) |
 | Add entrants, import a list, hand out numbers or chips | [entrants-and-numbers.md](entrants-and-numbers.md) |
+| Ask where chip codes come from, what one looks like, or how to get them in | [where-chip-codes-come-from.md](where-chip-codes-come-from.md) |
 | Open entries to the public | [online-entry.md](online-entry.md) |
 | Set entry fees, or get paid | [prices-and-payment.md](prices-and-payment.md) |
 | Publish results, set a status, award series points | [publish-results.md](publish-results.md) |
 | Claim, release or name a box | [claim-a-box.md](claim-a-box.md) |
 | Start, stop or configure a box from the website | [command-a-box.md](command-a-box.md) |
 | Go back to the reads themselves, or settle a protest | [raw-data.md](raw-data.md) |
+
+## Timing a race on the ground
+
+Nothing in this section is about a button. It is how the job is done, and it answers most of the
+"why did we lose that read" questions before they become support calls.
+
+| They want to | Read |
+|---|---|
+| Get ready for an event, or want a checklist | [before-the-event.md](before-the-event.md) |
+| Know where to put the mat, or why reads are being lost | [where-to-put-the-mat.md](where-to-put-the-mat.md) |
+| Know where the chip goes on a competitor, or how to hand them out | [where-the-chip-goes.md](where-the-chip-goes.md) |
+| Run a start, or decide whether they need a start mat at all | [running-a-start.md](running-a-start.md) |
+| Run a finish, or handle a bunch or sprint finish | [running-a-finish.md](running-a-finish.md) |
+| Set up a criterium, a lap race or a timed event | [lap-racing.md](lap-racing.md) |
+| Time in the rain or the cold, or plan power for a long event | [weather-and-batteries.md](weather-and-batteries.md) |
+| Make sure one failure does not cost them the results | [back-everything-up.md](back-everything-up.md) |
+| Settle a protest, or answer "my time is wrong" | [settling-a-protest.md](settling-a-protest.md) |
 
 ## If you are not sure which page
 
