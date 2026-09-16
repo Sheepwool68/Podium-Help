@@ -99,6 +99,7 @@ list of things Podium deliberately will not do, and most "can it..." questions a
 
 | They want to | Read |
 |---|---|
+| Ask what a word means — chip code, crossing, gate, wave, gun time | [what-the-words-mean.md](what-the-words-mean.md) |
 | Know which of the three apps does a thing | [the-three-apps.md](the-three-apps.md) |
 | Find their way round Podium PC | [podium-pc.md](podium-pc.md) |
 | Find their way round Podium Mobile | [podium-mobile.md](podium-mobile.md) |
