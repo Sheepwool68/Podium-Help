@@ -31,8 +31,9 @@ yourself.
 
 - **A reader stops itself after two and a half minutes.** A UHF reader transmits while it is on.
 - **Three connections at once over the network, one over Bluetooth.**
-- **Podium cannot command a box that reports over 4G.** Those reads arrive from the server when it
-  has them. No start, no stop, no rewind.
+- **Podium PC and Podium Mobile cannot command a box that reports over 4G.** Those boxes hold no
+  link to the machine at the event, so there is nothing there to start, stop or rewind them with.
+  The website can: see [command-a-box.md](command-a-box.md).
 
 ## If you are asked something not covered here
 
