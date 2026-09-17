@@ -10,8 +10,8 @@ Deal with the link first and the missing reads second.
 1. Wait. Both apps keep looking on their own, so a box that dropped is picked up again and
    reconnects without anybody pressing anything.
 2. If it does not come back, read [box-will-not-connect.md](box-will-not-connect.md).
-3. If the box stopped reading rather than the link dropping, press `START` again. A reader stops
-   itself after two and a half minutes.
+3. If the box stopped reading rather than the link dropping, start it again — `Start` in Podium PC,
+   `START` in Podium Mobile. A reader stops itself after two and a half minutes.
 
 ## Then fill the gap
 

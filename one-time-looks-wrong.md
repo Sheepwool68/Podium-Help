@@ -28,5 +28,7 @@ late, check they did not come back past the start mat on a lap.
 Type it in. It will be used only if the chip gave nothing at that point, because a chip read is
 never overruled by a typed time. See [add-a-time-by-hand.md](add-a-time-by-hand.md).
 
-If the chip read is genuinely wrong and you want it gone, that is not something to do during a
-race. Note it and call RFID Timing.
+**If the chip read itself is genuinely wrong**, that is fixed on the website afterwards, not mid race.
+On `Raw data`, `Chip times`, find the read and `exclude` it or `correct…` it — or put the right time
+straight into `Splits`. Each is marked, keeps its reason, and can be undone. See
+[raw-data.md](raw-data.md).

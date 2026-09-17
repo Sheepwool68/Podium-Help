@@ -68,9 +68,11 @@ the answer.
 
 Know these before you start. They decide more support questions than anything else.
 
-**A chip read is never overruled by a time somebody typed.** The box stamps a chip read to the
-millisecond as the transponder goes past. A typed time is a person's best account of when they
-thought they saw somebody. A typed time fills a gap and does nothing else.
+**A chip read is never overruled by a time typed in at the event.** The box stamps a chip read to
+the millisecond as the transponder goes past. A time typed with `By hand` is a person's best account
+of when they thought they saw somebody, and it fills a gap and does nothing else. Overruling the mats
+is a separate, deliberate job on the website afterwards — excluding or correcting a read, or editing a
+split — and it is always marked and can be undone. See [raw-data.md](raw-data.md).
 
 **A clock correction belongs to a box, not to a timing point.** Two boxes can cover one line and
 only one of them may be wrong. Move a box to another mat and its clock is still wrong by the same

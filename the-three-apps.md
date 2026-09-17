@@ -14,8 +14,8 @@ connected and given their timing point. `Scoring` is where the gun and the finis
 **`Scoring` only shows when `Advanced settings` is ticked** on the `Settings` tab. A club that only
 connects readers never sees it; anybody scoring at the venue needs it ticked.
 
-It is also the only one that can pull a box's own log back — `Rewind` — and the only one that can
-serve the race out to phones and tablets on the venue network to watch.
+It is also the only one that can serve the race out to phones and tablets on the venue network to
+watch — for scoring with no internet.
 
 ## Podium Mobile — an Android phone or tablet
 
@@ -46,8 +46,8 @@ This is the only place that does entries, prices, online entry, categories and p
 | Name a timing point at the event | Podium PC or Podium Mobile |
 | Set the gun, score the race on the day | Podium PC or Podium Mobile |
 | Type in a time that was missed | Any of the three |
-| Pull a box's own log back | Podium PC |
-| Correct a box's clock | Podium PC, or Podium |
+| Pull a box's own log back (rewind) | Podium PC or Podium Mobile |
+| Correct a box's clock | Any of the three |
 
 ## Boxes that report over 4G are different
 

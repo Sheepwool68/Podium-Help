@@ -12,20 +12,29 @@ these help pages, assume it does not exist and say so.
 - **It will not match a point name that does not match.** No fuzzy matching. `Finish` and
   `finish line` are different points.
 
-## It will not overrule a chip
+## A time typed at the event will not overrule a chip
 
-A time somebody typed fills a gap. Where the chip was read, the chip's time stands. There is no
-setting for this.
+A time typed in at the event — `By hand` in Podium PC or Podium Mobile — fills a gap. Where the chip
+was read, the chip's time stands. There is no setting for this.
+
+**Overruling the mats is a separate, deliberate job, done on the website afterwards**: `exclude` or
+`correct…` a single read, or put a time straight into `Splits`. Each is marked, keeps its reason, and
+can be undone. See [raw-data.md](raw-data.md).
 
 ## It will not change a read
 
-Corrections are applied when results are worked out. The stored reads always say what the box
-actually recorded, and that is deliberate: it is what settles an argument about a result.
+Every correction — a clock, an excluded read, a corrected read, a hand-edited split — is applied when
+results are worked out. The stored read always says what the box actually recorded, and that is
+deliberate: it is what settles an argument about a result.
 
-## It will not delete
+## It will not delete a read — unless the server is set to
 
-Nothing in Podium removes reads. The one thing that can be taken back is a time you typed in
-yourself.
+Podium PC, Podium Mobile and the website never delete a read.
+
+**The one exception is a retention window on the timing server.** It is off by default, and chip
+times are kept for ever. If it is set, chip times are cleared that many days after the read, the race
+is scored from its stored splits from then on, and those splits are the only thing left to correct.
+The `Raw data` tab says which applies. See [raw-data.md](raw-data.md).
 
 ## Boxes
 

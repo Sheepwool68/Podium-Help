@@ -32,6 +32,10 @@ when they came back round.
 3. **They really did go over the mat an extra time** — rode back round, or crossed to warm down. The
    reads are right about what happened.
 
-**A read is never deleted or edited**, deliberately, so the third case cannot be removed from the
-count. Mark the rider `Query` while it is decided — that keeps the result off the public page — and
-contact RFID Timing if it needs settling. See [publish-results.md](publish-results.md).
+**For the third case, `exclude` the extra read** on the website: `Raw data`, `Chip times`, filter `Who`
+to their race number, and `exclude` the read that should not count. You are asked why, the read stays
+on record marked `excluded`, and `put back` undoes it. The lap count recalculates. See
+[raw-data.md](raw-data.md).
+
+If it is still being decided, mark the rider `Query` in the meantime — that keeps the result off the
+public page.

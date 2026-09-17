@@ -12,8 +12,13 @@ Read the wrong clock, then a right one. The difference is what you enter.
 
 ## Enter it
 
-- **Podium Mobile:** on the `Boxes` screen, tap the point name on the row for that box.
-- **Podium PC:** `By hand: missed times and clocks` in the scoring box.
+- **Podium Mobile:** on the `Boxes` screen, tap the point name on **the box's own row** — not the
+  slot's row above it, which names the timing point instead.
+- **Podium PC:** `By hand: missed times and clocks` on the `Scoring` tab.
+
+**Do not reach for `Set all clocks from PC...` instead.** That is for a box with no GPS. A box takes its
+time from GPS, and setting it from the PC overwrites that, so on a box with a fix it makes things
+worse. Correcting the box here changes nothing on the box at all.
 
 Either `h:mm:ss` or a plain number of seconds. Blank or zero removes it.
 

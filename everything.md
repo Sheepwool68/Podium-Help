@@ -56,9 +56,11 @@ the answer.
 
 Know these before you start. They decide more support questions than anything else.
 
-**A chip read is never overruled by a time somebody typed.** The box stamps a chip read to the
-millisecond as the transponder goes past. A typed time is a person's best account of when they
-thought they saw somebody. A typed time fills a gap and does nothing else.
+**A chip read is never overruled by a time typed in at the event.** The box stamps a chip read to
+the millisecond as the transponder goes past. A time typed with `By hand` is a person's best account
+of when they thought they saw somebody, and it fills a gap and does nothing else. Overruling the mats
+is a separate, deliberate job on the website afterwards — excluding or correcting a read, or editing a
+split — and it is always marked and can be undone. See [raw-data.md](raw-data.md).
 
 **A clock correction belongs to a box, not to a timing point.** Two boxes can cover one line and
 only one of them may be wrong. Move a box to another mat and its clock is still wrong by the same
@@ -138,8 +140,13 @@ the section on publish-results.
 **One rider has an extra lap.**
 Look at that rider's reads and which points they are on. A second mat that should only watch, or a
 lap mat covering the start line, is fixed in the setup and the laps recalculate. If they really went
-over the mat an extra time, reads are never deleted — mark them `Query` while it is decided. See
-the section on lap-count-is-wrong.
+over the mat an extra time, `exclude` that one read on the website's `Raw data` tab — it stays on
+record and `put back` undoes it. See the section on lap-count-is-wrong.
+
+**A read is plainly wrong. Can I take it out or change it?**
+Yes, on the website afterwards: `Raw data`, `Chip times`, find the read, then `exclude` or `correct…`.
+Or put the right time straight into `Splits`. Each asks why, is marked, and can be undone. A time typed
+with `By hand` at the event is different — it only fills a gap. See the section on raw-data.
 
 **Does Podium work with no internet at the venue?**
 Timing does. Boxes keep their own logs and the apps store every read on the device, and results
@@ -270,8 +277,8 @@ connected and given their timing point. `Scoring` is where the gun and the finis
 **`Scoring` only shows when `Advanced settings` is ticked** on the `Settings` tab. A club that only
 connects readers never sees it; anybody scoring at the venue needs it ticked.
 
-It is also the only one that can pull a box's own log back — `Rewind` — and the only one that can
-serve the race out to phones and tablets on the venue network to watch.
+It is also the only one that can serve the race out to phones and tablets on the venue network to
+watch — for scoring with no internet.
 
 ## Podium Mobile — an Android phone or tablet
 
@@ -302,8 +309,8 @@ This is the only place that does entries, prices, online entry, categories and p
 | Name a timing point at the event | Podium PC or Podium Mobile |
 | Set the gun, score the race on the day | Podium PC or Podium Mobile |
 | Type in a time that was missed | Any of the three |
-| Pull a box's own log back | Podium PC |
-| Correct a box's clock | Podium PC, or Podium |
+| Pull a box's own log back (rewind) | Podium PC or Podium Mobile |
+| Correct a box's clock | Any of the three |
 
 ## Boxes that report over 4G are different
 
@@ -982,40 +989,97 @@ the box took is kept exactly as it recorded it, and that is what settles it.
 
 ---
 
-# The raw reads
+# The raw reads, and changing a result by hand
 
-On the website: inside the event, the `Raw data` tab. Two views — `Chip times` and `Splits`.
+On the website: inside the event, the `Raw data` tab. **Two views, in the order of the argument:**
 
-**This is what settles an argument.** The stored reads always say what the box actually recorded.
+- **`Chip times`** — what the mats actually recorded.
+- **`Splits`** — what the scoring made of those reads, and the one place a result's times can be
+  changed by hand.
 
-## Nothing here is ever changed
+## Chip times — what the mats saw
 
-Corrections are applied when results are worked out, not to the reads. A clock correction, a typed
-time, a status — none of them touch what is stored.
+**This is what settles an argument.** Every read is here as the box recorded it — including reads
+that matched nobody, which appear nowhere else and are usually where a wrong result starts. Those
+show `nobody` in the `Who` column.
 
-That is deliberate, and it is the point: **you can always go back to what the box actually saw.**
+The columns are `Time`, `Point`, `Box`, `Chip`, `Who` and `State`.
 
-## Every read, not just the one that counted
+**A burst of reads at one mat is shown as one crossing**, using that point's own gate, so this view
+cannot disagree with the result it explains. Tick `every read of a burst` and press `Show` to see
+every single read.
 
-Open the reads for somebody at a point and you get all of them, not only the one that became their
-time.
+### Narrowing it down
 
-That is usually the answer to "their time looks wrong". A mat reads a chip several times as
-somebody crosses, and again if they stand on it afterwards:
+**The filters are on the column headings.** Press a heading to filter that column: `Time` takes a
+`From` and `Until`, `Point` a timing point, `Box` a box, `Chip` a chip code, and `Who` a `Race number` —
+or only the reads that resolved to nobody. `State` narrows to only the reads somebody has overruled.
+Then `Apply`; `Clear this one` takes one filter off, `clear filters` takes them all off.
 
-- **A finish is the first read of that crossing.**
+**For a protest: filter `Who` to their race number** and look at every point they were seen at. Where
+the reads actually are usually answers it in seconds. See the section on settling-a-protest.
+
+### Why a time looks wrong
+
+- **A finish is the first read of that crossing.** A time that looks late is often a second crossing
+  — they came back over the mat.
 - **A start is the last read of that visit.**
 - **Reads before the gun are thrown away.**
-- **A gap longer than the point's gate starts a fresh crossing.**
+- **A gap longer than the point's gate starts a fresh crossing.** A time that looks fast is often
+  another point also named as the finish.
 
-So a time that looks late is often a second crossing being counted, and a time that looks fast is
-often another point that is also named as the finish.
+### Overruling one read
 
-## Filtering
+**Some reads are simply wrong**: a chip left on a table by the finish reads forty times, a mat picks
+up a marshal's spare, a box stamps the first ten minutes of a morning an hour out.
 
-Narrow by what you are looking for rather than scrolling. If somebody protests, filter to their chip
-or their number and look at every point they were seen at — where the reads actually are usually
-answers it in seconds.
+On that read's row:
+
+- **`exclude`** — takes it out of the scoring. You are asked why.
+- **`correct…`** — gives it the time it actually meant, starting from what the box said. You are asked
+  why.
+- **`put back`** — undoes either.
+
+**The read itself is never changed.** It stays in `Chip times` marked `excluded` or `corrected`, the
+reason is kept with it, and `put back` hands control back to what the box said. The results recompute
+straight away.
+
+This is the fix for **one rider with a lap too many** because they crossed the mat an extra time:
+`exclude` the extra read.
+
+## Splits — changing a result by hand
+
+Pick the race, and find somebody by name, club or number. Each row is one person, with a column for
+every timing point in course order and a `Result` at the end.
+
+- **Press any time to change it.** `Use this time` puts that time at that point.
+- **Press a blank one to put a time where nothing was recorded** — at any point, including one the
+  person has no crossing at all.
+- **Press `Result`** to record them as `DQ` or `Query`. Both come off the public results and stay in
+  full view here.
+
+**A time put here stands whatever the mats read.** That is the difference from a time typed in at the
+event with `By hand`, which only ever fills a gap. So use this deliberately. The read is still kept
+in `Chip times`, the row is marked `hand`, and **`Undo` puts whatever the mats saw back in charge.**
+
+A typed crossing is kept against the race number, so **somebody with no race number cannot be given
+one here.** Give them a number first.
+
+### `backup used`
+
+**No mat saw their finish, and a spotter did.** The time shown is the spotter's sighting plus the usual
+time from that spotter to the line. It is an estimate, and it is marked so that nobody mistakes it for a
+read. See the section on back-everything-up.
+
+## When chip times are cleared
+
+**A server can be set to clear chip times after a number of days.** The default is to keep them for
+ever, and `Chip times` says which applies: either that nothing on the server removes a read, or how
+many days they are kept.
+
+After that window, **a race is scored from its stored splits**, and `Splits` is the only way left to
+change a result. The results themselves are kept. If a protest might come late, settle it before the
+window closes.
 
 ## "There are no reads at all here"
 
@@ -1025,8 +1089,8 @@ the section on results-not-reaching-the-server.
 
 ## A read is here but the person has no result
 
-The read exists but nothing ties it to them or to a point. Either the chip is not against that
-entrant, or the box that took it is not named as a timing point. See
+The read exists and nothing ties it to them or to a point. Either the chip is not against that entrant
+— it shows `nobody` — or the box that took it is not named as a timing point. See
 the section on runner-shows-no-time and the section on timing-points.
 
 
@@ -1122,102 +1186,177 @@ Bluetooth, or over the venue network.
 
 Three tabs: `Readers`, `Scoring`, `Settings`.
 
-**No `Scoring` tab?** Tick `Advanced settings` on the `Settings` tab. It is hidden until then, so a
-club that only connects readers is not shown controls it does not use. Unticking it only tidies the
-window — the race, the gun and anything typed at the desk are all kept.
+**No `Scoring` tab?** Tick `Advanced settings` on the `Settings` tab. The `Scoring` tab and the
+advanced boxes on `Settings` are hidden until then, so a club that only connects readers is not shown
+controls it does not use. **Unticking it only tidies the window** — a server signed in, or reads being
+sent somewhere, carries on working, and the race, the gun and anything typed at the desk are kept.
 
 ## Readers
 
-The grid at the top is one row per box. The columns say what each one is doing: `Link`, `Device`,
-`Address/Port`, `Timing point`, `State`, `Mode`, `Reads`, `Last read`, `Beat` and `Battery`.
+### Along the top
 
-**Two columns are yours to type in: `Address/Port` and `Timing point`.** The rest are what the box
-reports.
+- **`Discover`** — finds boxes on the network, and finds the dongle on whatever port Windows has given
+  it today. The first thing to press when something that worked yesterday does not.
+- **`Connect all`** and **`Stop all`** — the whole grid at once.
+- **`Set all clocks from PC...`** — **a fallback for when GPS is not working, not a routine step.** A
+  box takes its time from GPS. Setting it from the PC overwrites the clock that stamps the reads, so
+  on a box that has a GPS fix it makes the time worse, not better. It asks before it does anything.
+- **`Clear grid`** — back to one blank row. It tidies the screen and deletes nothing: *"Grid cleared.
+  Stored reads are untouched."*
+- **`Export...`** — reads out to a file or a scoring database. See below.
+- **`Help`**.
 
-- **`Discover`** finds boxes on the network and finds the dongle on whatever port Windows has given
-  it today. This is the first thing to press when something that worked yesterday does not.
-- **`Connect all`** and **`Stop all`** do the whole grid.
-- The button at the end of each row connects that one box.
-- **`Add box by MAC`** puts in a box that will not turn up on its own.
+### The grid
 
-**A reader will not connect without a timing point name.** Podium says so: *"Not connected: a reader
-needs a timing point name."* Type the name in first. See the section on timing-points.
+One row per box. The columns: `#`, `Link`, `Device`, `Address/Port`, `Timing point`, `State`, `Mode`,
+`Relay`, `Reads`, `Last read`, `Beat`, `Battery`, and a `Connect` button at the end of the row.
 
-Below the grid are `START`, `STOP` and `Beeper` for the selected box. Below that, what each timing
-point has collected, and then the reads themselves as they arrive.
+**Two columns are yours to type in: `Address/Port` and `Timing point`.** Everything else is what the
+box reports.
+
+- **`Address/Port`** takes either a network address or a dongle's port — one field for both.
+- **`Timing point`** is required. A box without one asks for it before it connects: *"needs a timing
+  point name before it can connect."* The name has to match the point exactly. See
+  the section on timing-points.
+- **`Link`** shows how the box is reached. A relay box shows two: the network to its master, then
+  Bluetooth.
+- **`Relay`** says which end of a relay a box is, when it is one.
+
+### The box you have selected
+
+Click a row, then:
+
+- **`Start`** and **`Stop`** — the reader, not the link. A connected box is not necessarily a reading
+  box, and **a reader stops itself after two and a half minutes**, so start it for the race, not when
+  you set it up.
+- **`Beeper`**.
+- **`Query state`** — asks the box what it is doing now.
+- **`Query RTC`** — asks for the box's clock. The line beside it says **reads are timestamped from GPS,
+  not from this**, so a clock that reads oddly here is not by itself a reason to distrust the times.
+- **`Rewind...`** and **`Stop rewind`** — get reads back off the box. See
+  the section on recover-missed-reads.
+
+### The counts under the grid
+
+What each timing point has collected, then the reads themselves as they arrive.
+
+**`Zero counts`** starts the counts again from now, so today's figures are not buried under last
+week's. **It deletes nothing** — every read and every result is untouched — and **`Show all`** brings
+the old numbers back. Useful at the start of the second event of a weekend, harmless if pressed by
+mistake.
+
+### "Reader not responding"
+
+A box that goes quiet raises an alert. **`Silence`** stops the noise; it does not dismiss the problem.
+See the section on reads-stopped-during-a-race.
 
 ## Scoring
 
-**Two decisions make every time on the sheet**, and they are both here.
+Only shown with `Advanced settings` ticked. **It is the race-day job, top to bottom, in the order it
+is done.**
+
+### 1. Get the field
+
+**Pull the event from the timing server before you lose signal.** `Fetch list`, choose your event in
+the `Meeting` list, then `Pull this meeting`.
+
+Pulling brings the entrants, the chips handed out, the gun and everything the results need to match
+up afterwards. **`Import from file...`** reads a field from a file instead, and is the last resort —
+it carries none of that.
+
+### 2. The race, the gun and the finish
 
 1. **`Race`** — which race you are scoring.
 2. **`Gun`** — when it started. **`Now`** stamps it at this moment, which is what you press as the
    field goes.
 3. **`Finish`** — which timing point is the finish. **`Split`** is optional.
 
-Then `Save`.
+Then **`Save`**.
 
 Until both the gun and the finish are set, the panel says so and nothing is scored. See
 the section on nothing-scores-at-all.
 
-**These are set here and not on a tablet**, deliberately. The race page served out to the venue
-network is read-only, so a tablet on an open wifi cannot change a race.
+**These are set here and not on a tablet**, deliberately. The race screen served out to the venue is
+read-only, so a tablet on an open wifi cannot change a race.
 
-### Adding somebody at the desk
+### 3. Keeping the cloud in step
 
-`Add at the desk` takes a number, a name, a chip, a date of birth, a gender and a category.
-
-**The date of birth is required** — the cloud refuses an entrant without one. A gender and a category
-are not needed to time somebody and are needed to place them: an entry without them appears on the
-finish sheet and is missing from every class sheet, which somebody notices at the prizegiving when
-nothing can be done about it.
-
-Then `Send desk entries to the cloud`.
-
-### Keeping the cloud in step
-
-- **`Check against the cloud`** — compares what this machine holds with what the cloud has.
+- **`Wave starts in the cloud`** — what the cloud currently thinks each wave started.
+- **`Send wave starts to the cloud`** — sends the guns. A row you have not changed is not resent.
 - **`Send course to the cloud`** — sends the timing points.
-- **`Send wave starts to the cloud`** — sends the guns. The wave grid shows what the cloud
-  currently thinks each wave started, so an untouched row is not resent.
+- **`Check against the cloud`** — compares what this machine holds with what the cloud has.
 
 **The gun on this panel is what this machine scores by. The wave list is what the cloud scores by.**
-They are held apart on purpose, and a staggered race has several waves. See
+They are held apart on purpose, because a staggered race has several waves. See
 the section on wave-starts.
 
-## Missed times and wrong clocks
+### 4. Somebody turns up on the day
 
-**`By hand: missed times and clocks`** is where you type in a time nobody caught, and where you
-correct a box whose clock was wrong.
+**`Add at the desk`**: `No.`, `Name`, `Born dd/mm/yyyy`, `Chip`, `Cat`, then `Add`. Then **`Send desk
+entries to the cloud`**.
 
-See the section on add-a-time-by-hand and
+**The date of birth is required** — the cloud refuses an entrant without one. A category is not
+needed to time somebody and is needed to place them: an entry without one appears on the finish sheet
+and is missing from every class sheet, which somebody notices at the prizegiving.
+
+### 5. Missed times and wrong clocks
+
+**`By hand: missed times and clocks`** is where a time nobody caught is typed in, and where a box whose
+clock was wrong is corrected. See the section on add-a-time-by-hand and
 the section on correct-a-box-clock.
 
-## Getting reads back off a box
+### 6. The race screen
 
-**`Rewind`** pulls a box's own log. This is how a mat that timed a whole race with nothing connected
-to it gives up every read afterwards. See the section on recover-missed-reads.
-
-## Showing the race to others
-
-**`Race screen`** serves the race to phones and tablets on the venue network, so people can watch
-without touching anything. It is read-only.
-
-Turn it on under `Settings`. Windows will ask about the firewall the first time.
+**`Serve the race to phones and tablets on this network`**, with a `Port`. **This is for scoring with
+no internet.** A browser cannot talk to a timing box, so this machine serves the race to any device on
+the same network, and they can watch without being able to change anything. Windows asks about the
+firewall the first time.
 
 ## Settings
 
-Where the timing server is, whether the race screen is served, whether readers are remembered
-between sessions, and setting every box's clock from this machine.
+### General
+
+- **`Remember readers between sessions`** — the grid opens with last time's readers, ready to connect.
+  Turn it off for an empty grid; the readers are kept and come back if you turn it on again.
+- **`Output chip code in HEX (only changes over LAN connections)`** — how readers on the network show a
+  chip code. Readers on a dongle are left alone. It changes the display, not the chip: the same tag
+  reads `27522009` in decimal and `1A3F3D9` in hex.
+
+### With `Advanced settings` ticked
+
+- **`Local timing server`** and **`Cloud timing server`** — where this machine sends its reads and
+  fetches its field. Each takes an `Address`, an `Account` and a `Password`, with `Test connection`,
+  `Send reads to this server as they arrive`, and `Send everything outstanding` for anything that did
+  not get through.
+- **Boxes reporting over 4G** — a box of settings for signing in to the older 4G server, `Show boxes
+  reporting through the server` to put them in the grid, and `Add box by MAC` to follow one particular
+  box through it — the six-digit device key or the full address.
+- **`3rd Party Server`** — sends reads straight into your own SQL Server scoring database: `Server`,
+  `Database`, `Windows account` or `SQL sign in`, and the `Procedure` to call. `Test connection` first.
+  `Table and procedure...` shows the script the database end needs, to copy across — including a note
+  for a RaceTec database, whose tables name the same things differently. Then `Send reads to this
+  database as they arrive`, `Send everything outstanding`, or `Send a selection...` for a chosen span.
+
+**Every box here says `Not configured` until it is.** A box you have never used can be left alone.
+
+## Export
+
+**`Export...`** writes reads out for another scoring package, or sends them to the database above.
+
+Choose a format from the list rather than writing one — `Use a preset format` — and check the sample
+lines it shows before committing. Pick `From` and `To`, and decide whether to `Include reads
+recovered by rewind`. Then `Write a file` or `Send to the database`.
+
+**An export only reads.** It changes nothing stored, so it can be run during an event, run twice, or
+run again in a different format.
 
 ## Two messages that sound alarming and are not
 
-- **"Grid cleared. Stored reads are untouched."** Clearing the grid tidies the screen. It does not
-  delete reads.
+- **"Grid cleared. Stored reads are untouched."** Clearing the grid tidies the screen.
 - **"Disconnected. Reads already stored are kept."** Dropping a link loses nothing that already
   arrived.
 
-**Nothing in Podium deletes reads.** See the section on limits.
+**Podium PC never deletes a read.** See the section on limits.
 
 
 ---
@@ -1228,52 +1367,87 @@ The Android phone or tablet. It reaches boxes over the phone's own Bluetooth or 
 
 **It has no dongle and cannot use one.** Never suggest a dongle to somebody on a phone.
 
-Screens: `Boxes`, `Reads`, `Result` and `By hand`.
+## Getting around
+
+**One button moves between the screens, and it is labelled with where it goes NEXT, not where you
+are.** Standing on the boxes, it says `Reads`. It goes round `Boxes`, `Reads`, `Result` and `Log`.
+If somebody says "I pressed Reads and I'm looking at the results", that is why.
+
+The other buttons: `Help`, `Add`, `Settings` and `By hand`.
+
+`START` and `STOP` are there on `Boxes` and `Reads`. They are hidden on `Result`, where the race is
+being looked at and the row would only be somewhere to press the wrong thing.
 
 ## Before it will find anything
 
-**Bluetooth on, and location on.** Android will not let any app scan for Bluetooth devices with
-location switched off — that is the phone's rule, not Podium's, and it is the commonest reason a
-phone finds nothing at all.
+**Bluetooth on — and on phones older than Android 12, location switched on too.** Android will not let
+an app find Bluetooth devices with location off on those phones; the search runs, reports no error,
+and finds nothing. That is the phone's rule, not Podium's, and it is the commonest reason a phone
+finds nothing at all.
 
-Podium says which is missing: *"Bluetooth is off. Turn it on, then press `Scan`."* or *"Turn
-location on, then press `Scan`."*
+Podium says which is missing when it opens. **Turn it on, then close Podium Mobile and open it again.**
+The message says to press `Scan`, but there is no such button — reopening the app is what starts the
+search.
 
 ## Boxes
 
-Press `Scan`. **Boxes connect themselves as they are found** — there is nothing to press per box.
+**Boxes are found and connected automatically.** The phone keeps looking and puts each box it finds
+into a free slot. There is nothing to press per box.
 
-Each row is a slot. Give it a timing point, or its reads have nowhere to be filed. See
-the section on timing-points.
+**There are two kinds of row, and tapping the point name does a different thing on each.**
 
-`START` and `STOP` run the reader on the selected box. Connected is not the same as reading.
+- **On a slot's row, it names the timing point** — `Timing point for slot`, then `Set`. **Give every
+  slot a timing point, or its reads have nowhere to be filed.** See the section on timing-points.
+- **On a box's own row, it corrects that box's clock.** A clock belongs to the box, not to the slot:
+  move the box to another mat and its clock is still wrong by the same amount. See
+  the section on correct-a-box-clock.
 
-A box that will not turn up can be added by its address with `Add`.
+- **`START` and `STOP`** run the reader on the selected box. Connected is not the same as reading, and
+  **a reader stops itself after two and a half minutes**, so start it for the race.
+- **`Add`** puts in a box by its network address, for one that will not turn up by itself — usually
+  because the wifi is not passing the search between devices.
+- **`Rewind`** on a box gets its reads back. See below.
+
+**If a box stops reading, the phone says so out loud** — a short tone, then the words — because the
+person holding it is watching the course, not the screen.
 
 ## Choosing the race
 
-`Choose race`. **Races, entries and the gun come down from the timing server** — they are not built
-on the phone. If the phone has nothing, fetch the event again under `Settings`.
+**`Choose race`**, on the `Result` screen.
 
-The first time you pick a race it asks which point is the finish, and **it only offers points that
+**Races, entries and the gun come down from the timing server** — they are not built on the phone.
+
+- **Nothing on the phone yet?** It says `No race on this phone`. Press `Fetch from server` and pick the
+  event.
+- **Already have one and need another?** `Fetch another`.
+
+**Once fetched, it stays on the phone**, so scoring carries on with no signal. Fetch before you lose
+it.
+
+The first time you pick a race it asks `Which point is the finish`, and **it only offers points that
 have actually taken reads.**
-
-If it says `No race on this phone`, nothing has been fetched yet.
 
 ## Reads and Result
 
-`Reads` is what is arriving. `Result` is the race as it stands; `Score again` recomputes it.
+**`Reads`** is what is arriving. **`Result`** is the race as it stands, worked out afresh each time you
+open it; **`Score again`** recomputes it on the spot.
+
+**`Hand times`**, beside them, lists every time typed in for this race and offers `Add one` for a time
+read off a watch afterwards. See the section on add-a-time-by-hand.
 
 ## By hand — the desk screen
 
-This is a screen you hand to a helper.
+**A screen you hand to a helper.**
 
-**Set it up first:** which race, which point, and a four-digit PIN. Then hand the phone over.
+**Set it up first:** which race, which point, and a PIN. Then hand the phone over.
 
-**Type the number and press the big key. That moment is the time.** It clears itself, ready for the
-next one.
+**Type the number and press `TAKE`. That moment is the time.** It clears itself, ready for the next.
+The last five stay on screen, and any of them can be taken back.
 
-While times are being taken, `Back` does nothing and the phone stays in this screen, so a helper
+**`Wave start`** stamps the gun for the wave as it goes. It sits well away from the number keys and
+looks nothing like them, so a thumb aiming for a digit cannot hit it.
+
+While times are being taken, `Back` does nothing and the phone stays on this screen, so a helper
 cannot reach the boxes by accident.
 
 ### "We have forgotten the PIN"
@@ -1281,18 +1455,28 @@ cannot reach the boxes by accident.
 **Hold `Finish` down for ten seconds** and it lets you out without one. Long enough that nobody
 arrives at it by leaning on the phone.
 
-**Nothing is lost either way.** Every time is saved the moment it is taken, so a forgotten PIN, a
-flat battery or a closed app costs you the screen and nothing else.
+**Nothing is lost either way.** Every time is saved the moment it is taken, so a forgotten PIN, a flat
+battery or a closed app costs you the screen and nothing else.
 
 Leaving the PIN blank is allowed. The screen then simply does not lock.
 
 ## Getting reads back off a box
 
-`Get reads back` on the box offers the last 15 minutes, the last hour, the last 3 hours, since
-midnight, a range you pick, or the whole log.
+**`Rewind`** on the box opens *Get reads back*.
 
-**The whole log is bounded by what the box holds, not by you.** Anything already held is absorbed
-rather than duplicated. See the section on recover-missed-reads.
+**How far back** — `The last 15 minutes`, `The last hour`, `The last 3 hours`, `Since midnight`, or
+`Pick the start and end…`. **Use one of these.** They ask for exactly the span you named.
+
+**Longer** — `Fill the holes`, or `Everything — the whole log`. **These are bounded by what the box
+holds, not by you**, and that can run for a very long time. Filling the holes starts from the earliest
+read this phone holds for that box — if the phone still has last month's race on it, that means
+replaying from last month.
+
+**A rewind already running puts `Stop the rewind that is running` at the top**, so the press after "I
+should not have done that" is the obvious one. Whatever arrived before the stop is kept.
+
+Reads you already have are recognised and not duplicated. See
+the section on recover-missed-reads.
 
 ## Sending to the server
 
@@ -1303,15 +1487,19 @@ The line under the status says what the sync is doing.
 - Otherwise it names the account and the server, whether it is sending, and **how many reads are
   waiting.**
 
-**Wait for the waiting count to reach zero before you pack up.** A phone in a bag is a phone that
-has not sent anything. See
-the section on results-not-reaching-the-server.
+**Wait for the waiting count to reach zero before you pack up.** A phone in a bag is a phone that has
+not sent anything. See the section on results-not-reaching-the-server.
 
 ## Settings
 
-Where the server is, `Test server`, fetching an event, and whether chip codes are shown in HEX.
+- **`Timing server`** — the server address, `Username` and `Password`, and `Test server`.
+  `Send reads to the server` turns sending on.
+- **`General`** — `Output chip codes in HEX`. It changes how a code is shown, not the chip.
+- **`Diagnostics`** — `Send log` and `Share DB`, for sending to RFID Timing when asked.
 
-`Send log` and `Share DB` are for sending diagnostics to RFID Timing when asked.
+Then `Save`.
+
+**Fetching an event is not here** — it is under `Choose race`.
 
 
 ---
@@ -1942,18 +2130,27 @@ them (the section on back-everything-up).
 
 Only then type a time in — and know what it is:
 
-## What a typed time is, and is not
+## Acting on what you found
 
-**A typed time fills a gap. It never overrules a chip read.** There is no setting for this and it is
-deliberate: the box stamped the chip to the millisecond as it went past, and a typed time is a
-person's best account of when they thought they saw somebody.
+**Two different tools, and they do different things.**
 
-So if a chip was read and somebody disputes that time, **the answer is not to type a different one**
-— it will not take. The answer is to find out why the read says what it says, which is what the
-steps above are for.
+**A time typed with `By hand` fills a gap. It never overrules a chip read.** The box stamped the chip
+to the millisecond as it went past, and a typed time is a person's best account of when they thought
+they saw somebody. So if a chip was read and the time is disputed, typing a different one there will
+not take. It shows as `by hand`. See the section on add-a-time-by-hand.
 
-A typed time shows as `by hand` on the result, which is honest and stays visible. See
-the section on add-a-time-by-hand.
+**Overruling the mats is done on the website, deliberately, once you know why the read is wrong:**
+
+- **One read is wrong** — a chip left by the line, a second crossing, a box out for ten minutes.
+  `Raw data`, `Chip times`, then `exclude` it or `correct…` it.
+- **The result needs a different time** — `Raw data`, `Splits`, press the time, `Use this time`. A time
+  put there stands whatever the mats read.
+
+**Both ask why, both are marked where anyone can see, and both can be undone** — `put back` for a read,
+`Undo` for a split. See the section on raw-data.
+
+**Decide the reason before you touch anything.** Overruling a read because somebody is insistent,
+rather than because the reads show something wrong, is how one protest becomes three.
 
 ## Before you republish
 
@@ -1966,9 +2163,13 @@ complained, and publish.
 
 ## What you can always say
 
-**Nothing in Podium deletes a read, and no correction rewrites one.** Whatever was decided, the
-original reads are still there to be shown. A protest settled from the stored reads can be settled
-the same way again in a month when somebody asks about it.
+**No correction rewrites a read.** Whatever was decided, the original read is still there to be shown
+beside the decision and its reason. A protest settled from the stored reads can be settled the same
+way again in a month when somebody asks.
+
+**One caveat: a timing server can be set to clear chip times after a number of days.** It is off by
+default. If it is on, the splits are all that remain after that window — so settle a protest that
+might come late before it closes. `Raw data` says which applies.
 
 
 ---
@@ -2024,10 +2225,11 @@ their name with `no chip` or `no finish` beside it, read the section on runner-s
 
 Add them, then score again.
 
-- **Podium Mobile:** entries come from the timing server. Fetch the event again under `Settings`,
-  then `Choose race`.
-- **Podium PC:** use `Add at the desk` in the scoring box. A number, a name and the chip they
-  were handed is enough to score somebody.
+- **Podium Mobile:** entries come from the timing server, so add them on the website first. Then on
+  the phone, `Choose race`, `Fetch another`, and pick the event again to bring the new entry down.
+- **Podium PC:** use `Add at the desk` on the `Scoring` tab. A number, a name and the chip they were
+  handed is enough to score somebody here — but the date of birth is needed too before
+  `Send desk entries to the cloud` will accept them.
 
 If they ran without a chip, add them and then read the section on add-a-time-by-hand.
 
@@ -2108,8 +2310,10 @@ late, check they did not come back past the start mat on a lap.
 Type it in. It will be used only if the chip gave nothing at that point, because a chip read is
 never overruled by a typed time. See the section on add-a-time-by-hand.
 
-If the chip read is genuinely wrong and you want it gone, that is not something to do during a
-race. Note it and call RFID Timing.
+**If the chip read itself is genuinely wrong**, that is fixed on the website afterwards, not mid race.
+On `Raw data`, `Chip times`, find the read and `exclude` it or `correct…` it — or put the right time
+straight into `Splits`. Each is marked, keeps its reason, and can be undone. See
+the section on raw-data.
 
 
 ---
@@ -2213,9 +2417,13 @@ when they came back round.
 3. **They really did go over the mat an extra time** — rode back round, or crossed to warm down. The
    reads are right about what happened.
 
-**A read is never deleted or edited**, deliberately, so the third case cannot be removed from the
-count. Mark the rider `Query` while it is decided — that keeps the result off the public page — and
-contact RFID Timing if it needs settling. See the section on publish-results.
+**For the third case, `exclude` the extra read** on the website: `Raw data`, `Chip times`, filter `Who`
+to their race number, and `exclude` the read that should not count. You are asked why, the read stays
+on record marked `excluded`, and `put back` undoes it. The lap count recalculates. See
+the section on raw-data.
+
+If it is still being decided, mark the rider `Query` in the meantime — that keeps the result off the
+public page.
 
 
 ---
@@ -2317,7 +2525,8 @@ can have the lot pulled off afterwards. See the section on recover-missed-reads.
 **Check it is actually reading.** Connected means the link is up. It does not mean the reader is
 running.
 
-The box card shows which. If it is not collecting, press `START`.
+The box's row shows which. If it is not collecting, start it — `Start` in Podium PC with the row
+selected, `START` in Podium Mobile.
 
 ## It says it is reading and still nothing arrives
 
@@ -2357,8 +2566,8 @@ Deal with the link first and the missing reads second.
 1. Wait. Both apps keep looking on their own, so a box that dropped is picked up again and
    reconnects without anybody pressing anything.
 2. If it does not come back, read the section on box-will-not-connect.
-3. If the box stopped reading rather than the link dropping, press `START` again. A reader stops
-   itself after two and a half minutes.
+3. If the box stopped reading rather than the link dropping, start it again — `Start` in Podium PC,
+   `START` in Podium Mobile. A reader stops itself after two and a half minutes.
 
 ## Then fill the gap
 
@@ -2493,8 +2702,13 @@ Read the wrong clock, then a right one. The difference is what you enter.
 
 ## Enter it
 
-- **Podium Mobile:** on the `Boxes` screen, tap the point name on the row for that box.
-- **Podium PC:** `By hand: missed times and clocks` in the scoring box.
+- **Podium Mobile:** on the `Boxes` screen, tap the point name on **the box's own row** — not the
+  slot's row above it, which names the timing point instead.
+- **Podium PC:** `By hand: missed times and clocks` on the `Scoring` tab.
+
+**Do not reach for `Set all clocks from PC...` instead.** That is for a box with no GPS. A box takes its
+time from GPS, and setting it from the PC overwrites that, so on a box with a fix it makes things
+worse. Correcting the box here changes nothing on the box at all.
 
 Either `h:mm:ss` or a plain number of seconds. Blank or zero removes it.
 
@@ -2518,35 +2732,61 @@ Let it send before you pack up, or the site will publish times you know are wron
 
 # Getting back reads you missed
 
-**Every box keeps its own log.** A box that read a whole race with nothing connected to it still
-has every one of those reads, and they can be pulled off afterwards.
+**Every box keeps its own log.** A box that read a whole race with nothing connected to it still has
+every one of those reads, and they can be pulled off afterwards.
 
-This is called a rewind.
+This is called a rewind, and **both Podium PC and Podium Mobile can do it.**
 
-## In Podium PC
+## Choose a span, not "everything"
 
-Press `Rewind` and choose one of two things.
+**Ask for the time you actually need.** It is the only kind of rewind bounded by what you asked for.
 
-- **`Fill in what is missing`** — asks the box for the records you have gaps in. This is the
-  ordinary case and the one to use.
-- **`Fetch the reader's whole log`** — everything the box holds. Slower, and the way back to reads
-  taken before anybody was listening.
+- **Podium PC:** select the box's row, `Rewind...`. Under *How far back?*: `The last 15 minutes`,
+  `The last hour`, `The last 3 hours`, `Since midnight`, or `Between` two times you type.
+  The choice fills both times in, so you can see exactly what is about to be asked for and adjust
+  either before pressing `Start`.
+- **Podium Mobile:** `Rewind` on the box. Under *How far back?*: `The last 15 minutes`, `The last hour`,
+  `The last 3 hours`, `Since midnight`, or `Pick the start and end…`.
+
+A race that finished an hour ago wants `The last 3 hours`, not the whole log.
+
+## The two longer options, and their trap
+
+**These are bounded by what the box holds, not by you**, and on a box that has been used all season
+that can mean a very long wait.
+
+- **`Fill in what is missing`** (Podium PC) / **`Fill the holes`** (Podium Mobile) — fills the gaps,
+  starting from the earliest read this machine already holds for that box. **If it still holds last
+  month's race, that means replaying from last month.**
+- **`Fetch the reader's whole log`** (Podium PC) / **`Everything — the whole log`** (Podium Mobile) —
+  everything on the box. The way back to reads taken before anything was listening at all.
+
+## Stopping one
+
+**Podium PC:** `Stop rewind`. **Podium Mobile:** a rewind that is running puts `Stop the rewind that is
+running` at the top of the menu. **Whatever arrived before the stop is kept.**
 
 ## What to expect
 
-Reads you already have are recognised and not duplicated, so a rewind that overlaps costs nothing
-but time.
+**Nothing about a rewind is destructive.** Reads you already have are recognised and absorbed, not
+duplicated, so an overlapping rewind costs time and nothing else. Recovered reads are marked as coming
+from a rewind.
 
-A big rewind takes a while. Let it finish. Then score again.
+Let it finish. Then score again.
 
 ## Then check the results
 
 Recovered reads change positions. Score again and look at the sheet before publishing.
 
+## Boxes over 4G
+
+Their reads reach the server by themselves, and neither app holds a link to them. The website's
+`Resend` asks such a box to send a range again. See the section on command-a-box.
+
 ## What a rewind cannot do
 
-It cannot recover a read the box never took. If somebody was not wearing a chip, or the mat never
-saw them, there is nothing in the log to fetch. Type the time in instead:
+It cannot recover a read the box never took. If somebody was not wearing a chip, or the mat never saw
+them, there is nothing in the log to fetch. Type the time in instead:
 the section on add-a-time-by-hand.
 
 
@@ -2566,20 +2806,29 @@ these help pages, assume it does not exist and say so.
 - **It will not match a point name that does not match.** No fuzzy matching. `Finish` and
   `finish line` are different points.
 
-## It will not overrule a chip
+## A time typed at the event will not overrule a chip
 
-A time somebody typed fills a gap. Where the chip was read, the chip's time stands. There is no
-setting for this.
+A time typed in at the event — `By hand` in Podium PC or Podium Mobile — fills a gap. Where the chip
+was read, the chip's time stands. There is no setting for this.
+
+**Overruling the mats is a separate, deliberate job, done on the website afterwards**: `exclude` or
+`correct…` a single read, or put a time straight into `Splits`. Each is marked, keeps its reason, and
+can be undone. See the section on raw-data.
 
 ## It will not change a read
 
-Corrections are applied when results are worked out. The stored reads always say what the box
-actually recorded, and that is deliberate: it is what settles an argument about a result.
+Every correction — a clock, an excluded read, a corrected read, a hand-edited split — is applied when
+results are worked out. The stored read always says what the box actually recorded, and that is
+deliberate: it is what settles an argument about a result.
 
-## It will not delete
+## It will not delete a read — unless the server is set to
 
-Nothing in Podium removes reads. The one thing that can be taken back is a time you typed in
-yourself.
+Podium PC, Podium Mobile and the website never delete a read.
+
+**The one exception is a retention window on the timing server.** It is off by default, and chip
+times are kept for ever. If it is set, chip times are cleared that many days after the read, the race
+is scored from its stored splits from then on, and those splits are the only thing left to correct.
+The `Raw data` tab says which applies. See the section on raw-data.
 
 ## Boxes
 

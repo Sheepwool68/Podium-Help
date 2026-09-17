@@ -15,10 +15,11 @@ their name with `no chip` or `no finish` beside it, read [runner-shows-no-time.m
 
 Add them, then score again.
 
-- **Podium Mobile:** entries come from the timing server. Fetch the event again under `Settings`,
-  then `Choose race`.
-- **Podium PC:** use `Add at the desk` in the scoring box. A number, a name and the chip they
-  were handed is enough to score somebody.
+- **Podium Mobile:** entries come from the timing server, so add them on the website first. Then on
+  the phone, `Choose race`, `Fetch another`, and pick the event again to bring the new entry down.
+- **Podium PC:** use `Add at the desk` on the `Scoring` tab. A number, a name and the chip they were
+  handed is enough to score somebody here — but the date of birth is needed too before
+  `Send desk entries to the cloud` will accept them.
 
 If they ran without a chip, add them and then read [add-a-time-by-hand.md](add-a-time-by-hand.md).
 

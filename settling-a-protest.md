@@ -55,18 +55,27 @@ them ([back-everything-up.md](back-everything-up.md)).
 
 Only then type a time in — and know what it is:
 
-## What a typed time is, and is not
+## Acting on what you found
 
-**A typed time fills a gap. It never overrules a chip read.** There is no setting for this and it is
-deliberate: the box stamped the chip to the millisecond as it went past, and a typed time is a
-person's best account of when they thought they saw somebody.
+**Two different tools, and they do different things.**
 
-So if a chip was read and somebody disputes that time, **the answer is not to type a different one**
-— it will not take. The answer is to find out why the read says what it says, which is what the
-steps above are for.
+**A time typed with `By hand` fills a gap. It never overrules a chip read.** The box stamped the chip
+to the millisecond as it went past, and a typed time is a person's best account of when they thought
+they saw somebody. So if a chip was read and the time is disputed, typing a different one there will
+not take. It shows as `by hand`. See [add-a-time-by-hand.md](add-a-time-by-hand.md).
 
-A typed time shows as `by hand` on the result, which is honest and stays visible. See
-[add-a-time-by-hand.md](add-a-time-by-hand.md).
+**Overruling the mats is done on the website, deliberately, once you know why the read is wrong:**
+
+- **One read is wrong** — a chip left by the line, a second crossing, a box out for ten minutes.
+  `Raw data`, `Chip times`, then `exclude` it or `correct…` it.
+- **The result needs a different time** — `Raw data`, `Splits`, press the time, `Use this time`. A time
+  put there stands whatever the mats read.
+
+**Both ask why, both are marked where anyone can see, and both can be undone** — `put back` for a read,
+`Undo` for a split. See [raw-data.md](raw-data.md).
+
+**Decide the reason before you touch anything.** Overruling a read because somebody is insistent,
+rather than because the reads show something wrong, is how one protest becomes three.
 
 ## Before you republish
 
@@ -79,6 +88,10 @@ complained, and publish.
 
 ## What you can always say
 
-**Nothing in Podium deletes a read, and no correction rewrites one.** Whatever was decided, the
-original reads are still there to be shown. A protest settled from the stored reads can be settled
-the same way again in a month when somebody asks about it.
+**No correction rewrites a read.** Whatever was decided, the original read is still there to be shown
+beside the decision and its reason. A protest settled from the stored reads can be settled the same
+way again in a month when somebody asks.
+
+**One caveat: a timing server can be set to clear chip times after a number of days.** It is off by
+default. If it is on, the splits are all that remain after that window — so settle a protest that
+might come late before it closes. `Raw data` says which applies.

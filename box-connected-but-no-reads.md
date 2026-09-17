@@ -3,7 +3,8 @@
 **Check it is actually reading.** Connected means the link is up. It does not mean the reader is
 running.
 
-The box card shows which. If it is not collecting, press `START`.
+The box's row shows which. If it is not collecting, start it — `Start` in Podium PC with the row
+selected, `START` in Podium Mobile.
 
 ## It says it is reading and still nothing arrives
 

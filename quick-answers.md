@@ -58,8 +58,13 @@ race's results. Written as `h:mm:ss`, `m:ss` or seconds. See
 **One rider has an extra lap.**
 Look at that rider's reads and which points they are on. A second mat that should only watch, or a
 lap mat covering the start line, is fixed in the setup and the laps recalculate. If they really went
-over the mat an extra time, reads are never deleted — mark them `Query` while it is decided. See
-[lap-count-is-wrong.md](lap-count-is-wrong.md).
+over the mat an extra time, `exclude` that one read on the website's `Raw data` tab — it stays on
+record and `put back` undoes it. See [lap-count-is-wrong.md](lap-count-is-wrong.md).
+
+**A read is plainly wrong. Can I take it out or change it?**
+Yes, on the website afterwards: `Raw data`, `Chip times`, find the read, then `exclude` or `correct…`.
+Or put the right time straight into `Splits`. Each asks why, is marked, and can be undone. A time typed
+with `By hand` at the event is different — it only fills a gap. See [raw-data.md](raw-data.md).
 
 **Does Podium work with no internet at the venue?**
 Timing does. Boxes keep their own logs and the apps store every read on the device, and results
