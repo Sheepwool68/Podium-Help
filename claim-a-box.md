@@ -32,3 +32,15 @@ characters and tells you nothing about which mat it is.
 
 **The name is not the timing point.** Naming a box calls it something; a timing point says where it
 is standing and what it is for. See [timing-points.md](timing-points.md).
+
+## What kind of box it is
+
+The box card says so, once the box has reported it: `Ultra/Joey` or `EchoBase`. An older Ultra and a
+Joey report the same thing and nothing else in what they send tells them apart, so the card names
+both rather than guessing at one.
+
+It matters because the two generations do not take the same set of commands. See
+[command-a-box.md](command-a-box.md).
+
+Firmware newer than the page has met shows as itself rather than being hidden, so an unfamiliar
+description there means "something newer is out in the field", not a fault.

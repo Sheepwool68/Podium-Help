@@ -12,8 +12,24 @@ starts.
 **The start is the local wall clock the readers are on.** Not UTC. It is the same clock a chip read
 carries, and that is what makes the two comparable.
 
-**Seconds count.** Times are measured from this moment, so a gun a minute out puts everybody in that
-wave a minute out.
+**Seconds count**, and they have a box of their own beside the time so they can actually be typed.
+Times are measured from this moment, so a gun a minute out puts everybody in that wave a minute out.
+
+**A gun outside its race window is refused.** The commonest way to get one wrong is not the time of
+day but the date — typed into a picker whose date half nobody re-reads, leaving the gun right to the
+second and days out. That failure is silent in both directions and ruinous in one: set late, nothing
+scores at all and no page says why; set early, every elapsed time is quietly wrong. So the box goes
+red while it is being typed, and a gun outside the race window will not save. If it is refused,
+check the date before the time.
+
+## Copying the guns from another event
+
+`copy from a previous event`, at the top of the `Wave starts` card.
+
+**Only a race here that shares a name with a race on the other event gets anything.** Each wave's
+gun keeps its time of day and moves onto this event's own date, which is the whole point — the same
+fixture next month starts at the same time of day. A wave already here with the same name is left
+alone.
 
 ## Anybody in no wave
 

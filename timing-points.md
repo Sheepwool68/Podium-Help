@@ -19,6 +19,35 @@ Mobile on the box card.
 fuzzy matching, and a finish typed slightly differently from the name on the reads scores nobody
 while looking exactly like a mat that did not work.
 
+## Changing a point after it is made
+
+**Click the point's name in the `Timing points` card.** Everything about it opens in one dialog —
+its name, what kind of point it is, the box standing there, the gate, the distance, and which visit
+it takes where several points share one box. Change what is wrong and press `Save`.
+
+Crossings are worked out from the reads every time results are read, so **a point corrected after
+the race applies to races already run.** Fix the point and the result follows; there is nothing to
+re-run.
+
+**Renaming carries hand-typed times with it.** A time typed by hand finds its point by name, so a
+rename that did not take them along would quietly orphan them. It does take them along.
+
+`Remove` takes the point off the event altogether. The reads stay — they belong to the box — so a
+point put back over the same window scores from them again.
+
+The course order is not in this dialog: it is the order of the rows, and the arrows on the row set
+it.
+
+## Copying the points from another event
+
+`copy from a previous event`, at the top of the `Timing points` card. Pick the event and press
+`Copy`.
+
+**A point already here, by name, is left alone.** Everything else comes across exactly as it was set
+up there — the box, the kind, the gate, the distance. Worth doing before anything else when a club
+runs the same course again, because it brings the gates with it and those are the settings most
+often got wrong by hand.
+
 ## What each kind does
 
 - **start** — a start is the **last** read of that visit. People roll onto the mat and wait for the

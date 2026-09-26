@@ -90,6 +90,27 @@ After that window, **a race is scored from its stored splits**, and `Splits` is 
 change a result. The results themselves are kept. If a protest might come late, settle it before the
 window closes.
 
+## One box's own reads
+
+Different place, different question. On `RFID Boxes`, open the box: its panel lists what that box
+has sent, whether or not it belongs to an event.
+
+**The newest few is not an answer on a busy mat.** Tags left sitting in an antenna field re-read
+themselves every few seconds and can lay down a thousand reads in three minutes, which buries the
+twenty-two chips that actually went past. So the list can be asked a question, the same way the
+event's reads can:
+
+- **`Chip`** — a code, and it lists every read of it.
+- **`Read at`** — a `from` and an `until`, **on the box's own clock**, matching the times in that
+  column. Not this computer's clock and not the server's: a box on Western Australian time reporting
+  to a server on London time is seven hours from it, and a window read off the wrong one finds
+  nothing.
+
+`25`, `50` and `All` sit beside the list.
+
+This is the view for "was that chip ever seen by this mat at all", before anything about events,
+entries or timing points comes into it.
+
 ## "There are no reads at all here"
 
 Then nothing arrived, and the question is the link rather than the scoring. See

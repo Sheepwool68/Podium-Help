@@ -84,3 +84,44 @@ Three at once over the network, and one over Bluetooth. See [limits.md](limits.m
 **What are gun time and chip time?**
 Gun time runs from the wave start. Chip time runs from that person's own start crossing. See
 [what-the-words-mean.md](what-the-words-mean.md).
+
+**I copied the entrants from another event and only a couple came across.**
+Only people who are entered in a race travel. Anybody sitting on the other event's list with no race
+against them is not copied at all. Look at that event's `Entrants` card: if most rows show no race,
+use `Enter everybody who is in no race` there, then copy again. See
+[entrants-and-numbers.md](entrants-and-numbers.md).
+
+**How do I take somebody out of the event completely?**
+Click their name in the `Entrants` card and press `Withdraw from event`. It keeps their entries,
+number and chip history, so anything already read against them is still answerable, and stops them
+being scored. Taking them out of one race is a different thing. See
+[entrants-and-numbers.md](entrants-and-numbers.md).
+
+**It will not let me delete somebody.**
+They have paid. Nothing a payment points at is deleted — not an entry, not an event, and an import
+undo leaves them alone too. Withdraw them instead. See [prices-and-payment.md](prices-and-payment.md).
+
+**Can I set this event up from last month's one?**
+Yes, in three pieces. `copy from a previous event` sits on the `Timing points`, `Wave starts` and
+`Entrants` cards and each copies its own part. Do the points first — they bring the gates with them.
+See [set-up-an-event.md](set-up-an-event.md).
+
+**It says my gun will not save / the gun box has gone red.**
+The gun is outside the race window, and it is nearly always the date rather than the time of day.
+Check the date first. See [wave-starts.md](wave-starts.md).
+
+**Can I delete an event?**
+Yes — `Delete this event` at the bottom of `Race setup`, with the password you sign in with. There
+is no undo, but **the raw reads stay**, so an event set up again over the same window and the same
+boxes scores from them again. An event somebody has paid to enter cannot be deleted. See
+[set-up-an-event.md](set-up-an-event.md).
+
+**How do I report a problem, or ask for a feature?**
+The `Support` tab on the website: `Report a problem` or `Can you build me that?`. It comes from your
+account, so the club, its boxes and its events are already known. Replies land in the thread and in
+the club's email. See [ask-for-help.md](ask-for-help.md).
+
+**Was that chip ever seen by that mat at all?**
+Open the box on `RFID Boxes` and filter its own read list by `Chip`. The `Read at` window is on the
+box's own clock, not yours. This answers it before anything about entries or timing points comes
+into it. See [raw-data.md](raw-data.md).

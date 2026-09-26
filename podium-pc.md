@@ -54,6 +54,23 @@ Click a row, then:
   not from this**, so a clock that reads oddly here is not by itself a reason to distrust the times.
 - **`Rewind...`** and **`Stop rewind`** — get reads back off the box. See
   [recover-missed-reads.md](recover-missed-reads.md).
+- **`Box settings...`** — the box's own settings: its antennas, its power and its network address.
+
+### Box settings
+
+**This is for the older boxes with no touchscreen**, which otherwise have nowhere for those settings
+to be set from.
+
+**What the dialog shows is read from the box, not from anything kept on this machine.** It asks the
+box when it opens, so a box that came back from a club is shown as whoever had it last left it, not
+as it was when it went out.
+
+`Double-click a row to change it`, then `Apply changes`. `Re-read` asks the box again.
+
+Which settings are offered depends on what the box answers with, because the generations do not hold
+the same ones. Change these only with a reason — antennas and power decide what the mat reads, and a
+box set wrongly here reads badly everywhere it goes afterwards. See
+[where-to-put-the-mat.md](where-to-put-the-mat.md).
 
 ### The counts under the grid
 
@@ -77,7 +94,7 @@ is done.**
 ### 1. Get the field
 
 **Pull the event from the timing server before you lose signal.** `Fetch list`, choose your event in
-the `Meeting` list, then `Pull this meeting`.
+the `Event` list, then `Pull this event`.
 
 Pulling brings the entrants, the chips handed out, the gun and everything the results need to match
 up afterwards. **`Import from file...`** reads a field from a file instead, and is the last resort —
@@ -168,6 +185,30 @@ recovered by rewind`. Then `Write a file` or `Send to the database`.
 
 **An export only reads.** It changes nothing stored, so it can be run during an event, run twice, or
 run again in a different format.
+
+### A file that keeps being written while the race runs
+
+**`Keep writing live...`** picks a file and then keeps writing to it as reads arrive, instead of
+writing one file once. For a commentary box or a scoreboard reading the file at the other end.
+
+**An existing file is joined, not overwritten.** Two boxes on the same timing point write into one
+file rather than the second one wiping what the first has been collecting all morning, and Podium PC
+restarted mid-race carries on with the file it was already writing.
+
+## Which version, and updating
+
+The version is on the window. **Podium PC checks for itself whether there is a newer one** and says
+so when there is; there is nothing to subscribe to and no separate updater.
+
+**It installs from a single file.** No .NET to install first and no administrator rights — it
+installs for the user who runs it, which is what lets it go onto a club laptop that somebody else
+locks down.
+
+## Podium Lite
+
+A licence for boxes in the field and the reads they send, without the scoring. On that licence the
+`Scoring` tab is greyed out and the website shows the `RFID Boxes` tab and nothing else. Everything
+about connecting, commanding and recovering from boxes works exactly as it does here.
 
 ## Two messages that sound alarming and are not
 

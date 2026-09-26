@@ -47,3 +47,16 @@ Only settled payments count. An attempt that never completed is not money anybod
 
 Somebody who entered online without paying, or who is entering on the day, can be marked as paid
 against their entry.
+
+## Nothing somebody has paid for is deleted
+
+Money has to stay answerable to something, so Podium refuses to delete anything a payment points at:
+
+- **An entry somebody has paid for cannot be removed** from its race.
+- **An event somebody has paid to enter cannot be deleted.** Close it instead.
+- **An import undo leaves anybody who has paid** where they are, even though it takes the rest of
+  that import back out.
+
+**Withdraw them instead.** It records that they are not racing and keeps the entry, the number and
+the payment together, so the club can still answer what it took the money for. See
+[entrants-and-numbers.md](entrants-and-numbers.md).

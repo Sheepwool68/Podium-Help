@@ -179,6 +179,47 @@ Three at once over the network, and one over Bluetooth. See the section on limit
 Gun time runs from the wave start. Chip time runs from that person's own start crossing. See
 the section on what-the-words-mean.
 
+**I copied the entrants from another event and only a couple came across.**
+Only people who are entered in a race travel. Anybody sitting on the other event's list with no race
+against them is not copied at all. Look at that event's `Entrants` card: if most rows show no race,
+use `Enter everybody who is in no race` there, then copy again. See
+the section on entrants-and-numbers.
+
+**How do I take somebody out of the event completely?**
+Click their name in the `Entrants` card and press `Withdraw from event`. It keeps their entries,
+number and chip history, so anything already read against them is still answerable, and stops them
+being scored. Taking them out of one race is a different thing. See
+the section on entrants-and-numbers.
+
+**It will not let me delete somebody.**
+They have paid. Nothing a payment points at is deleted — not an entry, not an event, and an import
+undo leaves them alone too. Withdraw them instead. See the section on prices-and-payment.
+
+**Can I set this event up from last month's one?**
+Yes, in three pieces. `copy from a previous event` sits on the `Timing points`, `Wave starts` and
+`Entrants` cards and each copies its own part. Do the points first — they bring the gates with them.
+See the section on set-up-an-event.
+
+**It says my gun will not save / the gun box has gone red.**
+The gun is outside the race window, and it is nearly always the date rather than the time of day.
+Check the date first. See the section on wave-starts.
+
+**Can I delete an event?**
+Yes — `Delete this event` at the bottom of `Race setup`, with the password you sign in with. There
+is no undo, but **the raw reads stay**, so an event set up again over the same window and the same
+boxes scores from them again. An event somebody has paid to enter cannot be deleted. See
+the section on set-up-an-event.
+
+**How do I report a problem, or ask for a feature?**
+The `Support` tab on the website: `Report a problem` or `Can you build me that?`. It comes from your
+account, so the club, its boxes and its events are already known. Replies land in the thread and in
+the club's email. See the section on ask-for-help.
+
+**Was that chip ever seen by that mat at all?**
+Open the box on `RFID Boxes` and filter its own read list by `Chip`. The `Read at` window is on the
+box's own clock, not yours. This answers it before anything about entries or timing points comes
+into it. See the section on raw-data.
+
 
 ---
 
@@ -403,6 +444,40 @@ is just a chip that went past something.**
 
 See the section on entrants-and-numbers.
 
+## Running the same fixture again
+
+Three cards on `Race setup` each carry a `copy from a previous event` button, and they copy
+different things. Use them in the order below and most of a repeat fixture sets itself up:
+
+1. **Timing points** — the box, the kind, the gate and the distance for every point that is not
+   already here by name. This is the one that saves the most, because gates are the setting most
+   often got wrong by hand.
+2. **Wave starts** — only into a race here that shares a name with a race there. Each gun keeps its
+   time of day and moves onto this event's own date.
+3. **Entrants** — everybody still entered over there, matched into a race here by name. Numbers,
+   waves and chips do not come with them.
+
+Each of them leaves alone anything already here with the same name, so running one twice does no
+harm. See the section on timing-points, the section on wave-starts and
+the section on entrants-and-numbers.
+
+## Deleting an event
+
+`Delete this event`, at the bottom of `Race setup`. **There is no undo.**
+
+Everything set up in the event goes with it: races, waves, categories, entrants, entries,
+crossings, saved views and the results.
+
+**The raw reads stay.** They belong to the boxes, not to the event, so an event set up again over
+the same window with the same boxes scores from them as though nothing had happened. That is the
+safety net, and it is the reason deleting an event is survivable at all.
+
+**An event somebody has paid to enter cannot be deleted.** Close that one instead — the money has to
+stay answerable to something.
+
+You are asked for the password you sign in with, typed, in a box that is not filled in for you. A
+session left open on a club laptop must not be able to delete a season of work with two clicks.
+
 ## Before the gun
 
 The `Not ready` card on `Race setup` is the check that matters. It lists the two ways somebody
@@ -441,6 +516,35 @@ Mobile on the box card.
 **The name has to match exactly.** `Finish` and `finish line` are different points. There is no
 fuzzy matching, and a finish typed slightly differently from the name on the reads scores nobody
 while looking exactly like a mat that did not work.
+
+## Changing a point after it is made
+
+**Click the point's name in the `Timing points` card.** Everything about it opens in one dialog —
+its name, what kind of point it is, the box standing there, the gate, the distance, and which visit
+it takes where several points share one box. Change what is wrong and press `Save`.
+
+Crossings are worked out from the reads every time results are read, so **a point corrected after
+the race applies to races already run.** Fix the point and the result follows; there is nothing to
+re-run.
+
+**Renaming carries hand-typed times with it.** A time typed by hand finds its point by name, so a
+rename that did not take them along would quietly orphan them. It does take them along.
+
+`Remove` takes the point off the event altogether. The reads stay — they belong to the box — so a
+point put back over the same window scores from them again.
+
+The course order is not in this dialog: it is the order of the rows, and the arrows on the row set
+it.
+
+## Copying the points from another event
+
+`copy from a previous event`, at the top of the `Timing points` card. Pick the event and press
+`Copy`.
+
+**A point already here, by name, is left alone.** Everything else comes across exactly as it was set
+up there — the box, the kind, the gate, the distance. Worth doing before anything else when a club
+runs the same course again, because it brings the gates with it and those are the settings most
+often got wrong by hand.
 
 ## What each kind does
 
@@ -524,8 +628,24 @@ starts.
 **The start is the local wall clock the readers are on.** Not UTC. It is the same clock a chip read
 carries, and that is what makes the two comparable.
 
-**Seconds count.** Times are measured from this moment, so a gun a minute out puts everybody in that
-wave a minute out.
+**Seconds count**, and they have a box of their own beside the time so they can actually be typed.
+Times are measured from this moment, so a gun a minute out puts everybody in that wave a minute out.
+
+**A gun outside its race window is refused.** The commonest way to get one wrong is not the time of
+day but the date — typed into a picker whose date half nobody re-reads, leaving the gun right to the
+second and days out. That failure is silent in both directions and ruinous in one: set late, nothing
+scores at all and no page says why; set early, every elapsed time is quietly wrong. So the box goes
+red while it is being typed, and a gun outside the race window will not save. If it is refused,
+check the date before the time.
+
+## Copying the guns from another event
+
+`copy from a previous event`, at the top of the `Wave starts` card.
+
+**Only a race here that shares a name with a race on the other event gets anything.** Each wave's
+gun keeps its time of day and moves onto this event's own date, which is the whole point — the same
+fixture next month starts at the same time of day. A wave already here with the same name is left
+alone.
 
 ## Anybody in no wave
 
@@ -657,6 +777,28 @@ no category and no wave and will never appear in a result.**
 Use `Enter everybody who is in no race`: pick the race, `Count` to see how many, then `Enter them`.
 It only touches people who are in no race at all.
 
+## Copying the entrants from another event
+
+`copy from a previous event`, at the top of the `Entrants` card. Pick the event to copy from and
+press `Copy`. Useful where the same club runs the same fixture again, or keeps a membership list on
+one event and draws each race from it.
+
+**Only people who are entered in a race come across.** Somebody sitting on the other event's list
+with no race against them is not copied at all — and that is the usual reason a copy brings two
+people instead of two hundred. Look at the other event's `Entrants` card first: if most rows show no
+race, fix that there and copy again. `Enter everybody who is in no race` on the source event puts
+them all in one, which is normally what is wanted.
+
+**They are matched into a race here by name.** A race called `Short` on the other event lands in the
+race called `Short` here. A race whose name does not exist here gets nobody, so build the races
+first, spelled the same way.
+
+**Numbers, waves and chips are not carried over.** Those belong to the event they were set on. Hand
+out numbers and waves here as usual; for chips there is a separate route that does carry them, below.
+
+It is an import like any other, so it can be undone the same way, under `Import a list, hand out
+numbers, place by age`.
+
 ## Race numbers
 
 `Allocate numbers` hands them out from a starting number. Tick `in category order` to group them.
@@ -709,6 +851,25 @@ too unless you untick it.
 
 Nobody's existing chip or number is overwritten, and two people with the same name and birthday are
 left for you to do by hand. `Check` first, then `Carry over`.
+
+## Somebody is not racing after all
+
+Click their name in the `Entrants` card. Three different things, and they are not
+interchangeable:
+
+- **`Withdraw from event`** — they are out of the whole event. Their entries, their number and their
+  chip history stay, so anything already read against them is still answerable; they simply stop
+  being scored, and the list shows them as `withdrawn`. This is the one to use when somebody does
+  not turn up. It cannot be undone from that dialog.
+- **Taking them out of one race** — leave them in the event and remove that entry. Use this when
+  they are moving down from the long course to the short one, not when they are going home.
+- **Changing the race they are in** — pick the other race on their sheet. **The wave empties when
+  the race changes**, because a wave belongs to a race; choose the new wave before you save.
+
+**Nobody who has paid is deleted.** An entry somebody has paid for cannot be removed, and an import
+undo leaves anybody who has paid where they are. The money has to stay answerable to something.
+Withdraw them instead — it records that they are not racing and keeps the entry, the number and the
+payment together. See the section on prices-and-payment.
 
 ## Before the gun, check "Not ready"
 
@@ -890,6 +1051,19 @@ Only settled payments count. An attempt that never completed is not money anybod
 Somebody who entered online without paying, or who is entering on the day, can be marked as paid
 against their entry.
 
+## Nothing somebody has paid for is deleted
+
+Money has to stay answerable to something, so Podium refuses to delete anything a payment points at:
+
+- **An entry somebody has paid for cannot be removed** from its race.
+- **An event somebody has paid to enter cannot be deleted.** Close it instead.
+- **An import undo leaves anybody who has paid** where they are, even though it takes the rest of
+  that import back out.
+
+**Withdraw them instead.** It records that they are not racing and keeps the entry, the number and
+the payment together, so the club can still answer what it took the money for. See
+the section on entrants-and-numbers.
+
 
 ---
 
@@ -907,11 +1081,44 @@ the section on nothing-scores-at-all.
 
 ## Layouts
 
-`How to show it` chooses the layout. **Choose the lap-race layout to show the lap columns** beside
-the placings — a criterium is scored as a normal race, and this is how you see who was lapped.
+The second dropdown on the `Results` card, beside the one that picks the race, chooses how the
+result is laid out. There are eight, and they are the whole set — a club does not build its own:
 
-The layout you are looking at is not automatically the one the public sees. Press **`Use for the
-public page`** to set it.
+- **`Overall`** — the ordinary placings.
+- **`Net and gun`** — each person's own time and their time from the gun, side by side. For a race
+  with a big field starting in one go, where both numbers matter.
+- **`By category`** — placings within each age band.
+- **`Splits`** — a column per point on the course. **A race can be shown this way before anybody has
+  run**, which is when somebody usually wants to see the legs laid out.
+- **`Handicap`** — the time less the handicap.
+- **`Lap race`** — the lap columns beside the placings. A criterium is scored as a normal race, and
+  this is how you see who was lapped.
+- **`Leaderboard`** — the running order of a race that is happening now: where each person has
+  reached, the leg they have just done, and their best of the day.
+- **`Points`** — what each finisher earned.
+
+**`Save` sets the layout the public sees**, along with the `public` tick beside it. There is no
+separate button for it any more.
+
+**The choice belongs to the race it was made on.** Pick `Splits` on the long course and switch to
+the short course, and the short course opens on whatever was saved against it, not on `Splits`.
+Switch back and the long course still has its own.
+
+## What the public page looks like
+
+The `Web Results` link in the tab strip opens it — one click from the desk to what everybody else is
+seeing.
+
+A live race **opens on the running order** rather than on the entry order, so the page is useful
+before anybody has finished.
+
+The event's own logo sits at the top of its results, with the headings in the logo's red, so a sheet
+belongs to the club whose event it is.
+
+**Gender is a coloured letter** on the layouts that show it — `F` in pink, `M` in dark blue — with
+the word itself on hover, because colour alone is no use to every reader and a sheet printed in
+black and white would otherwise say only a letter. Anything else the entry says keeps its own first
+letter in ordinary ink.
 
 ## Publishing — making results public
 
@@ -1093,6 +1300,27 @@ After that window, **a race is scored from its stored splits**, and `Splits` is 
 change a result. The results themselves are kept. If a protest might come late, settle it before the
 window closes.
 
+## One box's own reads
+
+Different place, different question. On `RFID Boxes`, open the box: its panel lists what that box
+has sent, whether or not it belongs to an event.
+
+**The newest few is not an answer on a busy mat.** Tags left sitting in an antenna field re-read
+themselves every few seconds and can lay down a thousand reads in three minutes, which buries the
+twenty-two chips that actually went past. So the list can be asked a question, the same way the
+event's reads can:
+
+- **`Chip`** — a code, and it lists every read of it.
+- **`Read at`** — a `from` and an `until`, **on the box's own clock**, matching the times in that
+  column. Not this computer's clock and not the server's: a box on Western Australian time reporting
+  to a server on London time is seven hours from it, and a window read off the wrong one finds
+  nothing.
+
+`25`, `50` and `All` sit beside the list.
+
+This is the view for "was that chip ever seen by this mat at all", before anything about events,
+entries or timing points comes into it.
+
 ## "There are no reads at all here"
 
 Then nothing arrived, and the question is the link rather than the scoring. See
@@ -1142,6 +1370,18 @@ characters and tells you nothing about which mat it is.
 
 **The name is not the timing point.** Naming a box calls it something; a timing point says where it
 is standing and what it is for. See the section on timing-points.
+
+## What kind of box it is
+
+The box card says so, once the box has reported it: `Ultra/Joey` or `EchoBase`. An older Ultra and a
+Joey report the same thing and nothing else in what they send tells them apart, so the card names
+both rather than guessing at one.
+
+It matters because the two generations do not take the same set of commands. See
+the section on command-a-box.
+
+Firmware newer than the page has met shows as itself rather than being hidden, so an unfamiliar
+description there means "something newer is out in the field", not a fault.
 
 
 ---
@@ -1247,6 +1487,23 @@ Click a row, then:
   not from this**, so a clock that reads oddly here is not by itself a reason to distrust the times.
 - **`Rewind...`** and **`Stop rewind`** — get reads back off the box. See
   the section on recover-missed-reads.
+- **`Box settings...`** — the box's own settings: its antennas, its power and its network address.
+
+### Box settings
+
+**This is for the older boxes with no touchscreen**, which otherwise have nowhere for those settings
+to be set from.
+
+**What the dialog shows is read from the box, not from anything kept on this machine.** It asks the
+box when it opens, so a box that came back from a club is shown as whoever had it last left it, not
+as it was when it went out.
+
+`Double-click a row to change it`, then `Apply changes`. `Re-read` asks the box again.
+
+Which settings are offered depends on what the box answers with, because the generations do not hold
+the same ones. Change these only with a reason — antennas and power decide what the mat reads, and a
+box set wrongly here reads badly everywhere it goes afterwards. See
+the section on where-to-put-the-mat.
 
 ### The counts under the grid
 
@@ -1270,7 +1527,7 @@ is done.**
 ### 1. Get the field
 
 **Pull the event from the timing server before you lose signal.** `Fetch list`, choose your event in
-the `Meeting` list, then `Pull this meeting`.
+the `Event` list, then `Pull this event`.
 
 Pulling brings the entrants, the chips handed out, the gun and everything the results need to match
 up afterwards. **`Import from file...`** reads a field from a file instead, and is the last resort —
@@ -1362,6 +1619,30 @@ recovered by rewind`. Then `Write a file` or `Send to the database`.
 **An export only reads.** It changes nothing stored, so it can be run during an event, run twice, or
 run again in a different format.
 
+### A file that keeps being written while the race runs
+
+**`Keep writing live...`** picks a file and then keeps writing to it as reads arrive, instead of
+writing one file once. For a commentary box or a scoreboard reading the file at the other end.
+
+**An existing file is joined, not overwritten.** Two boxes on the same timing point write into one
+file rather than the second one wiping what the first has been collecting all morning, and Podium PC
+restarted mid-race carries on with the file it was already writing.
+
+## Which version, and updating
+
+The version is on the window. **Podium PC checks for itself whether there is a newer one** and says
+so when there is; there is nothing to subscribe to and no separate updater.
+
+**It installs from a single file.** No .NET to install first and no administrator rights — it
+installs for the user who runs it, which is what lets it go onto a club laptop that somebody else
+locks down.
+
+## Podium Lite
+
+A licence for boxes in the field and the reads they send, without the scoring. On that licence the
+`Scoring` tab is greyed out and the website shows the `RFID Boxes` tab and nothing else. Everything
+about connecting, commanding and recovering from boxes works exactly as it does here.
+
 ## Two messages that sound alarming and are not
 
 - **"Grid cleared. Stored reads are untouched."** Clearing the grid tidies the screen.
@@ -1386,6 +1667,10 @@ are.** Standing on the boxes, it says `Reads`. It goes round `Boxes`, `Reads`, `
 If somebody says "I pressed Reads and I'm looking at the results", that is why.
 
 The other buttons: `Help`, `Add`, `Settings` and `By hand`.
+
+**The version is on the title bar**, beside the name, so "which build is this phone on" is answered
+by looking at the top of the screen. Podium Mobile also checks for itself whether a newer one exists
+and says so when there is.
 
 `START` and `STOP` are there on `Boxes` and `Reads`. They are hidden on `Result`, where the race is
 being looked at and the row would only be somewhere to press the wrong thing.
@@ -1422,6 +1707,18 @@ into a free slot. There is nothing to press per box.
 
 **If a box stops reading, the phone says so out loud** — a short tone, then the words — because the
 person holding it is watching the course, not the screen.
+
+### How strong the link is
+
+A box reached over Bluetooth carries **the phone's own signal to that box**, behind the link line and
+coloured green, yellow or red. It is the phone's view of the link, not the box's view of the chips.
+
+**Red is a distance problem, and it reads as one before the box goes quiet** rather than after. Move
+the phone closer, or put it somewhere with less between it and the box — a car body, a crowd or a
+wet marquee all cost signal. See the section on box-will-not-connect.
+
+The signals are measured one link at a time, taken in turn, so on a phone holding several boxes each
+figure updates every few seconds rather than all at once. A figure a moment old is normal.
 
 ## Choosing the race
 
@@ -2800,6 +3097,58 @@ Their reads reach the server by themselves, and neither app holds a link to them
 It cannot recover a read the box never took. If somebody was not wearing a chip, or the mat never saw
 them, there is nothing in the log to fetch. Type the time in instead:
 the section on add-a-time-by-hand.
+
+
+---
+
+# Asking RFID Timing for help, or for something to be built
+
+On the website: the `Support` tab.
+
+It is raised from the account the club is signed in to, so the club, its boxes and what it has timed
+are already known. There is nothing to describe about the setup and no reference number to quote.
+
+## The two kinds
+
+Two buttons, and they go to the same place — the difference is what is wanted:
+
+- **`Report a problem`** — something is not working, or is not doing what was expected. Say what you
+  were doing, what you expected, and what happened instead. There is no need to describe the boxes
+  or the events; those are already visible from the account.
+- **`Can you build me that?`** — Podium does not do something, and you would like it to. Say what
+  you would like it to do and when you would use it. The answer says what can be done and roughly
+  when, and it is a real answer rather than a queue number.
+
+Give it a one-line subject and write the request, then `Send`.
+
+## What happens next
+
+An acknowledgement appears straight away, in the thread, saying what the account shows — the boxes,
+the events, the entrants and the reads on record. It is there so you can see the request arrived
+against the right club.
+
+**Replies appear in the same thread, and are emailed to the club's contact email**, so there is no
+need to sit on the page. Set that address under `Club` if it is not right.
+
+You can add to a thread at any time — the reply box is at the bottom of it. Anything added lands on
+the same conversation rather than starting a new one.
+
+## During a race
+
+**Do not wait on this if a race is running.** A request is read by a person, not answered by a
+machine, so it is the right route for "this is wrong and we need it fixed" and the wrong route for
+"the finish mat has stopped and the field is coming". For that, work the fault: the pages here on a
+box that will not connect, a box connected with nothing coming through, or reads that stopped part
+way through are the fastest way back to timing the race.
+
+Whatever happens, **the reads are safe** — they are kept on the box and can be fetched again
+afterwards. See the section on recover-missed-reads and
+the section on back-everything-up.
+
+## From Podium PC and Podium Mobile
+
+Those two have a `Help` button of their own, which answers from this same help and can copy the
+whole of it out for an assistant to read. A request raised to RFID Timing is raised on the website.
 
 
 ---

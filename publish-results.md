@@ -12,11 +12,44 @@ If nothing scores at all, Podium says why. See
 
 ## Layouts
 
-`How to show it` chooses the layout. **Choose the lap-race layout to show the lap columns** beside
-the placings — a criterium is scored as a normal race, and this is how you see who was lapped.
+The second dropdown on the `Results` card, beside the one that picks the race, chooses how the
+result is laid out. There are eight, and they are the whole set — a club does not build its own:
 
-The layout you are looking at is not automatically the one the public sees. Press **`Use for the
-public page`** to set it.
+- **`Overall`** — the ordinary placings.
+- **`Net and gun`** — each person's own time and their time from the gun, side by side. For a race
+  with a big field starting in one go, where both numbers matter.
+- **`By category`** — placings within each age band.
+- **`Splits`** — a column per point on the course. **A race can be shown this way before anybody has
+  run**, which is when somebody usually wants to see the legs laid out.
+- **`Handicap`** — the time less the handicap.
+- **`Lap race`** — the lap columns beside the placings. A criterium is scored as a normal race, and
+  this is how you see who was lapped.
+- **`Leaderboard`** — the running order of a race that is happening now: where each person has
+  reached, the leg they have just done, and their best of the day.
+- **`Points`** — what each finisher earned.
+
+**`Save` sets the layout the public sees**, along with the `public` tick beside it. There is no
+separate button for it any more.
+
+**The choice belongs to the race it was made on.** Pick `Splits` on the long course and switch to
+the short course, and the short course opens on whatever was saved against it, not on `Splits`.
+Switch back and the long course still has its own.
+
+## What the public page looks like
+
+The `Web Results` link in the tab strip opens it — one click from the desk to what everybody else is
+seeing.
+
+A live race **opens on the running order** rather than on the entry order, so the page is useful
+before anybody has finished.
+
+The event's own logo sits at the top of its results, with the headings in the logo's red, so a sheet
+belongs to the club whose event it is.
+
+**Gender is a coloured letter** on the layouts that show it — `F` in pink, `M` in dark blue — with
+the word itself on hover, because colour alone is no use to every reader and a sheet printed in
+black and white would otherwise say only a letter. Anything else the entry says keeps its own first
+letter in ordinary ink.
 
 ## Publishing — making results public
 

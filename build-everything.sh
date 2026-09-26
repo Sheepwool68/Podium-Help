@@ -16,7 +16,7 @@ runner-shows-no-time.md one-time-looks-wrong.md every-time-is-out-by-the-same.md
 a-split-is-missing.md lap-count-is-wrong.md box-will-not-connect.md \
 box-connected-but-no-reads.md reads-stopped-during-a-race.md \
 results-not-reaching-the-server.md add-a-time-by-hand.md correct-a-box-clock.md \
-recover-missed-reads.md limits.md"
+recover-missed-reads.md ask-for-help.md limits.md"
 
 {
   cat <<'HDR'

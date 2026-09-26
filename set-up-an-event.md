@@ -66,6 +66,40 @@ is just a chip that went past something.**
 
 See [entrants-and-numbers.md](entrants-and-numbers.md).
 
+## Running the same fixture again
+
+Three cards on `Race setup` each carry a `copy from a previous event` button, and they copy
+different things. Use them in the order below and most of a repeat fixture sets itself up:
+
+1. **Timing points** — the box, the kind, the gate and the distance for every point that is not
+   already here by name. This is the one that saves the most, because gates are the setting most
+   often got wrong by hand.
+2. **Wave starts** — only into a race here that shares a name with a race there. Each gun keeps its
+   time of day and moves onto this event's own date.
+3. **Entrants** — everybody still entered over there, matched into a race here by name. Numbers,
+   waves and chips do not come with them.
+
+Each of them leaves alone anything already here with the same name, so running one twice does no
+harm. See [timing-points.md](timing-points.md), [wave-starts.md](wave-starts.md) and
+[entrants-and-numbers.md](entrants-and-numbers.md).
+
+## Deleting an event
+
+`Delete this event`, at the bottom of `Race setup`. **There is no undo.**
+
+Everything set up in the event goes with it: races, waves, categories, entrants, entries,
+crossings, saved views and the results.
+
+**The raw reads stay.** They belong to the boxes, not to the event, so an event set up again over
+the same window with the same boxes scores from them as though nothing had happened. That is the
+safety net, and it is the reason deleting an event is survivable at all.
+
+**An event somebody has paid to enter cannot be deleted.** Close that one instead — the money has to
+stay answerable to something.
+
+You are asked for the password you sign in with, typed, in a box that is not filled in for you. A
+session left open on a club laptop must not be able to delete a season of work with two clicks.
+
 ## Before the gun
 
 The `Not ready` card on `Race setup` is the check that matters. It lists the two ways somebody

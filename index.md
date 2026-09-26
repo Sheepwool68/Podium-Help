@@ -127,6 +127,7 @@ list of things Podium deliberately will not do, and most "can it..." questions a
 | Claim, release or name a box | [claim-a-box.md](claim-a-box.md) |
 | Start, stop or configure a box from the website | [command-a-box.md](command-a-box.md) |
 | Go back to the reads themselves, or settle a protest | [raw-data.md](raw-data.md) |
+| Report a problem to RFID Timing, or ask for something to be built | [ask-for-help.md](ask-for-help.md) |
 
 ## Timing a race on the ground
 

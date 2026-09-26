@@ -46,6 +46,28 @@ no category and no wave and will never appear in a result.**
 Use `Enter everybody who is in no race`: pick the race, `Count` to see how many, then `Enter them`.
 It only touches people who are in no race at all.
 
+## Copying the entrants from another event
+
+`copy from a previous event`, at the top of the `Entrants` card. Pick the event to copy from and
+press `Copy`. Useful where the same club runs the same fixture again, or keeps a membership list on
+one event and draws each race from it.
+
+**Only people who are entered in a race come across.** Somebody sitting on the other event's list
+with no race against them is not copied at all — and that is the usual reason a copy brings two
+people instead of two hundred. Look at the other event's `Entrants` card first: if most rows show no
+race, fix that there and copy again. `Enter everybody who is in no race` on the source event puts
+them all in one, which is normally what is wanted.
+
+**They are matched into a race here by name.** A race called `Short` on the other event lands in the
+race called `Short` here. A race whose name does not exist here gets nobody, so build the races
+first, spelled the same way.
+
+**Numbers, waves and chips are not carried over.** Those belong to the event they were set on. Hand
+out numbers and waves here as usual; for chips there is a separate route that does carry them, below.
+
+It is an import like any other, so it can be undone the same way, under `Import a list, hand out
+numbers, place by age`.
+
 ## Race numbers
 
 `Allocate numbers` hands them out from a starting number. Tick `in category order` to group them.
@@ -98,6 +120,25 @@ too unless you untick it.
 
 Nobody's existing chip or number is overwritten, and two people with the same name and birthday are
 left for you to do by hand. `Check` first, then `Carry over`.
+
+## Somebody is not racing after all
+
+Click their name in the `Entrants` card. Three different things, and they are not
+interchangeable:
+
+- **`Withdraw from event`** — they are out of the whole event. Their entries, their number and their
+  chip history stay, so anything already read against them is still answerable; they simply stop
+  being scored, and the list shows them as `withdrawn`. This is the one to use when somebody does
+  not turn up. It cannot be undone from that dialog.
+- **Taking them out of one race** — leave them in the event and remove that entry. Use this when
+  they are moving down from the long course to the short one, not when they are going home.
+- **Changing the race they are in** — pick the other race on their sheet. **The wave empties when
+  the race changes**, because a wave belongs to a race; choose the new wave before you save.
+
+**Nobody who has paid is deleted.** An entry somebody has paid for cannot be removed, and an import
+undo leaves anybody who has paid where they are. The money has to stay answerable to something.
+Withdraw them instead — it records that they are not racing and keeps the entry, the number and the
+payment together. See [prices-and-payment.md](prices-and-payment.md).
 
 ## Before the gun, check "Not ready"
 

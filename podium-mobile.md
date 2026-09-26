@@ -12,6 +12,10 @@ If somebody says "I pressed Reads and I'm looking at the results", that is why.
 
 The other buttons: `Help`, `Add`, `Settings` and `By hand`.
 
+**The version is on the title bar**, beside the name, so "which build is this phone on" is answered
+by looking at the top of the screen. Podium Mobile also checks for itself whether a newer one exists
+and says so when there is.
+
 `START` and `STOP` are there on `Boxes` and `Reads`. They are hidden on `Result`, where the race is
 being looked at and the row would only be somewhere to press the wrong thing.
 
@@ -47,6 +51,18 @@ into a free slot. There is nothing to press per box.
 
 **If a box stops reading, the phone says so out loud** — a short tone, then the words — because the
 person holding it is watching the course, not the screen.
+
+### How strong the link is
+
+A box reached over Bluetooth carries **the phone's own signal to that box**, behind the link line and
+coloured green, yellow or red. It is the phone's view of the link, not the box's view of the chips.
+
+**Red is a distance problem, and it reads as one before the box goes quiet** rather than after. Move
+the phone closer, or put it somewhere with less between it and the box — a car body, a crowd or a
+wet marquee all cost signal. See [box-will-not-connect.md](box-will-not-connect.md).
+
+The signals are measured one link at a time, taken in turn, so on a phone holding several boxes each
+figure updates every few seconds rather than all at once. A figure a moment old is normal.
 
 ## Choosing the race
 
