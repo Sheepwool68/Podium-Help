@@ -39,6 +39,11 @@ The box card says so, once the box has reported it: `Ultra/Joey` or `EchoBase`. 
 Joey report the same thing and nothing else in what they send tells them apart, so the card names
 both rather than guessing at one.
 
+**Podium PC can tell them apart, and the card cannot.** Press `Discover` there with the box on the
+same network and it answers with its own name and firmware version — `Ultra v1.59`, `JOEY v1.12` —
+which is what its `Type` column then shows. That is a question only asked on a network, so it is not
+something the card can ever answer about a box reporting from a distance.
+
 It matters because the two generations do not take the same set of commands. See
 [command-a-box.md](command-a-box.md).
 

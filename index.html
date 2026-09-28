@@ -1472,6 +1472,11 @@ The box card says so, once the box has reported it: `Ultra/Joey` or `EchoBase`. 
 Joey report the same thing and nothing else in what they send tells them apart, so the card names
 both rather than guessing at one.
 
+**Podium PC can tell them apart, and the card cannot.** Press `Discover` there with the box on the
+same network and it answers with its own name and firmware version — `Ultra v1.59`, `JOEY v1.12` —
+which is what its `Type` column then shows. That is a question only asked on a network, so it is not
+something the card can ever answer about a box reporting from a distance.
+
 It matters because the two generations do not take the same set of commands. See
 the section on command-a-box.
 
@@ -1556,7 +1561,7 @@ sent somewhere, carries on working, and the race, the gun and anything typed at 
 ### The grid
 
 One row per box. The columns: `#`, `Link`, `Device`, `Address/Port`, `Timing point`, `State`, `Mode`,
-`Relay`, `Reads`, `Last read`, `Beat`, `Battery`, and a `Connect` button at the end of the row.
+`Type`, `Relay`, `Reads`, `Last read`, `Beat`, `Battery`, and a `Connect` button at the end of the row.
 
 **Two columns are yours to type in: `Address/Port` and `Timing point`.** Everything else is what the
 box reports.
@@ -1567,6 +1572,11 @@ box reports.
   the section on timing-points.
 - **`Link`** shows how the box is reached. A relay box shows two: the network to its master, then
   Bluetooth.
+- **`Type`** says what kind of box it is: `Ultra`, `Joey` or `Echo`. Hover it for the box's firmware
+  version, which is not shown anywhere else. **Only `Discover` on the same network can tell an Ultra
+  from a Joey** — what a box sends over 4G reads the same for both — so a box that has only reported
+  from a distance shows `Ultra/Joey` rather than guessing between them. Discover it once on a network
+  and it is remembered from then on. An Ultra and a Joey read UHF only, so their `Mode` is always UHF.
 - **`Relay`** says which end of a relay a box is, when it is one.
 
 ### The box you have selected
@@ -1593,11 +1603,24 @@ to be set from.
 box when it opens, so a box that came back from a club is shown as whoever had it last left it, not
 as it was when it went out.
 
+The heading names the box and its firmware once it has been discovered on the network — `JOEY v1.12`,
+`Ultra v1.59` — and says `UHF only` for those two.
+
 `Double-click a row to change it`, then `Apply changes`. `Re-read` asks the box again.
 
-Which settings are offered depends on what the box answers with, because the generations do not hold
-the same ones. Change these only with a reason — antennas and power decide what the mat reads, and a
-box set wrongly here reads badly everywhere it goes afterwards. See
+**Only the settings that box will actually take back are listed.** The generations do not accept the
+same ones, and a field that quietly does nothing is worse than no field: somebody sets the power
+before a race and believes it took. So a setting missing from the list is one this box will not take,
+not one that has been forgotten.
+
+**`When it can be set`** is the last column, and it is the one to read before a race. `Any time` means
+what it says. **`Stop the box first`** means the box ignores that setting while it is reading — and it
+does not complain, it accepts the change and drops it. Stop the box, change it, then start it again.
+Either way the value is read back from the box afterwards, so what you end up looking at is what the
+box actually took.
+
+Change these only with a reason — antennas and power decide what the mat reads, and a box set wrongly
+here reads badly everywhere it goes afterwards. See
 the section on where-to-put-the-mat.
 
 ### The counts under the grid
