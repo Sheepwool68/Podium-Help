@@ -48,6 +48,35 @@ up there — the box, the kind, the gate, the distance. Worth doing before anyth
 runs the same course again, because it brings the gates with it and those are the settings most
 often got wrong by hand.
 
+This button copies the event's own points. To bring the split sets as well, copy the whole event
+instead — see `Copy this event` in [set-up-an-event.md](set-up-an-event.md).
+
+## Splits that only some races pass
+
+A point belongs to the event, and every race at the event is scored from it. That is right for the
+shared finish and wrong for the middle of the course: a 10 km and a 5 km off one line do not pass
+the same splits, and a 5 km field was being scored against a 7.5 km mat it never went near.
+
+A **split set** is a named group of points and the races that count them.
+
+- `advanced: new split set` on the `Timing points` card. Name it after the races it covers — `10 km`
+  reads better than `two extra mats` — and tick **Counted by these races**.
+- Put the points that are not shared into the set. A point left in no set stays the event's own and
+  **every race still counts it**, so the finish everybody crosses is named once, with one box to get
+  right.
+- Once a set exists, a `Showing` chooser appears above the points list. Pick a set to see the course
+  one of those races actually has; pick the event's own points to see what a race with no set is
+  scored from. Points in a set carry the set's name beside them in the list.
+- A set with no races ticked scores nothing and harms nothing — it is just waiting for you to tick
+  them.
+
+**Why it matters beyond a missing split:** the software tells two points on the same box apart by
+counting the passes along a course. Add a split for one race and, without sets, the shared finish
+would become somebody else's second pass — and then score a perfectly plausible time off a crossing
+that belongs to nobody in that race. Within a set, the counting is done on that race's own points.
+
+Nothing changes until you make a set. An event with no sets behaves exactly as it always did.
+
 ## What each kind does
 
 - **start** — a start is the **last** read of that visit. People roll onto the mat and wait for the

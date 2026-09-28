@@ -19,6 +19,23 @@ You do not need to — a race is public from the start. To hide one, untick `pub
 `Results` tab and press `Save`. An event with every race hidden does not appear on the public site
 at all. See [publish-results.md](publish-results.md).
 
+**We run the same event every week. Do I have to build it again each time?**
+No. `Copy this event` on `Race setup`: a name, a date, press `Copy it`. The new event comes with the
+races, waves, categories, timing points, splits, prices, points table, the whole entrant list and
+their chip numbers, and every start keeps its time of day. Nobody is put in a race — use
+`Enter everybody who is in no race` on each race once you have sorted them. Tick boxes let you leave
+any of it behind. See [set-up-an-event.md](set-up-an-event.md).
+
+**Can I copy an event without the registrations?**
+Yes. Untick `registrations` before pressing `Copy it` and you get the setup with nobody on it.
+Everything is ticked by default. Two of them depend on another: prices need the races, and chip
+numbers need the registrations. See [set-up-an-event.md](set-up-an-event.md).
+
+**Two races at my event pass different splits. How do I stop one being scored against the other's mat?**
+Make a split set: `advanced: new split set` on the `Timing points` card, name it, and tick the races
+that count it. Points left in no set stay the event's own and every race counts them, which is what
+you want for the shared finish. See [timing-points.md](timing-points.md).
+
 **How do I tell Podium which box is the finish?**
 Two steps. Give the box a timing point name where it stands, then say which point is the finish.
 In Podium PC: name it in the reader grid on `Readers`, then choose it as `Finish` on the `Scoring`

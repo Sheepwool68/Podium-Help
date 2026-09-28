@@ -52,11 +52,10 @@ It only touches people who are in no race at all.
 press `Copy`. Useful where the same club runs the same fixture again, or keeps a membership list on
 one event and draws each race from it.
 
-**Only people who are entered in a race come across.** Somebody sitting on the other event's list
-with no race against them is not copied at all — and that is the usual reason a copy brings two
-people instead of two hundred. Look at the other event's `Entrants` card first: if most rows show no
-race, fix that there and copy again. `Enter everybody who is in no race` on the source event puts
-them all in one, which is normally what is wanted.
+**Everybody on the other event's list comes across, whether or not they were in a race there.**
+Somebody registered but never placed into a race lands here as a person with no race, ready to be
+put in one. (Until late September 2026 those people were skipped, which is why an older copy could
+bring two people instead of two hundred.)
 
 **They are matched into a race here by name.** A race called `Short` on the other event lands in the
 race called `Short` here. A race whose name does not exist here gets nobody, so build the races
@@ -64,6 +63,10 @@ first, spelled the same way.
 
 **Numbers, waves and chips are not carried over.** Those belong to the event they were set on. Hand
 out numbers and waves here as usual; for chips there is a separate route that does carry them, below.
+
+**If you want the whole meeting rather than the people, use `Copy this event` instead** — it makes a
+new event with the races, the points, the prices and the roster in one press, and it does bring the
+chip numbers. See [set-up-an-event.md](set-up-an-event.md).
 
 It is an import like any other, so it can be undone the same way, under `Import a list, hand out
 numbers, place by age`.

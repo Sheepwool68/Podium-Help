@@ -113,6 +113,23 @@ You do not need to — a race is public from the start. To hide one, untick `pub
 `Results` tab and press `Save`. An event with every race hidden does not appear on the public site
 at all. See the section on publish-results.
 
+**We run the same event every week. Do I have to build it again each time?**
+No. `Copy this event` on `Race setup`: a name, a date, press `Copy it`. The new event comes with the
+races, waves, categories, timing points, splits, prices, points table, the whole entrant list and
+their chip numbers, and every start keeps its time of day. Nobody is put in a race — use
+`Enter everybody who is in no race` on each race once you have sorted them. Tick boxes let you leave
+any of it behind. See the section on set-up-an-event.
+
+**Can I copy an event without the registrations?**
+Yes. Untick `registrations` before pressing `Copy it` and you get the setup with nobody on it.
+Everything is ticked by default. Two of them depend on another: prices need the races, and chip
+numbers need the registrations. See the section on set-up-an-event.
+
+**Two races at my event pass different splits. How do I stop one being scored against the other's mat?**
+Make a split set: `advanced: new split set` on the `Timing points` card, name it, and tick the races
+that count it. Points left in no set stay the event's own and every race counts them, which is what
+you want for the shared finish. See the section on timing-points.
+
 **How do I tell Podium which box is the finish?**
 Two steps. Give the box a timing point name where it stands, then say which point is the finish.
 In Podium PC: name it in the reader grid on `Readers`, then choose it as `Finish` on the `Scoring`
@@ -446,19 +463,65 @@ See the section on entrants-and-numbers.
 
 ## Running the same fixture again
 
-Three cards on `Race setup` each carry a `copy from a previous event` button, and they copy
-different things. Use them in the order below and most of a repeat fixture sets itself up:
+There are two ways round this, and they go in opposite directions. **`Copy this event` makes a
+whole new event out of this one. The three `copy from a previous event` buttons pull pieces into an
+event you have already made.** A club running a series every week wants the first one.
 
-1. **Timing points** — the box, the kind, the gate and the distance for every point that is not
-   already here by name. This is the one that saves the most, because gates are the setting most
-   often got wrong by hand.
+### Copy this event
+
+On `Race setup`. Give it a name and a date, tick what should come, and press `Copy it`. You land on
+the new event.
+
+Everything is ticked to start with, so a weekly fixture is one press:
+
+- **races and waves** — every race, with its distance, its format, its scoring and its gun times.
+- **categories**
+- **timing points and splits** — the box, the kind, the gate and the distance for every point, the
+  extra boxes standing at any of them, and any split sets with the races they apply to.
+- **prices**
+- **points table**
+- **registrations** — everybody on the entrant list.
+- **their chip numbers** — each person arrives holding the same chip they had.
+
+**Nobody is put in a race.** That is deliberate: the roster is the same people every round, but who
+is in which race is this round's business. Sort them, then use `Enter everybody who is in no race`
+on each race — one press per race. See the section on entrants-and-numbers.
+
+**Every time of day travels; only the date moves.** A 7 am start on the old event is a 7 am start on
+the new one, and so is every wave gun, without anybody retyping them.
+
+**What never comes:** entries, crossings, results, times typed in by hand, points awarded by hand,
+payments, and anybody who had withdrawn. A copy is a fresh meeting set up like the last one, not a
+copy of what happened at it.
+
+Two ticks depend on another one, and the page will not let you ask for the impossible: **prices
+cannot come without the races** (a price belongs to a race) and **chip numbers cannot come without
+the registrations** (a chip is assigned to a person). Untick a parent and the child greys out and
+says why; tick it back and it returns.
+
+Two more are worth knowing before you untick them:
+
+- Leave out the **categories** and a price set for one particular category stays behind, because it
+  would otherwise arrive as the price for everybody. The race's own price still comes. The copy
+  tells you how many stayed.
+- Leave out the **races** and a points row belonging to one race stays behind, for the same reason —
+  the event's own rows still come — and any split set arrives applying to no race until you tick its
+  races in.
+
+### Copying pieces into an event that already exists
+
+Three cards on `Race setup` each carry a `copy from a previous event` button:
+
+1. **Timing points** — every point that is not already here by name.
 2. **Wave starts** — only into a race here that shares a name with a race there. Each gun keeps its
    time of day and moves onto this event's own date.
-3. **Entrants** — everybody still entered over there, matched into a race here by name. Numbers,
-   waves and chips do not come with them.
+3. **Entrants** — everybody on the other event's list. Numbers, waves and chips do not come with
+   them.
 
-Each of them leaves alone anything already here with the same name, so running one twice does no
-harm. See the section on timing-points, the section on wave-starts and
+Each leaves alone anything already here with the same name, so running one twice does no harm. Note
+that waves only land where a race of the same name already exists, which is why building the races
+is the first job on a hand-made repeat — and why `Copy this event` exists at all. See
+the section on timing-points, the section on wave-starts and
 the section on entrants-and-numbers.
 
 ## Deleting an event
@@ -545,6 +608,35 @@ it.
 up there — the box, the kind, the gate, the distance. Worth doing before anything else when a club
 runs the same course again, because it brings the gates with it and those are the settings most
 often got wrong by hand.
+
+This button copies the event's own points. To bring the split sets as well, copy the whole event
+instead — see `Copy this event` in the section on set-up-an-event.
+
+## Splits that only some races pass
+
+A point belongs to the event, and every race at the event is scored from it. That is right for the
+shared finish and wrong for the middle of the course: a 10 km and a 5 km off one line do not pass
+the same splits, and a 5 km field was being scored against a 7.5 km mat it never went near.
+
+A **split set** is a named group of points and the races that count them.
+
+- `advanced: new split set` on the `Timing points` card. Name it after the races it covers — `10 km`
+  reads better than `two extra mats` — and tick **Counted by these races**.
+- Put the points that are not shared into the set. A point left in no set stays the event's own and
+  **every race still counts it**, so the finish everybody crosses is named once, with one box to get
+  right.
+- Once a set exists, a `Showing` chooser appears above the points list. Pick a set to see the course
+  one of those races actually has; pick the event's own points to see what a race with no set is
+  scored from. Points in a set carry the set's name beside them in the list.
+- A set with no races ticked scores nothing and harms nothing — it is just waiting for you to tick
+  them.
+
+**Why it matters beyond a missing split:** the software tells two points on the same box apart by
+counting the passes along a course. Add a split for one race and, without sets, the shared finish
+would become somebody else's second pass — and then score a perfectly plausible time off a crossing
+that belongs to nobody in that race. Within a set, the counting is done on that race's own points.
+
+Nothing changes until you make a set. An event with no sets behaves exactly as it always did.
 
 ## What each kind does
 
@@ -783,11 +875,10 @@ It only touches people who are in no race at all.
 press `Copy`. Useful where the same club runs the same fixture again, or keeps a membership list on
 one event and draws each race from it.
 
-**Only people who are entered in a race come across.** Somebody sitting on the other event's list
-with no race against them is not copied at all — and that is the usual reason a copy brings two
-people instead of two hundred. Look at the other event's `Entrants` card first: if most rows show no
-race, fix that there and copy again. `Enter everybody who is in no race` on the source event puts
-them all in one, which is normally what is wanted.
+**Everybody on the other event's list comes across, whether or not they were in a race there.**
+Somebody registered but never placed into a race lands here as a person with no race, ready to be
+put in one. (Until late September 2026 those people were skipped, which is why an older copy could
+bring two people instead of two hundred.)
 
 **They are matched into a race here by name.** A race called `Short` on the other event lands in the
 race called `Short` here. A race whose name does not exist here gets nobody, so build the races
@@ -795,6 +886,10 @@ first, spelled the same way.
 
 **Numbers, waves and chips are not carried over.** Those belong to the event they were set on. Hand
 out numbers and waves here as usual; for chips there is a separate route that does carry them, below.
+
+**If you want the whole meeting rather than the people, use `Copy this event` instead** — it makes a
+new event with the races, the points, the prices and the roster in one press, and it does bring the
+chip numbers. See the section on set-up-an-event.
 
 It is an import like any other, so it can be undone the same way, under `Import a list, hand out
 numbers, place by age`.

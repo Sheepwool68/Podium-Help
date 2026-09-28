@@ -68,19 +68,65 @@ See [entrants-and-numbers.md](entrants-and-numbers.md).
 
 ## Running the same fixture again
 
-Three cards on `Race setup` each carry a `copy from a previous event` button, and they copy
-different things. Use them in the order below and most of a repeat fixture sets itself up:
+There are two ways round this, and they go in opposite directions. **`Copy this event` makes a
+whole new event out of this one. The three `copy from a previous event` buttons pull pieces into an
+event you have already made.** A club running a series every week wants the first one.
 
-1. **Timing points** — the box, the kind, the gate and the distance for every point that is not
-   already here by name. This is the one that saves the most, because gates are the setting most
-   often got wrong by hand.
+### Copy this event
+
+On `Race setup`. Give it a name and a date, tick what should come, and press `Copy it`. You land on
+the new event.
+
+Everything is ticked to start with, so a weekly fixture is one press:
+
+- **races and waves** — every race, with its distance, its format, its scoring and its gun times.
+- **categories**
+- **timing points and splits** — the box, the kind, the gate and the distance for every point, the
+  extra boxes standing at any of them, and any split sets with the races they apply to.
+- **prices**
+- **points table**
+- **registrations** — everybody on the entrant list.
+- **their chip numbers** — each person arrives holding the same chip they had.
+
+**Nobody is put in a race.** That is deliberate: the roster is the same people every round, but who
+is in which race is this round's business. Sort them, then use `Enter everybody who is in no race`
+on each race — one press per race. See [entrants-and-numbers.md](entrants-and-numbers.md).
+
+**Every time of day travels; only the date moves.** A 7 am start on the old event is a 7 am start on
+the new one, and so is every wave gun, without anybody retyping them.
+
+**What never comes:** entries, crossings, results, times typed in by hand, points awarded by hand,
+payments, and anybody who had withdrawn. A copy is a fresh meeting set up like the last one, not a
+copy of what happened at it.
+
+Two ticks depend on another one, and the page will not let you ask for the impossible: **prices
+cannot come without the races** (a price belongs to a race) and **chip numbers cannot come without
+the registrations** (a chip is assigned to a person). Untick a parent and the child greys out and
+says why; tick it back and it returns.
+
+Two more are worth knowing before you untick them:
+
+- Leave out the **categories** and a price set for one particular category stays behind, because it
+  would otherwise arrive as the price for everybody. The race's own price still comes. The copy
+  tells you how many stayed.
+- Leave out the **races** and a points row belonging to one race stays behind, for the same reason —
+  the event's own rows still come — and any split set arrives applying to no race until you tick its
+  races in.
+
+### Copying pieces into an event that already exists
+
+Three cards on `Race setup` each carry a `copy from a previous event` button:
+
+1. **Timing points** — every point that is not already here by name.
 2. **Wave starts** — only into a race here that shares a name with a race there. Each gun keeps its
    time of day and moves onto this event's own date.
-3. **Entrants** — everybody still entered over there, matched into a race here by name. Numbers,
-   waves and chips do not come with them.
+3. **Entrants** — everybody on the other event's list. Numbers, waves and chips do not come with
+   them.
 
-Each of them leaves alone anything already here with the same name, so running one twice does no
-harm. See [timing-points.md](timing-points.md), [wave-starts.md](wave-starts.md) and
+Each leaves alone anything already here with the same name, so running one twice does no harm. Note
+that waves only land where a race of the same name already exists, which is why building the races
+is the first job on a hand-made repeat — and why `Copy this event` exists at all. See
+[timing-points.md](timing-points.md), [wave-starts.md](wave-starts.md) and
 [entrants-and-numbers.md](entrants-and-numbers.md).
 
 ## Deleting an event
