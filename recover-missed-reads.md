@@ -48,8 +48,20 @@ Recovered reads change positions. Score again and look at the sheet before publi
 
 ## Boxes over 4G
 
-Their reads reach the server by themselves, and neither app holds a link to them. The website's
-`Resend` asks such a box to send a range again. See [command-a-box.md](command-a-box.md).
+Their reads reach the server by themselves and neither app holds a link to them — but **Podium PC
+can still rewind one.** Pick the box's row and `Rewind...` exactly as above.
+
+**It is queued, not instant.** The request goes to the timing server, and the box picks it up on its
+next report — a few seconds while it is connected, and whenever it comes back if it is switched off
+or out of signal. So a rewind that has been accepted has been asked for, not finished.
+
+**`Stop rewind` reaches a 4G box the same way.** Only current box firmware acts on it, and nothing
+reports back either way: the sign that it worked is that records stop arriving. **So choose a tight
+window rather than relying on stopping it afterwards** — a box that has been through a season holds
+an enormous log, and the window is the real brake.
+
+The website's `Resend` does the same job from the other end. See
+[command-a-box.md](command-a-box.md).
 
 ## What a rewind cannot do
 

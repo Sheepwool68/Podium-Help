@@ -385,10 +385,15 @@ This is the only place that does entries, prices, online entry, categories and p
 ## Boxes that report over 4G are different
 
 **Those reach the timing server themselves.** No machine at the event holds them, so Podium PC and
-Podium Mobile cannot start them, stop them or rewind them. Their reads simply arrive.
+Podium Mobile cannot start or stop them. Their reads simply arrive.
 
 **The website can.** Start, stop and resend for a 4G box are on `RFID Boxes`, on the box's card —
 see the section on command-a-box and the section on limits.
+
+**Rewinding one is the exception.** Podium PC can ask a 4G box for a window, and can tell it to stop
+rewinding, by going through the timing server rather than through a link of its own. It is queued
+rather than instant — see the section on recover-missed-reads. Podium Mobile cannot:
+it does not talk to the server about boxes.
 
 
 ---
@@ -1522,8 +1527,11 @@ fault. If you need it running for a race, it has to be started for the race.
 ## Boxes over 4G
 
 **These are exactly the boxes this page is for.** A box reporting over 4G can be started, stopped
-and asked to resend from here, on the website — and from nowhere else. Podium PC and Podium Mobile
-hold no link to it, so they cannot. See the section on limits.
+and asked to resend from here, on the website. Podium PC and Podium Mobile hold no link to it, so
+they cannot start or stop it. See the section on limits.
+
+**Rewinding one can also be done from Podium PC**, which asks the timing server rather than the box
+— the same thing `Resend` does here. See the section on recover-missed-reads.
 
 The command still waits for the box's next report, so a box out of signal acts on it when the signal
 comes back, not before.
@@ -3207,8 +3215,20 @@ Recovered reads change positions. Score again and look at the sheet before publi
 
 ## Boxes over 4G
 
-Their reads reach the server by themselves, and neither app holds a link to them. The website's
-`Resend` asks such a box to send a range again. See the section on command-a-box.
+Their reads reach the server by themselves and neither app holds a link to them — but **Podium PC
+can still rewind one.** Pick the box's row and `Rewind...` exactly as above.
+
+**It is queued, not instant.** The request goes to the timing server, and the box picks it up on its
+next report — a few seconds while it is connected, and whenever it comes back if it is switched off
+or out of signal. So a rewind that has been accepted has been asked for, not finished.
+
+**`Stop rewind` reaches a 4G box the same way.** Only current box firmware acts on it, and nothing
+reports back either way: the sign that it worked is that records stop arriving. **So choose a tight
+window rather than relying on stopping it afterwards** — a box that has been through a season holds
+an enormous log, and the window is the real brake.
+
+The website's `Resend` does the same job from the other end. See
+the section on command-a-box.
 
 ## What a rewind cannot do
 
@@ -3313,9 +3333,11 @@ The `Raw data` tab says which applies. See the section on raw-data.
 
 - **A reader stops itself after two and a half minutes.** A UHF reader transmits while it is on.
 - **Three connections at once over the network, one over Bluetooth.**
-- **Podium PC and Podium Mobile cannot command a box that reports over 4G.** Those boxes hold no
-  link to the machine at the event, so there is nothing there to start, stop or rewind them with.
-  The website can: see the section on command-a-box.
+- **Podium PC and Podium Mobile cannot start or stop a box that reports over 4G.** Those boxes hold
+  no link to the machine at the event, so there is nothing there to start or stop them with. The
+  website can: see the section on command-a-box. **Rewinding is the exception** — Podium PC
+  can rewind a 4G box, and stop it rewinding, through the timing server. Podium Mobile cannot. See
+  the section on recover-missed-reads.
 
 ## If you are asked something not covered here
 

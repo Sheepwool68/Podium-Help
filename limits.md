@@ -40,9 +40,11 @@ The `Raw data` tab says which applies. See [raw-data.md](raw-data.md).
 
 - **A reader stops itself after two and a half minutes.** A UHF reader transmits while it is on.
 - **Three connections at once over the network, one over Bluetooth.**
-- **Podium PC and Podium Mobile cannot command a box that reports over 4G.** Those boxes hold no
-  link to the machine at the event, so there is nothing there to start, stop or rewind them with.
-  The website can: see [command-a-box.md](command-a-box.md).
+- **Podium PC and Podium Mobile cannot start or stop a box that reports over 4G.** Those boxes hold
+  no link to the machine at the event, so there is nothing there to start or stop them with. The
+  website can: see [command-a-box.md](command-a-box.md). **Rewinding is the exception** — Podium PC
+  can rewind a 4G box, and stop it rewinding, through the timing server. Podium Mobile cannot. See
+  [recover-missed-reads.md](recover-missed-reads.md).
 
 ## If you are asked something not covered here
 
