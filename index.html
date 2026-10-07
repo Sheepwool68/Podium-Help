@@ -1640,6 +1640,20 @@ week's. **It deletes nothing** — every read and every result is untouched — 
 the old numbers back. Useful at the start of the second event of a weekend, harmless if pressed by
 mistake.
 
+### A box that stops beating turns its whole row red
+
+**`Beat`** is how long since anything at all was heard from that box. It reddens on its own after a
+few missed beats, and once the box has genuinely stopped beating **the whole row goes red** — ten
+seconds for a box this machine holds directly, over the network or Bluetooth, and fifteen for one
+reached through the server, which is a longer round trip.
+
+**A box that has never beaten is listed, not flagged.** A box added by hand, and one whose reads
+reach the server by some other route, send nothing to beat with — there is nothing to measure, and a
+row sitting red all day would teach you to ignore the colour.
+
+A dropped link reddens the row too. The `Beat` figure is cleared when there is no link, because the
+age it would show belongs to a conversation that has ended, so the colour is what is left to say so.
+
 ### "Reader not responding"
 
 A box that goes quiet raises an alert. **`Silence`** stops the noise; it does not dismiss the problem.
@@ -3172,34 +3186,58 @@ every one of those reads, and they can be pulled off afterwards.
 
 This is called a rewind, and **both Podium PC and Podium Mobile can do it.**
 
-## Choose a span, not "everything"
+## Podium PC asks two questions
 
-**Ask for the time you actually need.** It is the only kind of rewind bounded by what you asked for.
+Select the box's row, then `Rewind...`.
 
-- **Podium PC:** select the box's row, `Rewind...`. Under *How far back?*: `The last 15 minutes`,
-  `The last hour`, `The last 3 hours`, `Since midnight`, or `Between` two times you type.
-  The choice fills both times in, so you can see exactly what is about to be asked for and adjust
-  either before pressing `Start`.
-- **Podium Mobile:** `Rewind` on the box. Under *How far back?*: `The last 15 minutes`, `The last hour`,
-  `The last 3 hours`, `Since midnight`, or `Pick the start and end…`.
+### Where from
 
-A race that finished an hour ago wants `The last 3 hours`, not the whole log.
+- **`Ask the box to send its own reads again`** — the box sends its OWN log: the records on the box,
+  with their own record numbers, and nothing from the server mixed in. This is the one to use when
+  the box was reading and nothing was listening.
+- **`Ask the server for its copy  (not the box's own log)`** — the server sends what it happens to
+  hold, which may be more or less than the box has. Use it when the box is far away, or has been
+  cleared, or when what went missing was between the server and this machine rather than at the box.
+  It is **greyed out with `(no server signed in)`** when there is no server to ask — greyed rather
+  than hidden, so it is clear the option exists and what to go and do.
 
-## The two longer options, and their trap
+Either way **nothing is duplicated**: reads already here are absorbed.
 
-**These are bounded by what the box holds, not by you**, and on a box that has been used all season
-that can mean a very long wait.
+**`Also write one file I name`** writes the recovered reads out to a file as well. It is **only
+available when the reads are waited for** — that is, a box reached through the server. Over a local
+link the reader replays on its own time, down the socket over the following seconds or minutes, so a
+file written the moment the request went out would hold almost nothing and look like a lost race.
+The per-box file on the grid picks a rewind up anyway.
 
-- **`Fill in what is missing`** (Podium PC) / **`Fill the holes`** (Podium Mobile) — fills the gaps,
-  starting from the earliest read this machine already holds for that box. **If it still holds last
-  month's race, that means replaying from last month.**
-- **`Fetch the reader's whole log`** (Podium PC) / **`Everything — the whole log`** (Podium Mobile) —
-  everything on the box. The way back to reads taken before anything was listening at all.
+### How far back
+
+`The last 15 minutes`, `The last hour`, `The last 3 hours`, `Since midnight`, `Between` two times you
+type, or `Everything`. Choosing a preset fills both times in, so you can see exactly what is about to
+be asked for and adjust either before pressing `Start`.
+
+**On Podium Mobile:** `Rewind` on the box, then the same windows — `The last 15 minutes`, `The last
+hour`, `The last 3 hours`, `Since midnight`, `Pick the start and end…` — and `Everything — the whole
+log` under a heading that says it is bounded by what the box holds, not by you.
+
+## The one thing that catches people out
+
+**A box ignores the END of a window.** Its firmware reads the start time and replays from there to
+the end of its log, whatever end time was asked for. **So the start is the only brake there is.**
+
+A race that finished an hour ago wants `The last 3 hours`, not `Everything`. `Everything`, asked of a
+box that has been used all season, can be tens of thousands of records and a very long wait.
+
+This is why the start matters more than it looks, and why `Stop rewind` is a second chance rather
+than a plan.
 
 ## Stopping one
 
 **Podium PC:** `Stop rewind`. **Podium Mobile:** a rewind that is running puts `Stop the rewind that is
 running` at the top of the menu. **Whatever arrived before the stop is kept.**
+
+**Over a local link a stop takes effect at the box.** Through the server it is queued like the rewind
+was, and only current box firmware acts on it — so treat it as a second chance, not as the brake.
+The window is the brake.
 
 ## What to expect
 

@@ -99,6 +99,20 @@ week's. **It deletes nothing** — every read and every result is untouched — 
 the old numbers back. Useful at the start of the second event of a weekend, harmless if pressed by
 mistake.
 
+### A box that stops beating turns its whole row red
+
+**`Beat`** is how long since anything at all was heard from that box. It reddens on its own after a
+few missed beats, and once the box has genuinely stopped beating **the whole row goes red** — ten
+seconds for a box this machine holds directly, over the network or Bluetooth, and fifteen for one
+reached through the server, which is a longer round trip.
+
+**A box that has never beaten is listed, not flagged.** A box added by hand, and one whose reads
+reach the server by some other route, send nothing to beat with — there is nothing to measure, and a
+row sitting red all day would teach you to ignore the colour.
+
+A dropped link reddens the row too. The `Beat` figure is cleared when there is no link, because the
+age it would show belongs to a conversation that has ended, so the colour is what is left to say so.
+
 ### "Reader not responding"
 
 A box that goes quiet raises an alert. **`Silence`** stops the noise; it does not dismiss the problem.
