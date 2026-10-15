@@ -1848,6 +1848,44 @@ name`. **For a file that fills up as the race runs**, use the per-timing-point f
 **An export only reads.** It changes nothing stored, so it can be run during an event, run twice, or
 run again in a different format.
 
+### Writing your own format — the tokens
+
+If none of the presets suits the package at the other end, untick `Use a preset format` and build a
+line yourself. **A format is one line of text with tokens in braces**, and every read is written in
+that shape. Commas, tabs, fixed words and anything else you type come out as typed.
+
+```
+{chip},{time:HH:mm:ss.fff},{point}
+```
+
+| Token | What it writes |
+| --- | --- |
+| `{chip}` | The transponder code, as the reader formatted it |
+| `{number}` | The race number for this chip from the bib chip file, blank if it is not in there |
+| `{time}` | The crossing time on the reader's clock |
+| `{elapsed}` | Time since the start |
+| `{received}` | When this machine received the read, which is not the same as the crossing |
+| `{point}` | The timing point the box was on when the read arrived |
+| `{device}` | The box's six-character device key |
+| `{record}` | The reader's own record number, or `0` where it is not known |
+| `{loop}` | The loop or channel identifier |
+| `{rssi}` | How strong the signal was |
+| `{rewind}` | `1` when the read only ever arrived by replay, otherwise `0` |
+
+**`{time}` and `{received}` take a format after a colon** — `{time:HH:mm:ss.fff}` or
+`{time:yyyy-MM-dd HH:mm:ss}`. Left plain they come out as `HH:mm:ss.fff`.
+
+**`{elapsed}` needs a start time**, which you set in the same window, and takes `hms`, `seconds` or
+`ms` after a colon: `{elapsed:seconds}`. **With no start set it writes nothing at all** rather than
+a plausible wrong number.
+
+**Every line ends CRLF and that is not a choice**, because the packages this feeds are Windows
+software that expects it, and a stray lone newline is the kind of thing an importer accepts quietly
+and then mis-parses.
+
+**Check the sample lines before you trust it.** The window renders your format against real stored
+reads, which is faster than finding out at the other end.
+
 ### A file for each timing point, written as the reads arrive
 
 **Tick `Write each timing point's reads to a file as they arrive` and pick a folder.** Inside it,
@@ -1963,13 +2001,30 @@ A licence for boxes in the field and the reads they send, without the scoring. O
 `Scoring` tab is greyed out and the website shows the `RFID Boxes` tab and nothing else. Everything
 about connecting, commanding and recovering from boxes works exactly as it does here.
 
-## Two messages that sound alarming and are not
+## Messages, and which of them matter
+
+**These two sound alarming and are not:**
 
 - **"Grid cleared. Stored reads are untouched."** Clearing the grid tidies the screen.
 - **"Disconnected. Reads already stored are kept."** Dropping a link loses nothing that already
   arrived.
 
 **Podium PC never deletes a read.** See the section on limits.
+
+**And these do want doing something about:**
+
+- **"Login refused"** — the sign-in to the **older 4G server** was rejected. It is that account, not
+  your Podium website account and not the cloud timing server, so check it against whichever
+  credentials RFID Timing gave you for the 4G server, and mind trailing spaces on a pasted password.
+  Everything else in Podium PC carries on working; only boxes reporting through that server are
+  affected.
+- **"Discovery failed: …"** — the sweep itself could not run, and the rest of the line is the reason
+  Windows gave. It is usually a serial port another program is holding open — a terminal, a previous
+  copy of Podium PC, or the vendor tool for a dongle. Close whatever else is talking to the port and
+  press `Discover` again. Boxes on the network find themselves regardless, so this only ever costs
+  you the dongle.
+- **"Reader not responding"** — see the section on that; it has its own answer, and it is about a box
+  that has stopped answering rather than about the link.
 
 
 ---
