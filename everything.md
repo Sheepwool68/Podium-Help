@@ -1619,6 +1619,32 @@ Change these only with a reason — antennas and power decide what the mat reads
 here reads badly everywhere it goes afterwards. See
 the section on where-to-put-the-mat.
 
+#### `Chip code output` — decimal or hex, for this box only
+
+**Select the box, press `Box settings...`, double-click `Chip code output`, pick `Decimal` or `Hex`,
+then `Apply changes`.** Press `Re-read` afterwards: the box reports this setting back, so unlike most
+of what is in this dialog you can see for yourself that it took.
+
+**This is the only way to set it on an EchoActive.** The tick on `Settings` > `General` sets every
+box at once but reaches only boxes on the network, so a box on a dongle is never told by it — and a
+box you set here is then left alone by that tick, rather than being changed back the next time it
+reconnects.
+
+**It cannot be set over 4G, and it is not on the box's own screen.** A box that reports in over the
+mobile network can only be changed from a Podium PC on the same network as it, or through a dongle
+in range of it. For a customer's box that means going to it, or getting a Podium PC onto their
+network.
+
+**Two things it does not do**, both of which get reported as faults:
+
+- **UHF codes only.** An EchoActive transponder code is six characters and is unaffected, so on a
+  site reading only active chips this setting makes no visible difference whichever way it is set.
+- **Rewound reads still come back in decimal**, whatever this says. It is the box's firmware, not
+  Podium PC.
+
+**The row is only there once the box has answered.** With nothing connected the dialog has nothing
+to show, because everything in it is read from the box.
+
 ### The counts under the grid
 
 What each timing point has collected, then the reads themselves as they arrive.
@@ -1715,9 +1741,20 @@ firewall the first time.
 
 - **`Remember readers between sessions`** — the grid opens with last time's readers, ready to connect.
   Turn it off for an empty grid; the readers are kept and come back if you turn it on again.
-- **`Output chip code in HEX (only changes over LAN connections)`** — how readers on the network show a
-  chip code. Readers on a dongle are left alone. It changes the display, not the chip: the same tag
-  reads `27522009` in decimal and `1A3F3D9` in hex.
+- **`Output chip code in HEX (only changes over LAN connections)`** — how readers send a chip code.
+  It changes the notation, not the chip: the same tag reads `27522009` in decimal and `1A3F3D9` in
+  hex.
+
+  **This is the one place to set it for every box at once**, and three things about it are worth
+  knowing before you use it:
+
+  - **It only reaches boxes on the network.** A box reached through a dongle is never told. For
+    those, and for one box on its own, use `Chip code output` in that box's own `Box settings...`.
+  - **It changes UHF codes only.** An EchoActive transponder code is six characters and is sent the
+    same way whatever this says, so a site reading only active chips will see no difference at all.
+  - **Rewound reads still arrive in decimal.** A box set to hex sends its live reads in hex and its
+    replayed ones in decimal. That is the box's own firmware and nothing here can change it, so if
+    you are matching a rewind by hand, read it as decimal.
 
 ### With `Advanced settings` ticked
 
@@ -1738,23 +1775,71 @@ firewall the first time.
 
 ## Export
 
-**`Export...`** writes reads out for another scoring package, or sends them to the database above.
+**`Export...`** is where you set up how reads are written for another scoring package. It no longer
+writes a file itself: `Save as...` and `Keep writing live...` were both taken off it, and what each
+of them did now lives somewhere better.
 
 Choose a format from the list rather than writing one — `Use a preset format` — and check the sample
-lines it shows before committing. Pick `From` and `To`, and decide whether to `Include reads
-recovered by rewind`. Then `Write a file` or `Send to the database`.
+lines it shows. `Write chip codes as` says whether a code goes out in hex or decimal. **The window
+holds settings only and saves them as you change them**, so there is no OK button and nothing to
+remember to press.
+
+**To get one file out of it**, use `Rewind...` on the box you want and tick `Also write one file I
+name`. **For a file that fills up as the race runs**, use the per-timing-point files below.
 
 **An export only reads.** It changes nothing stored, so it can be run during an event, run twice, or
 run again in a different format.
 
-### A file that keeps being written while the race runs
+### A file for each timing point, written as the reads arrive
 
-**`Keep writing live...`** picks a file and then keeps writing to it as reads arrive, instead of
-writing one file once. For a commentary box or a scoreboard reading the file at the other end.
+**Tick `Write each timing point's reads to a file as they arrive` and pick a folder.** Inside it,
+each day gets a folder and each timing point gets a file — so today's finish line is
+`2026-10-15\Finish.txt`. For a commentary box or a scoreboard reading the file at the other end.
+
+**Which boxes join in** is the `File` tick on each row of the reader list. A box is in unless you
+take it out.
 
 **An existing file is joined, not overwritten.** Two boxes on the same timing point write into one
 file rather than the second one wiping what the first has been collecting all morning, and Podium PC
 restarted mid-race carries on with the file it was already writing.
+
+### Race numbers in the file instead of chip codes
+
+A scoring package that wants the number on the vest rather than the code on the chip can have both,
+read out of a file of your own.
+
+**Tick `Advanced`, then `Look up race numbers in a bib chip file`, and pick your file.** Each line of
+it is the **chip code first, then the race number**:
+
+```
+NCC001,1
+NCC002,2
+```
+
+Commas, tabs or semicolons all work, as do quotes, a heading line and extra columns. The note under
+the box says how many chips it found **and shows you one of them** — "Read as chip NCC001 wearing
+number 1" — so you can see at a glance that your two columns were understood the right way round.
+
+**Then choose a format that writes a number, or nothing will change.** This is the part worth
+reading twice: the tick finds the numbers, but only the format decides whether they reach the file.
+Either pick the preset **`RFIDServer with race numbers`**, which writes
+
+```
+1,NCC001,2026-10-15 09:41:02.130
+```
+
+or put `{number}` in a format of your own. **With the tick on and the format left alone, your files
+come out exactly as they did before.**
+
+**A chip your file does not list still gets a line**, with the number left empty — `,RFI015,...` —
+so a read is never dropped for want of a number, and the columns never shift.
+
+**The file is re-read as it changes.** Add fifty more chips to it during registration and the files
+being written pick them up; they are closed and reopened on the new list rather than carrying on
+with the old one.
+
+**It is off until you turn it on**, and turning it off again leaves the filename where it is, so
+next weekend is one tick rather than finding the file again.
 
 ## Which version, and updating
 
@@ -1931,7 +2016,9 @@ not sent anything. See the section on results-not-reaching-the-server.
 
 - **`Timing server`** — the server address, `Username` and `Password`, and `Test server`.
   `Send reads to the server` turns sending on.
-- **`General`** — `Output chip codes in HEX`. It changes how a code is shown, not the chip.
+- **`General`** — `Output chip codes in HEX`. It changes the notation a reader sends, not the chip,
+  and it reaches boxes on the network only. UHF codes only: an EchoActive code is unaffected. A
+  rewind still comes back in decimal whatever this says.
 - **`Diagnostics`** — `Send log` and `Share DB`, for sending to RFID Timing when asked.
 
 Then `Save`.
