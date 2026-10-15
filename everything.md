@@ -250,8 +250,12 @@ up is saying which belongs to whom.
 **An active tag from RFID Timing is three letters and three numbers** — `RFI015`. The zeros are part
 of the code. See the section on where-chip-codes-come-from.
 
-Chip codes can be shown in decimal or in **HEX**, which is the same code written a different way.
-There is a setting for it in Podium PC and Podium Mobile. It changes the display, not the chip.
+Chip codes can be written in decimal or in **HEX**, which is the same code written a different way —
+`27522009` and `1A3F3D9` are one tag. It changes the writing, not the chip, and it applies to UHF
+codes only: an active code like `RFI015` is unaffected. There is a setting for it in Podium PC, for
+every box or for one, and in Podium Mobile. **It matters because a results file keeps the writing**,
+so the box and the package at the other end have to agree. See
+the section on decimal-and-hex.
 
 **Podium will not guess a chip's format.** A code whose format was never recorded is refused rather
 than read the wrong way, because guessing puts somebody else's time on the line.
@@ -275,6 +279,33 @@ See the section on recover-missed-reads.
 
 **Backlog** — how many reads are still waiting to reach the server. Wait for it to reach zero before
 packing up.
+
+### Decimal and hex — the same code written two ways
+
+**A UHF chip's code is a number**, and decimal and hex are two ways of writing that one number. The
+tag that reads `27522009` in decimal reads `1A3F3D9` in hex. It is the same tag, the same chip and
+the same read — only the writing differs, the way twelve and a dozen are the same count.
+
+**An EchoActive transponder code is not a number at all.** It is six characters, like `RFI015` or
+`NCC001`, so there is nothing to convert and it comes out the same whichever way the setting is
+left. If your event reads only active chips, this whole business does not touch you.
+
+**Why it matters: a file keeps the writing, not the number.** Hand a scoring package `27522009` when
+it has `1A3F3D9` on its start list and it matches nobody — not a wrong result, no result, and the
+runner simply is not there. So the box, the export and the package at the other end all have to
+agree, and it does not matter much which they agree on.
+
+**And you cannot always tell by looking**, which is the trap. `27522009` is a perfectly good hex
+number as well as a decimal one, so a column of all-digit codes could be either and nothing in the
+file says which. That is why Podium PC asks you — `Write chip codes as` on the export — instead of
+guessing. A code with a letter `A` to `F` in it can only be hex, and is read that way whatever the
+setting says, because that much is arithmetic rather than a guess.
+
+**One reader can produce both over its life**, so a code is remembered along with which way it was
+written when it arrived. Where that was never recorded, the export falls back on what you tell it.
+
+To change which way a box sends them, see `Output chip code in HEX` under Podium PC's settings, or
+`Chip code output` for one box on its own.
 
 ## How a race is described
 
