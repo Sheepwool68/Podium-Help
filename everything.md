@@ -263,6 +263,23 @@ than read the wrong way, because guessing puts somebody else's time on the line.
 **Box** — the timing unit at the side of the track, sometimes called a reader. It has the antenna or
 mat, it reads chips, it stamps each one with its own clock, and it keeps its own log.
 
+**The kinds of box RFID Timing makes**, because the help talks about them by name:
+
+- **EchoActive** — reads active tags. Some also read UHF; the ones that do have an `Active`/`UHF`
+  toggle on their own screen, and the ones that do not have no toggle at all.
+- **EchoActive Nano** — a small active-only box with no screen and no sockets but a USB-C lead and
+  a mobile connection. It reads from the tags' own broadcasts, keeps everything in its own memory,
+  and sends over 4G. See the section on the-nano.
+- **Ultra** and **Joey** — older boxes, UHF only, with no touchscreen. Their settings are set from
+  Podium PC rather than on the box.
+
+**Dongle** — a small USB stick that gives a PC or phone a Bluetooth link to a box, for when there is
+no network. **A dongle link is not a relay** — see the Relay entry below.
+
+**Relay** — several EchoActive boxes covering one timing point, where one of them carries the others'
+reads back to you. It is box to box. The Bluetooth link from a PC to a dongle is a different thing
+and is never called a relay.
+
 ## What a box produces
 
 **Read** — one sighting of one chip by one box, with the time on that box's clock. A mat takes
@@ -279,6 +296,16 @@ See the section on recover-missed-reads.
 
 **Backlog** — how many reads are still waiting to reach the server. Wait for it to reach zero before
 packing up.
+
+**RSSI** — how strong a chip's signal was, as the box reported it, and it is the strongest moment of
+the crossing rather than an average. **It is a relative number, not a measurement to compare between
+sites**: use it to tell a solid crossing from a marginal one while you are setting a mat up, on the
+kit in front of you. A read counts the same whatever its RSSI, and nothing is scored differently
+because of it. Podium PC shows it as a column in the reads list.
+
+**Pings** — on a Nano, how many separate sightings of the tag made up one crossing. A healthy
+crossing is several; one is a tag that was only just seen, and worth knowing about when you are
+placing the box.
 
 ### Decimal and hex — the same code written two ways
 
@@ -1871,6 +1898,55 @@ with the old one.
 
 **It is off until you turn it on**, and turning it off again leaves the filename where it is, so
 next weekend is one tick rather than finding the file again.
+
+## The Nano
+
+**An EchoActive Nano is a small active-only box with no screen.** It reads tags from their own
+broadcasts, stamps each read with its own clock, keeps everything in its own memory, and sends over
+4G — so most of the time you never touch it. There are two reasons to plug one into a PC: to change
+what it is set to, and to get the reads out of it by hand.
+
+### Plugging one in
+
+**Plug the USB-C lead in and the Nano appears in the grid on its own**, within a few seconds. There
+is no port to pick and nothing to press — Podium PC looks for it the same way it looks for a dongle.
+**Click its row** to open the console. Pull the lead out and the row goes.
+
+If it does not appear, give it a few seconds more and then try the lead. The unit answers on a USB
+serial port, and a lead that only carries power — the kind that comes with a phone charger — looks
+exactly like a flat battery from here.
+
+### Changing its settings
+
+Clicking the row opens a console showing what the unit is actually set to, read back off it rather
+than remembered here. You can change its **name**, its **buzzer**, its **gate**, the **minimum
+signal** it bothers with, its **time zone**, the **server** it reports to and its **APN**.
+
+**Press `Write settings` and it writes, then reads the unit back and tells you if anything did not
+take.** That read-back is the point: a setting that did not land says so rather than looking fine.
+
+**`Firmware` puts the unit into DFU** so it can be updated, which is a separate job with a file
+from RFID Timing.
+
+### Getting the reads off it
+
+**`Records` then `Download`** brings back what the unit is holding, newest first. **`Save`** writes
+them out as a file, in RFIDTiming or Racetec format — whichever your scoring package reads.
+
+**Tick `Pings and RSSI`** to see, and to keep in the file, how many sightings made up each crossing
+and how strong the signal was. Useful when you are judging where a box should stand, and noise
+otherwise.
+
+**`Erase unit` cannot be undone.** It clears the unit's own memory, so download and save before you
+press it. The unit holds thousands of reads and deletes nothing by itself until its log is a week
+old, so there is rarely a reason to be in a hurry about it.
+
+### What a Nano will not do
+
+- **No screen**, so nothing about it is set on the unit itself.
+- **It cannot be reconfigured over 4G.** Everything in the console needs the USB lead. A Nano out
+  with a customer can send its reads in, but changing what it is set to means a lead and a PC.
+- **It reads active tags only**, whatever else is on site.
 
 ## Which version, and updating
 
