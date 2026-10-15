@@ -1712,6 +1712,33 @@ week's. **It deletes nothing** — every read and every result is untouched — 
 the old numbers back. Useful at the start of the second event of a weekend, harmless if pressed by
 mistake.
 
+#### The columns in the reads list
+
+Newest at the top, and the columns are:
+
+| Column | What it is |
+| --- | --- |
+| `Device` | The six-character key of the box that read it |
+| `Timing point` | The point that box was on at the time, not necessarily the one it is on now |
+| `Record` | The box's own record number, blank where it is not known |
+| `Chip` | The code, exactly as the box sent it |
+| `Reader time` | The crossing on the **box's** clock, which is the time that gets scored |
+| `Antenna` | Which of the box's aerials saw it |
+| `RSSI` | How strong the signal was |
+| `Note` | Why this read is not an ordinary live one |
+
+**`Reader time` is the one that matters.** It is the box's own clock, not when this PC heard about
+it, which is why a box with a wrong clock produces wrong results however healthy the link looks.
+
+**`Note` is the column to read when something looks odd**, and it says one of four things:
+
+- **`rewind`** — this read only ever arrived by replay. An ordinary crossing, recovered.
+- **`already held`** — it arrived again and was recognised; nothing was stored twice.
+- **`rewind, already held`** — both.
+- **`via server`** — it was fetched from the server rather than taken off a box here, **and that is
+  why `Antenna`, `RSSI` and `Record` are blank on that row.** The server does not carry them. It is
+  not a fault and there is nothing to fix.
+
 ### A box that stops beating turns its whole row red
 
 **`Beat`** is how long since anything at all was heard from that box. It reddens on its own after a
@@ -1820,9 +1847,21 @@ firewall the first time.
   fetches its field. Each takes an `Address`, an `Account` and a `Password`, with `Test connection`,
   `Send reads to this server as they arrive`, and `Send everything outstanding` for anything that did
   not get through.
-- **Boxes reporting over 4G** — a box of settings for signing in to the older 4G server, `Show boxes
-  reporting through the server` to put them in the grid, and `Add box by MAC` to follow one particular
-  box through it — the six-digit device key or the full address.
+- **`Podium Lite Server`** — where boxes reporting over 4G come from. Tick `Show settings`, fill in
+  your **`Outreach user`** and **`Password`**, and press `Sign in`. **It is remembered and signs
+  itself in from then on**, so this is a once-per-machine job rather than something to do on race
+  morning.
+
+  **Every box registered to that account that is online then appears in the grid by itself** — there
+  used to be a tick for it and there is no longer, so nothing else needs pressing. A box that is
+  **offline is not listed at all**, which is what `Add box by MAC` is for: type the box's
+  six-character identity, the MAC on the Echo's own `Networking` screen, and it stays pinned to the
+  grid while it is quiet. A box already on the grid over the network is not shown twice.
+
+  **If `Sign in` seems to do nothing**, look at the line beside `Show settings`. While it reads
+  `No server in …` there is no server address for it to sign in to, and the button is inert — that
+  is a file on this machine naming the server, not something you can type here. And **`Login
+  refused`** means this account, not your Podium website one.
 - **`3rd Party Server`** — sends reads straight into your own SQL Server scoring database: `Server`,
   `Database`, `Windows account` or `SQL sign in`, and the `Procedure` to call. `Test connection` first.
   `Table and procedure...` shows the script the database end needs, to copy across — including a note
