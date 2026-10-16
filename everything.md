@@ -1858,10 +1858,12 @@ firewall the first time.
   six-character identity, the MAC on the Echo's own `Networking` screen, and it stays pinned to the
   grid while it is quiet. A box already on the grid over the network is not shown twice.
 
-  **If `Sign in` seems to do nothing**, look at the line beside `Show settings`. While it reads
-  `No server in …` there is no server address for it to sign in to, and the button is inert — that
-  is a file on this machine naming the server, not something you can type here. And **`Login
-  refused`** means this account, not your Podium website one.
+  **If `Sign in` answers `No server in remote-server.txt`**, that file is where the server address
+  lives: it is on this machine, not something you can type here, and the line beside `Show settings`
+  names the folder holding it. Put the address on a line of its own with no `#` in front of it — a
+  file of nothing but `#` comment lines still counts as naming no server — then press `Sign in`
+  again. **It reads the file afresh, so nothing has to be restarted.** And **`Login refused`** means
+  this account, not your Podium website one.
 - **`3rd Party Server`** — sends reads straight into your own SQL Server scoring database: `Server`,
   `Database`, `Windows account` or `SQL sign in`, and the `Procedure` to call. `Test connection` first.
   `Table and procedure...` shows the script the database end needs, to copy across — including a note
