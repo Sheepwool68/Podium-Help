@@ -1644,9 +1644,23 @@ Click a row, then:
 - **`Query state`** — asks the box what it is doing now.
 - **`Query RTC`** — asks for the box's clock. The line beside it says **reads are timestamped from GPS,
   not from this**, so a clock that reads oddly here is not by itself a reason to distrust the times.
+- **`Set clock...`** — sets the selected box's clock from this PC, using internet time where there is
+  any. Prefer it over `Set all clocks...` when only one box is wrong, because a box with a good GPS
+  fix keeps its own clock right and does not want replacing.
 - **`Rewind...`** and **`Stop rewind`** — get reads back off the box. See
   the section on recover-missed-reads.
 - **`Box settings...`** — the box's own settings: its antennas, its power and its network address.
+- **`Clear table`** and **`Show all`** — these two are not box commands at all. They move the line the
+  timing point counts are taken from, and back again. Nothing is deleted either way, and they work
+  whatever is selected.
+
+**A box reporting in over 4G is the exception, and it matters most to anyone whose boxes are all
+4G.** Its row has no link to this machine, so `Start`, `Stop`, `Beeper`, `Query RTC`, `Set clock...`
+and `Box settings...` all refuse it — they name the box and say the command goes down a link, rather
+than asking you to select a row you have already selected. `Rewind...` and `Stop rewind` are the two
+that do reach it, and `Clear table` and `Show all` work as they always do. **Nothing here can set a
+4G box's clock**: it takes its time from its own GPS fix, so a box stamping reads from a clock nobody
+set needs a clear view of the sky, or a cable to this PC.
 
 ### Box settings
 
