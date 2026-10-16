@@ -1,6 +1,24 @@
 #!/bin/sh
 # Builds everything.md: the whole corpus in one file, for assistants that fetch
 # one URL and do not follow links. Re-run after changing any page.
+#
+# !!! STOP. RUNNING THIS NOW DESTROYS CONTENT. Checked 2026-10-16: everything.md
+# has been edited DIRECTLY for over a week and the topic pages below have not
+# kept up, so this script no longer rebuilds the corpus -- it reverts it. Measured
+# in a throwaway copy: 171,093 bytes down to 154,819, and 304 lines gone. The lost
+# lines are real answers (the Nano, the token language, signing in to the Lite
+# Server, the reads list columns, the bib chip file's column order), and nothing
+# about the result looks wrong afterwards, which is what makes this worth shouting
+# about.
+#
+# So: EDIT everything.md BY HAND, as every commit since 2026-10-07 has done.
+#
+# Before running this again, someone has to fold everything.md's content back into
+# the topic pages and prove it round-trips: copy the folder somewhere scratch, run
+# it there, and diff against the live everything.md until the only differences are
+# the ones intended. Until that has been done and this comment deleted, the
+# index.html half below is the only part safe to run -- it reads everything.md and
+# does not write it.
 set -e
 out=everything.md
 
