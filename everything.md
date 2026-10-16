@@ -1944,23 +1944,28 @@ A scoring package that wants the number on the vest rather than the code on the 
 read out of a file of your own.
 
 **Tick `Advanced`, then `Look up race numbers in a bib chip file`, and pick your file.** Each line of
-it is the **chip code first, then the race number**:
+it is the **race number first, then the chip code**:
 
 ```
-NCC001,1
-NCC002,2
+13,99900013
+14,99900014
 ```
 
 Commas, tabs or semicolons all work, as do quotes, a heading line and extra columns. The note under
-the box says how many chips it found **and shows you one of them** — "Read as chip NCC001 wearing
-number 1" — so you can see at a glance that your two columns were understood the right way round.
+the box says how many chips it found **and shows you one of them** — "Read as chip 99900013 wearing
+number 13" — so you can see at a glance that your two columns were understood the right way round.
+
+**A file the other way round is the one thing to watch.** Nothing in a file says which column is
+which, so a chip-code-first file is read backwards: the numbers that come out belong to other
+runners, and no warning says so. Check the pair in that note against your own entry list before the
+gun. If your list is the other way round, swap the two columns in a spreadsheet and save it again.
 
 **Then choose a format that writes a number, or nothing will change.** This is the part worth
 reading twice: the tick finds the numbers, but only the format decides whether they reach the file.
 Either pick the preset **`RFIDServer with race numbers`**, which writes
 
 ```
-1,NCC001,2026-10-15 09:41:02.130
+13,99900013,2026-10-15 09:41:02.130
 ```
 
 or put `{number}` in a format of your own. **With the tick on and the format left alone, your files

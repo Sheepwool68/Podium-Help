@@ -262,14 +262,35 @@ up is saying which belongs to whom.
 **An active tag from RFID Timing is three letters and three numbers** — `RFI015`. The zeros are part
 of the code. See the section on where-chip-codes-come-from.
 
-Chip codes can be shown in decimal or in **HEX**, which is the same code written a different way.
-There is a setting for it in Podium PC and Podium Mobile. It changes the display, not the chip.
+Chip codes can be written in decimal or in **HEX**, which is the same code written a different way —
+`27522009` and `1A3F3D9` are one tag. It changes the writing, not the chip, and it applies to UHF
+codes only: an active code like `RFI015` is unaffected. There is a setting for it in Podium PC, for
+every box or for one, and in Podium Mobile. **It matters because a results file keeps the writing**,
+so the box and the package at the other end have to agree. See
+the section on decimal-and-hex.
 
 **Podium will not guess a chip's format.** A code whose format was never recorded is refused rather
 than read the wrong way, because guessing puts somebody else's time on the line.
 
 **Box** — the timing unit at the side of the track, sometimes called a reader. It has the antenna or
 mat, it reads chips, it stamps each one with its own clock, and it keeps its own log.
+
+**The kinds of box RFID Timing makes**, because the help talks about them by name:
+
+- **EchoActive** — reads active tags. Some also read UHF; the ones that do have an `Active`/`UHF`
+  toggle on their own screen, and the ones that do not have no toggle at all.
+- **EchoActive Nano** — a small active-only box with no screen and no sockets but a USB-C lead and
+  a mobile connection. It reads from the tags' own broadcasts, keeps everything in its own memory,
+  and sends over 4G. See the section on the-nano.
+- **Ultra** and **Joey** — older boxes, UHF only, with no touchscreen. Their settings are set from
+  Podium PC rather than on the box.
+
+**Dongle** — a small USB stick that gives a PC or phone a Bluetooth link to a box, for when there is
+no network. **A dongle link is not a relay** — see the Relay entry below.
+
+**Relay** — several EchoActive boxes covering one timing point, where one of them carries the others'
+reads back to you. It is box to box. The Bluetooth link from a PC to a dongle is a different thing
+and is never called a relay.
 
 ## What a box produces
 
@@ -287,6 +308,43 @@ See the section on recover-missed-reads.
 
 **Backlog** — how many reads are still waiting to reach the server. Wait for it to reach zero before
 packing up.
+
+**RSSI** — how strong a chip's signal was, as the box reported it, and it is the strongest moment of
+the crossing rather than an average. **It is a relative number, not a measurement to compare between
+sites**: use it to tell a solid crossing from a marginal one while you are setting a mat up, on the
+kit in front of you. A read counts the same whatever its RSSI, and nothing is scored differently
+because of it. Podium PC shows it as a column in the reads list.
+
+**Pings** — on a Nano, how many separate sightings of the tag made up one crossing. A healthy
+crossing is several; one is a tag that was only just seen, and worth knowing about when you are
+placing the box.
+
+### Decimal and hex — the same code written two ways
+
+**A UHF chip's code is a number**, and decimal and hex are two ways of writing that one number. The
+tag that reads `27522009` in decimal reads `1A3F3D9` in hex. It is the same tag, the same chip and
+the same read — only the writing differs, the way twelve and a dozen are the same count.
+
+**An EchoActive transponder code is not a number at all.** It is six characters, like `RFI015` or
+`NCC001`, so there is nothing to convert and it comes out the same whichever way the setting is
+left. If your event reads only active chips, this whole business does not touch you.
+
+**Why it matters: a file keeps the writing, not the number.** Hand a scoring package `27522009` when
+it has `1A3F3D9` on its start list and it matches nobody — not a wrong result, no result, and the
+runner simply is not there. So the box, the export and the package at the other end all have to
+agree, and it does not matter much which they agree on.
+
+**And you cannot always tell by looking**, which is the trap. `27522009` is a perfectly good hex
+number as well as a decimal one, so a column of all-digit codes could be either and nothing in the
+file says which. That is why Podium PC asks you — `Write chip codes as` on the export — instead of
+guessing. A code with a letter `A` to `F` in it can only be hex, and is read that way whatever the
+setting says, because that much is arithmetic rather than a guess.
+
+**One reader can produce both over its life**, so a code is remembered along with which way it was
+written when it arrived. Where that was never recorded, the export falls back on what you tell it.
+
+To change which way a box sends them, see `Output chip code in HEX` under Podium PC's settings, or
+`Chip code output` for one box on its own.
 
 ## How a race is described
 
@@ -1631,6 +1689,32 @@ Change these only with a reason — antennas and power decide what the mat reads
 here reads badly everywhere it goes afterwards. See
 the section on where-to-put-the-mat.
 
+#### `Chip code output` — decimal or hex, for this box only
+
+**Select the box, press `Box settings...`, double-click `Chip code output`, pick `Decimal` or `Hex`,
+then `Apply changes`.** Press `Re-read` afterwards: the box reports this setting back, so unlike most
+of what is in this dialog you can see for yourself that it took.
+
+**This is the only way to set it on an EchoActive.** The tick on `Settings` &gt; `General` sets every
+box at once but reaches only boxes on the network, so a box on a dongle is never told by it — and a
+box you set here is then left alone by that tick, rather than being changed back the next time it
+reconnects.
+
+**It cannot be set over 4G, and it is not on the box's own screen.** A box that reports in over the
+mobile network can only be changed from a Podium PC on the same network as it, or through a dongle
+in range of it. For a customer's box that means going to it, or getting a Podium PC onto their
+network.
+
+**Two things it does not do**, both of which get reported as faults:
+
+- **UHF codes only.** An EchoActive transponder code is six characters and is unaffected, so on a
+  site reading only active chips this setting makes no visible difference whichever way it is set.
+- **Rewound reads still come back in decimal**, whatever this says. It is the box's firmware, not
+  Podium PC.
+
+**The row is only there once the box has answered.** With nothing connected the dialog has nothing
+to show, because everything in it is read from the box.
+
 ### The counts under the grid
 
 What each timing point has collected, then the reads themselves as they arrive.
@@ -1639,6 +1723,33 @@ What each timing point has collected, then the reads themselves as they arrive.
 week's. **It deletes nothing** — every read and every result is untouched — and **`Show all`** brings
 the old numbers back. Useful at the start of the second event of a weekend, harmless if pressed by
 mistake.
+
+#### The columns in the reads list
+
+Newest at the top, and the columns are:
+
+| Column | What it is |
+| --- | --- |
+| `Device` | The six-character key of the box that read it |
+| `Timing point` | The point that box was on at the time, not necessarily the one it is on now |
+| `Record` | The box's own record number, blank where it is not known |
+| `Chip` | The code, exactly as the box sent it |
+| `Reader time` | The crossing on the **box's** clock, which is the time that gets scored |
+| `Antenna` | Which of the box's aerials saw it |
+| `RSSI` | How strong the signal was |
+| `Note` | Why this read is not an ordinary live one |
+
+**`Reader time` is the one that matters.** It is the box's own clock, not when this PC heard about
+it, which is why a box with a wrong clock produces wrong results however healthy the link looks.
+
+**`Note` is the column to read when something looks odd**, and it says one of four things:
+
+- **`rewind`** — this read only ever arrived by replay. An ordinary crossing, recovered.
+- **`already held`** — it arrived again and was recognised; nothing was stored twice.
+- **`rewind, already held`** — both.
+- **`via server`** — it was fetched from the server rather than taken off a box here, **and that is
+  why `Antenna`, `RSSI` and `Record` are blank on that row.** The server does not carry them. It is
+  not a fault and there is nothing to fix.
 
 ### A box that stops beating turns its whole row red
 
@@ -1727,9 +1838,20 @@ firewall the first time.
 
 - **`Remember readers between sessions`** — the grid opens with last time's readers, ready to connect.
   Turn it off for an empty grid; the readers are kept and come back if you turn it on again.
-- **`Output chip code in HEX (only changes over LAN connections)`** — how readers on the network show a
-  chip code. Readers on a dongle are left alone. It changes the display, not the chip: the same tag
-  reads `27522009` in decimal and `1A3F3D9` in hex.
+- **`Output chip code in HEX (only changes over LAN connections)`** — how readers send a chip code.
+  It changes the notation, not the chip: the same tag reads `27522009` in decimal and `1A3F3D9` in
+  hex.
+
+  **This is the one place to set it for every box at once**, and three things about it are worth
+  knowing before you use it:
+
+  - **It only reaches boxes on the network.** A box reached through a dongle is never told. For
+    those, and for one box on its own, use `Chip code output` in that box's own `Box settings...`.
+  - **It changes UHF codes only.** An EchoActive transponder code is six characters and is sent the
+    same way whatever this says, so a site reading only active chips will see no difference at all.
+  - **Rewound reads still arrive in decimal.** A box set to hex sends its live reads in hex and its
+    replayed ones in decimal. That is the box's own firmware and nothing here can change it, so if
+    you are matching a rewind by hand, read it as decimal.
 
 ### With `Advanced settings` ticked
 
@@ -1737,9 +1859,21 @@ firewall the first time.
   fetches its field. Each takes an `Address`, an `Account` and a `Password`, with `Test connection`,
   `Send reads to this server as they arrive`, and `Send everything outstanding` for anything that did
   not get through.
-- **Boxes reporting over 4G** — a box of settings for signing in to the older 4G server, `Show boxes
-  reporting through the server` to put them in the grid, and `Add box by MAC` to follow one particular
-  box through it — the six-digit device key or the full address.
+- **`Podium Lite Server`** — where boxes reporting over 4G come from. Tick `Show settings`, fill in
+  your **`Outreach user`** and **`Password`**, and press `Sign in`. **It is remembered and signs
+  itself in from then on**, so this is a once-per-machine job rather than something to do on race
+  morning.
+
+  **Every box registered to that account that is online then appears in the grid by itself** — there
+  used to be a tick for it and there is no longer, so nothing else needs pressing. A box that is
+  **offline is not listed at all**, which is what `Add box by MAC` is for: type the box's
+  six-character identity, the MAC on the Echo's own `Networking` screen, and it stays pinned to the
+  grid while it is quiet. A box already on the grid over the network is not shown twice.
+
+  **If `Sign in` seems to do nothing**, look at the line beside `Show settings`. While it reads
+  `No server in …` there is no server address for it to sign in to, and the button is inert — that
+  is a file on this machine naming the server, not something you can type here. And **`Login
+  refused`** means this account, not your Podium website one.
 - **`3rd Party Server`** — sends reads straight into your own SQL Server scoring database: `Server`,
   `Database`, `Windows account` or `SQL sign in`, and the `Procedure` to call. `Test connection` first.
   `Table and procedure...` shows the script the database end needs, to copy across — including a note
@@ -1750,23 +1884,163 @@ firewall the first time.
 
 ## Export
 
-**`Export...`** writes reads out for another scoring package, or sends them to the database above.
+**`Export...`** is where you set up how reads are written for another scoring package. It no longer
+writes a file itself: `Save as...` and `Keep writing live...` were both taken off it, and what each
+of them did now lives somewhere better.
 
 Choose a format from the list rather than writing one — `Use a preset format` — and check the sample
-lines it shows before committing. Pick `From` and `To`, and decide whether to `Include reads
-recovered by rewind`. Then `Write a file` or `Send to the database`.
+lines it shows. `Write chip codes as` says whether a code goes out in hex or decimal. **The window
+holds settings only and saves them as you change them**, so there is no OK button and nothing to
+remember to press.
+
+**To get one file out of it**, use `Rewind...` on the box you want and tick `Also write one file I
+name`. **For a file that fills up as the race runs**, use the per-timing-point files below.
 
 **An export only reads.** It changes nothing stored, so it can be run during an event, run twice, or
 run again in a different format.
 
-### A file that keeps being written while the race runs
+### Writing your own format — the tokens
 
-**`Keep writing live...`** picks a file and then keeps writing to it as reads arrive, instead of
-writing one file once. For a commentary box or a scoreboard reading the file at the other end.
+If none of the presets suits the package at the other end, untick `Use a preset format` and build a
+line yourself. **A format is one line of text with tokens in braces**, and every read is written in
+that shape. Commas, tabs, fixed words and anything else you type come out as typed.
+
+```
+{chip},{time:HH:mm:ss.fff},{point}
+```
+
+| Token | What it writes |
+| --- | --- |
+| `{chip}` | The transponder code, as the reader formatted it |
+| `{number}` | The race number for this chip from the bib chip file, blank if it is not in there |
+| `{time}` | The crossing time on the reader's clock |
+| `{elapsed}` | Time since the start |
+| `{received}` | When this machine received the read, which is not the same as the crossing |
+| `{point}` | The timing point the box was on when the read arrived |
+| `{device}` | The box's six-character device key |
+| `{record}` | The reader's own record number, or `0` where it is not known |
+| `{loop}` | The loop or channel identifier |
+| `{rssi}` | How strong the signal was |
+| `{rewind}` | `1` when the read only ever arrived by replay, otherwise `0` |
+
+**`{time}` and `{received}` take a format after a colon** — `{time:HH:mm:ss.fff}` or
+`{time:yyyy-MM-dd HH:mm:ss}`. Left plain they come out as `HH:mm:ss.fff`.
+
+**`{elapsed}` needs a start time**, which you set in the same window, and takes `hms`, `seconds` or
+`ms` after a colon: `{elapsed:seconds}`. **With no start set it writes nothing at all** rather than
+a plausible wrong number.
+
+**Every line ends CRLF and that is not a choice**, because the packages this feeds are Windows
+software that expects it, and a stray lone newline is the kind of thing an importer accepts quietly
+and then mis-parses.
+
+**Check the sample lines before you trust it.** The window renders your format against real stored
+reads, which is faster than finding out at the other end.
+
+### A file for each timing point, written as the reads arrive
+
+**Tick `Write each timing point's reads to a file as they arrive` and pick a folder.** Inside it,
+each day gets a folder and each timing point gets a file — so today's finish line is
+`2026-10-15\Finish.txt`. For a commentary box or a scoreboard reading the file at the other end.
+
+**Which boxes join in** is the `File` tick on each row of the reader list. A box is in unless you
+take it out.
 
 **An existing file is joined, not overwritten.** Two boxes on the same timing point write into one
 file rather than the second one wiping what the first has been collecting all morning, and Podium PC
 restarted mid-race carries on with the file it was already writing.
+
+### Race numbers in the file instead of chip codes
+
+A scoring package that wants the number on the vest rather than the code on the chip can have both,
+read out of a file of your own.
+
+**Tick `Advanced`, then `Look up race numbers in a bib chip file`, and pick your file.** Each line of
+it is the **race number first, then the chip code**:
+
+```
+13,99900013
+14,99900014
+```
+
+Commas, tabs or semicolons all work, as do quotes, a heading line and extra columns. The note under
+the box says how many chips it found **and shows you one of them** — "Read as chip 99900013 wearing
+number 13" — so you can see at a glance that your two columns were understood the right way round.
+
+**A file the other way round is the one thing to watch.** Nothing in a file says which column is
+which, so a chip-code-first file is read backwards: the numbers that come out belong to other
+runners, and no warning says so. Check the pair in that note against your own entry list before the
+gun. If your list is the other way round, swap the two columns in a spreadsheet and save it again.
+
+**Then choose a format that writes a number, or nothing will change.** This is the part worth
+reading twice: the tick finds the numbers, but only the format decides whether they reach the file.
+Either pick the preset **`RFIDServer with race numbers`**, which writes
+
+```
+13,99900013,2026-10-15 09:41:02.130
+```
+
+or put `{number}` in a format of your own. **With the tick on and the format left alone, your files
+come out exactly as they did before.**
+
+**A chip your file does not list still gets a line**, with the number left empty — `,RFI015,...` —
+so a read is never dropped for want of a number, and the columns never shift.
+
+**The file is re-read as it changes.** Add fifty more chips to it during registration and the files
+being written pick them up; they are closed and reopened on the new list rather than carrying on
+with the old one.
+
+**It is off until you turn it on**, and turning it off again leaves the filename where it is, so
+next weekend is one tick rather than finding the file again.
+
+## The Nano
+
+**An EchoActive Nano is a small active-only box with no screen.** It reads tags from their own
+broadcasts, stamps each read with its own clock, keeps everything in its own memory, and sends over
+4G — so most of the time you never touch it. There are two reasons to plug one into a PC: to change
+what it is set to, and to get the reads out of it by hand.
+
+### Plugging one in
+
+**Plug the USB-C lead in and the Nano appears in the grid on its own**, within a few seconds. There
+is no port to pick and nothing to press — Podium PC looks for it the same way it looks for a dongle.
+**Click its row** to open the console. Pull the lead out and the row goes.
+
+If it does not appear, give it a few seconds more and then try the lead. The unit answers on a USB
+serial port, and a lead that only carries power — the kind that comes with a phone charger — looks
+exactly like a flat battery from here.
+
+### Changing its settings
+
+Clicking the row opens a console showing what the unit is actually set to, read back off it rather
+than remembered here. You can change its **name**, its **buzzer**, its **gate**, the **minimum
+signal** it bothers with, its **time zone**, the **server** it reports to and its **APN**.
+
+**Press `Write settings` and it writes, then reads the unit back and tells you if anything did not
+take.** That read-back is the point: a setting that did not land says so rather than looking fine.
+
+**`Firmware` puts the unit into DFU** so it can be updated, which is a separate job with a file
+from RFID Timing.
+
+### Getting the reads off it
+
+**`Records` then `Download`** brings back what the unit is holding, newest first. **`Save`** writes
+them out as a file, in RFIDTiming or Racetec format — whichever your scoring package reads.
+
+**Tick `Pings and RSSI`** to see, and to keep in the file, how many sightings made up each crossing
+and how strong the signal was. Useful when you are judging where a box should stand, and noise
+otherwise.
+
+**`Erase unit` cannot be undone.** It clears the unit's own memory, so download and save before you
+press it. The unit holds thousands of reads and deletes nothing by itself until its log is a week
+old, so there is rarely a reason to be in a hurry about it.
+
+### What a Nano will not do
+
+- **No screen**, so nothing about it is set on the unit itself.
+- **It cannot be reconfigured over 4G.** Everything in the console needs the USB lead. A Nano out
+  with a customer can send its reads in, but changing what it is set to means a lead and a PC.
+- **It reads active tags only**, whatever else is on site.
 
 ## Which version, and updating
 
@@ -1783,13 +2057,30 @@ A licence for boxes in the field and the reads they send, without the scoring. O
 `Scoring` tab is greyed out and the website shows the `RFID Boxes` tab and nothing else. Everything
 about connecting, commanding and recovering from boxes works exactly as it does here.
 
-## Two messages that sound alarming and are not
+## Messages, and which of them matter
+
+**These two sound alarming and are not:**
 
 - **"Grid cleared. Stored reads are untouched."** Clearing the grid tidies the screen.
 - **"Disconnected. Reads already stored are kept."** Dropping a link loses nothing that already
   arrived.
 
 **Podium PC never deletes a read.** See the section on limits.
+
+**And these do want doing something about:**
+
+- **"Login refused"** — the sign-in to the **older 4G server** was rejected. It is that account, not
+  your Podium website account and not the cloud timing server, so check it against whichever
+  credentials RFID Timing gave you for the 4G server, and mind trailing spaces on a pasted password.
+  Everything else in Podium PC carries on working; only boxes reporting through that server are
+  affected.
+- **"Discovery failed: …"** — the sweep itself could not run, and the rest of the line is the reason
+  Windows gave. It is usually a serial port another program is holding open — a terminal, a previous
+  copy of Podium PC, or the vendor tool for a dongle. Close whatever else is talking to the port and
+  press `Discover` again. Boxes on the network find themselves regardless, so this only ever costs
+  you the dongle.
+- **"Reader not responding"** — see the section on that; it has its own answer, and it is about a box
+  that has stopped answering rather than about the link.
 
 
 ---
@@ -1943,7 +2234,9 @@ not sent anything. See the section on results-not-reaching-the-server.
 
 - **`Timing server`** — the server address, `Username` and `Password`, and `Test server`.
   `Send reads to the server` turns sending on.
-- **`General`** — `Output chip codes in HEX`. It changes how a code is shown, not the chip.
+- **`General`** — `Output chip codes in HEX`. It changes the notation a reader sends, not the chip,
+  and it reaches boxes on the network only. UHF codes only: an EchoActive code is unaffected. A
+  rewind still comes back in decimal whatever this says.
 - **`Diagnostics`** — `Send log` and `Share DB`, for sending to RFID Timing when asked.
 
 Then `Save`.
